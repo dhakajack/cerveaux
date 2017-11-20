@@ -27,39 +27,27 @@ primary things kept under version control.
 To build the game:
 ------------------
 
-1. Create a working Inform project from your source tree:
+	1. Create a working Inform project from your source tree:
 
-  $ git clone URL cerveux
+		$ git clone URL cerveux
   
-  $ cd cerveux
+		$ cd cerveux
   
-  $ mv cerveux.inform/ temp.inform/
+		$ mv cerveux.inform/ temp.inform/
 
-  [...launch Inform, create new project in this dir called 'cerveux'…]
+	[...launch Inform, create new project in this dir called 'cerveux'…]
 
-  $ cp temp.inform/Source/story.ni cerveux.inform/Source/
+		$ cp temp.inform/Source/story.ni cerveux.inform/Source/
   
-  $ cp temp.inform/uuid.txt cerveux.inform/
+		$ cp temp.inform/uuid.txt cerveux.inform/
   
-  $ rm -rf temp.inform/
+		$ rm -rf temp.inform/
 
+	2. Install extensions. The extensions used in this project are all "stock" -- none have been modified, but there's always the concern about versions and compatability. For that reason, I've put copies of all used extensions in the cerveux/extensions directory. If the whole project is cloned, these files will come along for the ride. Be sure to install them into your local copy of inform when you compile.
 
-2. Install extensions. The extensions used in this project are all
-"stock" -- none have been modified, but there's always the concern
-about versions and compatability. For that reason, I've put copies
-of all used extensions in the cerveux/extensions directory. If the
-whole project is cloned, these files will come along for the ride.
-Be sure to install them into your local copy of inform when you
-compile.
-
-3. Launch the Inform IDE and load the cerveux.inform project.  The
-source code should be visible, and it should compile fine.  [Make sure
-that Inform's settings are are set to "Glulx" as the target VM.]
+	3. Launch the Inform IDE and load the cerveux.inform project.  The source code should be visible, and it should compile fine.  [Make	sure that Inform's settings are are set to "Glulx" as the target VM.]
 
 
 WARNING!!
-DO NOT do any version control operations (commit, push,
-and particularly, pull, update, and merge) while the Inform IDE 
-is still open.  When the IDE 'saves', it destroys and recreates 
-the whole cerveux.inform/ directory, thus possibly eradicating
-and changes you may have downloaded. 
+
+	DO NOT do any version control operations (commit, push, and particularly, pull, update, and merge) while the Inform IDE  is still open.  When the IDE 'saves', it destroys and recreates  the whole cerveux.inform/ directory, thus possibly eradicating and changes you may have downloaded.  
