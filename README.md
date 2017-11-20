@@ -30,13 +30,17 @@ To build the game:
 1. Create a working Inform project from your source tree:
 
   $ git clone URL cerveux
+  
   $ cd cerveux
+  
   $ mv cerveux.inform/ temp.inform/
 
   [...launch Inform, create new project in this dir called 'cerveux'…]
 
   $ cp temp.inform/Source/story.ni cerveux.inform/Source/
+  
   $ cp temp.inform/uuid.txt cerveux.inform/
+  
   $ rm -rf temp.inform/
 
 
