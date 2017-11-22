@@ -15,47 +15,41 @@ Include Glimmr Graphic Hyperlinks by Erik Temple.
 Include Glimmr Bitmap Font by Erik Temple.
 Include Glulx Input Loops by Erik Temple.
 
-Chapter Exit Lister
+Chapter The Player
 
-To decide whether unicodage is enabled:
-	(-  glk_gestalt(gestalt_Unicode, 0) -)
+The player has a number called consciousness. The consciousness of the player is 0.
+
+[Niveau					après avoir mangé….
+0					rien
+1					une souris
+2					un chien
+3					un morceau de cerveau d'un garde
+4					le cerveau d'un scientifique
+5					le remède]
+
+Chapter Exit Lister
 	
 Rule for constructing the status line:
 	center "[exitList]" at row 1;
 	rule succeeds.
 
-To say exitList: [based on Eric Eve's exit lister code]
+To say exitList:
 	let L be {up, west, north, south, east, down};
 	repeat with way running through L:
 		if the room the way from the location is not nothing:
-			if unicodage is enabled:
-				if the way is:
-					-- up:
-						say "[unicode 8710] ";
-					-- west:
-						say "[unicode 8592] ";
-					-- north:
-						say "[unicode 8593] ";
-					-- south:
-						say "[unicode 8595] ";
-					-- east:
-						say "[unicode 8594] ";
-					-- down:
-						say "[unicode 8711] ";
-			otherwise:	
-				if the way is:
-					-- up:
-						say "H ";
-					-- west:
-						say "O ";
-					-- north:
-						say "N ";
-					-- south:
-						say "S ";
-					-- east:
-						say "E ";
-					-- down:
-						say "B ".
+			if the way is:
+				-- up:
+					say "H ";
+				-- west:
+					say "O ";
+				-- north:
+					say "N ";
+				-- south:
+					say "S ";
+				-- east:
+					say "E ";
+				-- down:
+					say "B ".
 
 
 Chapter Disable Keyboard
@@ -119,6 +113,21 @@ Button_10	{ 175, 42 }	{ 225, 63 }	Label_10
 Button_11	{ 230, 42 }	{ 280, 63 }	Label_11
 Button_12	{ 285, 42 }	{ 335, 63 }	Label_12
 
+Chapter Button Handling
+
+First graphlink processing rule:
+	say current graphlink row;
+	if the current graphlink row is:
+		-- 1:
+			try going west;
+		-- 2:
+			try going east;
+		-- 3:
+			try smelling;	
+		-- otherwise:
+			say "No actions.";
+	the rule succeeds.
+	
 instead of smelling:
 	now the text-string of Label_1 is "x me";
 	now the tint of Button_1 is g-red;
@@ -134,21 +143,6 @@ instead of smelling:
 	now the tint of Button_11 is g-white;
 	now the tint of Button_12 is g-LightGray;
 	follow the refresh windows rule.
-
-Chapter Button Handling
-
-First graphlink processing rule:
-	say current graphlink row;
-	if the current graphlink row is:
-		-- 1:
-			try going west;
-		-- 2:
-			try going east;
-		-- 3:
-			try smelling;	
-		-- otherwise:
-			say "No actions.";
-	the rule succeeds.
 
 
 Chapter Start of Play
@@ -174,6 +168,8 @@ The printed name of a room is usually "Ici".
 Doors are usually closed. Doors are usually not locked.
 
 Section Doors
+
+Doors can be buttoned. Doors are usually not buttoned.
 
 Instead of going through a closed door (called la porte):
 	if la porte is locked:
@@ -204,7 +200,7 @@ To say descLabZoo:
 	
 Section Ascenseur 2
 
-Ascenseur 2 is a room. The description of Ascenseur 2 is "[descAscenseur1]." The Ascenseur2door is a door. It is east of Couloir 2 and west of Ascenseur 2.
+Ascenseur 2 is a room. The description of Ascenseur 2 is "[descAscenseur1]." The Ascenseur2door is a buttoned door. It is east of Couloir 2 and west of Ascenseur 2.
 
 Section Laboratoire Biochimique
 
@@ -222,7 +218,7 @@ To say descCouloir1:
 
 Section Ascenseur 1
 
-Ascenseur 1 is a room. The description of Ascenseur 1 is "[descAscenseur1]." The Ascenseur1door is a door. It is east of Couloir 1 and west of Ascenseur 1.
+Ascenseur 1 is a room. The description of Ascenseur 1 is "[descAscenseur1]." The Ascenseur1door is a buttoned door. It is east of Couloir 1 and west of Ascenseur 1.
 
 To say descAscenseur1:
 	say "Elevator 1".
@@ -290,12 +286,14 @@ Carry out simpleUnlocking:
 	say "Nothing to unlock here."
 	
 Section simpleOpening
+
+Definition: A door is simpleOpenable if it is closed and it is not locked and it is not buttoned.
 	
 simpleOpening is an action applying to nothing. Understand "simpleOpen" as simpleOpening.
 
 Carry out simpleOpening:
 	repeat with the way running through directions:
-		if the door the way of the location is closed:
+		if the door the way of the location is simpleOpenable:
 			now the door the way from the location is open;
 			say "Door to the [way], opened.";
 			stop the action;
