@@ -25,34 +25,35 @@ Rule for constructing the status line:
 	rule succeeds.
 
 To say exitList: [based on Eric Eve's exit lister code]
-	repeat with way running through directions:
+	let L be {up, west, north, south, east, down};
+	repeat with way running through L:
 		if the room the way from the location is not nothing:
 			if unicodage is enabled:
 				if the way is:
+					-- up:
+						say "[unicode 8710] ";
+					-- west:
+						say "[unicode 8592] ";
 					-- north:
 						say "[unicode 8593] ";
 					-- south:
 						say "[unicode 8595] ";
-					-- west:
-						say "[unicode 8592] ";
 					-- east:
 						say "[unicode 8594] ";
-					-- up:
-						say "[unicode 8710] ";
 					-- down:
 						say "[unicode 8711] ";
 			otherwise:	
 				if the way is:
+					-- up:
+						say "H ";
+					-- west:
+						say "O ";
 					-- north:
 						say "N ";
 					-- south:
 						say "S ";
-					-- west:
-						say "O ";
 					-- east:
 						say "E ";
-					-- up:
-						say "H ";
 					-- down:
 						say "B ".
 
@@ -60,6 +61,13 @@ To say exitList: [based on Eric Eve's exit lister code]
 Chapter Disable Keyboard
 
 [TODO: re-enable to kill keyboard. The focal event type of main input is hyperlink-event.]
+
+Chapter Suppress Mention of Doors
+
+For printing a locale paragraph about a door (called the item)
+	(this is the don't mention doors in room descriptions rule):
+	set the locale priority of the item to 0;
+	continue the activity.
 
 Chapter Button Setup
 
@@ -159,98 +167,154 @@ After printing the banner text:
 	
 Chapter Geography
 
+Section Location Generalities
+
 The printed name of a room is usually "Ici".
 
+Doors are usually closed. Doors are usually not locked.
+
+Section Doors
+
+Instead of going through a closed door (called la porte):
+	if la porte is locked:
+		say "The door is locked.";
+	otherwise:
+		say "The door is closed."
+		
 Section Bloc Opératoire
 
-Bloc Opératoire is a room. The description of Bloc Opératoire is "[descBlocOperatoire]." Couloir Niveau 2 is east from Bloc Opératoire. The player is in Bloc Opératoire. 
+Bloc Opératoire is a room. The description of Bloc Opératoire is "[descBlocOperatoire]." Couloir 2 is east from Bloc Opératoire. The player is in Bloc Opératoire. 
 
 To say descBlocOperatoire:
 	say "The operating room".
 
-Section Couloir Niveau 2
+Section Couloir 2
 
-Couloir Niveau 2 is a room. The description of Couloir Niveau 2 is "[descCouloir2]." 
+Couloir 2 is a room. The description of Couloir 2 is "[descCouloir2]." The labZooDoor is a door. It is north of Couloir 2 and south of Laboratoire Zoologique.
 
 To say descCouloir2:
 	say "Hall level 2".
 
 Section Laboratoire Zoologique
 
-Laboratoire Zoologique is a room. The description of Laboratoire Zoologique is "[descLabZoo]."
+Laboratoire Zoologique is a room. The description of Laboratoire Zoologique is "[descLabZoo]." 
 
 To say descLabZoo:
 	say "Animal Lab".
-
-Section Ascenseur 1
-
-Ascenseur1 is a room. The description of Ascenseur1 is "[descAscenseur1]."
-
-To say descAscenseur1:
-	say "Elevator 1".
 	
 Section Ascenseur 2
 
-Ascenseur2 is a room. The description of Ascenseur2 is "[descAscenseur1]."
+Ascenseur 2 is a room. The description of Ascenseur 2 is "[descAscenseur1]." The Ascenseur2door is a door. It is east of Couloir 2 and west of Ascenseur 2.
 
 Section Laboratoire Biochimique
 
-Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]."
+Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The labBioDoor is a locked door. It is south of Couloir 2 and north of Laboratoire Biochimique. 
 
 To say descLabBio:
 	say "Bio Lab".
 
-Section Couloir Niveau 1
+Section Couloir 1
 
-Couloir Niveau 1 is a room. The description of Couloir Niveau 1  is "[descCouloir1]."
+Couloir 1 is a room. The description of Couloir 1  is "[descCouloir1]."
 
 To say descCouloir1:
 	say "Hall level 1".
 
+Section Ascenseur 1
+
+Ascenseur 1 is a room. The description of Ascenseur 1 is "[descAscenseur1]." The Ascenseur1door is a door. It is east of Couloir 1 and west of Ascenseur 1.
+
+To say descAscenseur1:
+	say "Elevator 1".
+
 Section Laboratoire Pathologique
 
-Laboratoire Pathologique is a room. The description of Laboratoire Pathologique is "[descLabPath]."
+Laboratoire Pathologique is a room. The description of Laboratoire Pathologique is "[descLabPath]." The labPathDoor is a door. It is north of Couloir 1 and south of Laboratoire Pathologique.
 
 To say descLabPath:
 	say "Path Lab".
+	
+The frigo is a closed openable container in the Laboratoire Pathologique. The frigo is closed.
+
+The boite en plastique is a female closed openable container in the frigo. The boite en plastique is closed.
+
+The moreau de cerveau is a male edible thing in the boite en plastique.
 
 Section Salle de Décontamination
 
-Salle de Décontamination is a room. The description of Salle de Décontamination is "[descSalleDecon]."
+Salle de Décontamination is a room. The description of Salle de Décontamination is "[descSalleDecon]." The deconDoor is a door. It is west of Couloir 1 and east of Salle de Décontamination. 
 
 To say descSalleDecon:
 	say "Decon Zone".
 
-Section Escalier Niveau 1
+Section Escalier 1
 
-Escalier Niveau 1 is a room. The description of Escalier Niveau 1  is "[descEscalier1]."
+Escalier 1 is a room. The description of Escalier 1  is "[descEscalier1]." The esc1door is a locked door. It is north of Salle de Décontamination and south of Escalier 1. 
 
 To say descEscalier1:
 	say "Stairs 1".
 
-Section Escalier Niveau 2
+Section Escalier 2
 
-Escalier Niveau 2 is a room. The description of Escalier Niveau 2  is "[descEscalier2]."
+Escalier 2 is a room. The description of Escalier 2  is "[descEscalier2]." Escalier 2 is up from Escalier 1 and down from Escalier 3.
 
 To say descEscalier2:
 	say "Stairs 2".
 
-Section Escalier Niveau 3
+Section Escalier 3
 
-Escalier Niveau 3 is a room. The description of Escalier Niveau 3 is "[descEscalier3]."
+Escalier 3 is a room. The description of Escalier 3 is "[descEscalier3]."
 
 To say descEscalier3:
 	say "Stairs 3".
 
 Section Sas
 
-Sas is a room. The description of Sas is "[descSas]."
+Sas is a room. The description of Sas is "[descSas]." The sasDoor is a locked door. It is north of Escalier 3 and south of Sas.
 
 To say descSas:
 	say "Airlock".
 
+Chapter Verbs
 
+Section simpleUnlocking
 
+simpleUnlocking is an action applying to nothing. Understand "simpleUnlock" as simpleUnlocking.
+
+Carry out simpleUnlocking:
+	repeat with way running through directions:
+		if the door the way of the location is locked:
+			now the door the way from the location is unlocked;
+			say "Door to the [way], unlocked.";
+			stop the action;
+	say "Nothing to unlock here."
+	
+Section simpleOpening
+	
+simpleOpening is an action applying to nothing. Understand "simpleOpen" as simpleOpening.
+
+Carry out simpleOpening:
+	repeat with the way running through directions:
+		if the door the way of the location is closed:
+			now the door the way from the location is open;
+			say "Door to the [way], opened.";
+			stop the action;
+	repeat with the item running through visible containers:
+		if the item is closed:
+			try opening the item;
+			stop the action;
+	say "Nothing to open."
+
+Section simpleEating
+
+simpleEating is an action applying to nothing. Understand "simpleEat" as simpleEating.
+
+Carry out simpleEating:
+	repeat with the item running through edible things:
+		try eating the item;
+		stop the action;
+	say "Nothing to eat."
+		
 
 
 
