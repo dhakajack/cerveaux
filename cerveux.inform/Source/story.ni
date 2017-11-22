@@ -312,8 +312,42 @@ Carry out simpleEating:
 		try eating the item;
 		stop the action;
 	say "Nothing to eat."
-		
+	
+Chapter Consciousness
 
+To increment the consciousness of the player:
+	increase the consciousness of the player by 1;
+	if the consciousness of the player is:
+		-- 1:
+			raiseConsciousnessToLevel1;
+		-- 2:
+			raiseConsciousnessToLevel2;
+		-- 3:
+			raiseConsciousnessToLevel3;
+		-- 4:
+			raiseConsciousnessToLevel4;
+		-- 5:
+			raiseConsciousnessToLevel5;
+			
+
+To raiseConsciousnessToLevel1:
+	say "Level 1!".
+	
+To raiseConsciousnessToLevel2:
+	say "Level 2".
+	
+To raiseConsciousnessToLevel3:
+	say "Level 3!".
+	
+To raiseConsciousnessToLevel4:
+	say "Level 4!".
+	
+To raiseConsciousnessToLevel5:
+	say "[VictoryText]";
+	end the story finally saying "Memory lives on!"
+	
+To say VictoryText:
+	say "This is the victory text! Woot!".
 
 
 
