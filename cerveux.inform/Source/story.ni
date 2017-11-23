@@ -7,13 +7,13 @@ The story creation year is 2017.
 The story description is "On ne se manque jamais de mémoire."
 
 Include French by Eric Forgeot. 
-Use French Language. 
-
 Include Basic Screen Effects by Emily Short.
 Include Glimmr Canvas-Based Drawing by Erik Temple.
 Include Glimmr Graphic Hyperlinks by Erik Temple.
 Include Glimmr Bitmap Font by Erik Temple.
 Include Glulx Input Loops by Erik Temple.
+
+Use French Language. 
 
 Chapter Debugging
 
@@ -69,10 +69,10 @@ To say exitList:
 				-- down:
 					say "B ".
 
-
 Chapter Disable Keyboard
 
-[TODO: re-enable to kill keyboard. The focal event type of main input is hyperlink-event.]
+[TODO: re-enable to kill keyboard. ]
+The focal event type of main input is hyperlink-event.
 
 Chapter Suppress Mention of Doors
 
@@ -123,7 +123,6 @@ Chapter Button Handling
 First graphlink processing rule:
 	let G be the current graphlink row;
 	let C be entry G of commandList;
-	increment the knownCommands of the player;
 	if debugFlag is true:
 		say "Graphlink [G] was clicked, triggering command [C], corresponding to the action: ";
 	if C is:
@@ -165,7 +164,7 @@ When play begins:
 	open up the graphics-window;
 	sort Palette in random order; 
 	increment the knownCommands of the player;
-	[TODO: re-enable to kill keyboard:   now the command prompt is ""]
+	now the command prompt is "".
 
 After printing the banner text:
 	say "[line break]Introductory text of some sort.[paragraph break]".
@@ -208,6 +207,10 @@ Laboratoire Zoologique is a room. The description of Laboratoire Zoologique is "
 
 To say descLabZoo:
 	say "Animal Lab".
+	
+The cage is an openable closed transparent female container in the Laboratoire Zoologique. 
+
+The chien is an edible male thing. It is in the cage.
 	
 Section Ascenseur 2
 
@@ -305,8 +308,7 @@ simpleOpening is an action applying to nothing. Understand "simpleOpen" as simpl
 Carry out simpleOpening:
 	repeat with the way running through directions:
 		if the door the way of the location is simpleOpenable:
-			now the door the way from the location is open;
-			say "Door to the [way], opened.";
+			try opening the door the way from the location;
 			stop the action;
 	repeat with the item running through visible containers:
 		if the item is closed:
@@ -319,10 +321,10 @@ Section simpleEating
 simpleEating is an action applying to nothing. Understand "simpleEat" as simpleEating.
 
 Carry out simpleEating:
-	repeat with the item running through edible things:
+	repeat with the item running through visible edible things:
 		try eating the item;
 		stop the action;
-	say "Nothing to eat."
+	say "Nothing to eat.".
 	
 Section simplePushing
 
@@ -389,9 +391,50 @@ To increment the knownCommands of the player:
 	now the graphlink status of the button in row R of the Table of Glimmr Buttons is g-active;
 	follow the refresh windows rule.
 				
-		
+Chapter Milestones
+
+After going east for the first time:
+	try looking;
+	say "Hm. Seems to be another direction now.";
+	increment the knownCommands of the player.
+	
+After going west for the first time:
+	try looking;
+	say "Hm. Can eat now.";
+	move the petite créature grise to the Bloc Opératoire;
+	increment the knownCommands of the player.
+	
+After eating the petite créature grise:
+	say "Mouse thoughts***. Just ate a mouse. Smarter now.";
+	increment the consciousness of the player.
+	
+After going east when the consciousness of the player is 1 for the first time:
+	try looking;
+	say "Ah, doors! Stuff to open!";
+	increment the knownCommands of the player.
+	
+After opening a door for the first time:
+	say "Now that the door is opened, can go that direction…";
+	increment the knownCommands of the player.
+	
+After going north for the first time:
+	try looking;
+	say "And now south is a command too…";
+	increment the knownCommands of the Player.
+	
+After eating the chien:
+	say "Dog thoughts***. Just at a dog. Smarter now.";
+	increment the consciousness of the player;
+	increment the knownCommands of the player.
 	
 
+	
+	
+Chapter The Void
+
+The void is a room.
+
+The petite créature grise is an edible female thing. It is in the void.
 	
 	
 
