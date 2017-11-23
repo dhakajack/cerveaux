@@ -15,6 +15,10 @@ Include Glimmr Graphic Hyperlinks by Erik Temple.
 Include Glimmr Bitmap Font by Erik Temple.
 Include Glulx Input Loops by Erik Temple.
 
+Chapter Debugging
+
+DebugFlag is a truth state that varies. DebugFlag is true.
+
 Chapter The Player
 
 The player has a number called consciousness. The consciousness of the player is 0.
@@ -26,6 +30,20 @@ The player has a number called consciousness. The consciousness of the player is
 3					un morceau de cerveau d'un garde
 4					le cerveau d'un scientifique
 5					le remède]
+
+The player has a number called knownCommands. The knownCommands of the player is 0.
+
+[Niveau					Action
+1					East
+2					West
+3					simple Eating
+4					simple Opening
+5					North
+6					South
+7					Push Button
+8					Up
+9					Down
+10					Talk]
 
 Chapter Exit Lister
 	
@@ -77,84 +95,77 @@ Table of Common Color Values (continued)
 glulx color value	assigned number
 g-LightGray	15066597
 g-MidGray	12829635
-g-salmon	16751515
-g-peach	16763291
-g-vanilla	16646043
 g-tiffany	10223608
 g-sky	10075900
 g-peptobismol	16554446
-g-barnie	14064124
 
-		
+Palette is a list of glulx color values that varies. Palette is {g-red, g-white, g-LightGray, g-lime, g-indigo,  g-tiffany, g-blue, g-yellow, g-green, g-peptobismol}.
 
-A button is a kind of stroked rectangle primitive. The associated canvas of a button is the graphics-canvas. The tint of a button is g-LightGray. The background tint of a button is g-MidGray. The graphlink status of a button is g-active.
-
-A label is a kind of bitmap-rendered string. The associated canvas of a label is the graphics-canvas. The scaling factor of a label is 0.25. The display-layer of a label is 2. The alignment of a label is center-aligned. The tint is g-black. The text-string is "0".
-
-A button has a label called the associated label.
-
-Label_1, Label_2, Label_3, Label_4, Label_5, Label_6 are labels.
-Label_7, Label_8, Label_9, Label_10, Label_11, Label_12 are labels.
+A button is a kind of stroked rectangle primitive. The associated canvas of a button is the graphics-canvas. The tint of a button is g-black. The background tint of a button is g-MidGray. 
 
 Some buttons are defined by the Table of Glimmr Buttons.
 
 Table of Glimmr Buttons
-button	origin	endpoint	associated label	 
-Button_1	{ 10, 7 }	{ 60, 28 }	Label_1	 
-Button_2	{ 65, 7 }	{ 115, 28 }	Label_2
-Button_3	{ 120, 7 }	{ 170, 28 }	Label_3
-Button_4	{ 175, 7 }	{ 225, 28 }	Label_4
-Button_5	{ 230, 7 }	{ 280, 28 }	Label_5
-Button_6	{ 285, 7 }	{ 335, 28 }	Label_6
-Button_7	{ 10, 42 }	{ 60, 63 }	Label_7
-Button_8	{ 65, 42 }	{ 115, 63 }	Label_8
-Button_9	{ 120, 42 }	{ 170, 63 }	Label_9
-Button_10	{ 175, 42 }	{ 225, 63 }	Label_10
-Button_11	{ 230, 42 }	{ 280, 63 }	Label_11
-Button_12	{ 285, 42 }	{ 335, 63 }	Label_12
+button	origin	endpoint	
+Button_1	{ 10, 7 }	{ 60, 28 }
+Button_2	{ 65, 7 }	{ 115, 28 }
+Button_3	{ 120, 7 }	{ 170, 28 }
+Button_4	{ 175, 7 }	{ 225, 28 }	
+Button_5	{ 230, 7 }	{ 280, 28 }	
+Button_6	{ 10, 42 }	{ 60, 63 }	
+Button_7	{ 65, 42 }	{ 115, 63 }	
+Button_8	{ 120, 42 }	{ 170, 63 }	
+Button_9	{ 175, 42 }	{ 225, 63 }	
+Button_10	{ 230, 42 }	{ 280, 63 }	
 
 Chapter Button Handling
 
 First graphlink processing rule:
-	say current graphlink row;
-	if the current graphlink row is:
+	let G be the current graphlink row;
+	let C be entry G of commandList;
+	increment the knownCommands of the player;
+	if debugFlag is true:
+		say "Graphlink [G] was clicked, triggering command [C], corresponding to the action: ";
+	if C is:
 		-- 1:
-			try going west;
-		-- 2:
+			if debugFlag is true, say "going east.";
 			try going east;
+		-- 2:
+			if debugFlag is true, say "going west.";
+			try going west;
 		-- 3:
-			try smelling;	
-		-- otherwise:
-			say "No actions.";
+			If debugFlag is true, say "simpleEating";
+			try simpleEating;
+		-- 4: 
+			if debugFlag is true, say "simpleOpening.";
+			try simpleOpening;
+		-- 5:
+			if debugFlag is true, say "going north.";
+			try going north;
+		-- 6:
+			if debugFlag is true, say "going south.";
+			try going south;
+		-- 7:
+			if debugFlag is true, say "simplePushing.";
+			try simplePushing;
+		-- 8:
+			if debugFlag is true, say "going up.";
+			try going up;
+		-- 9:
+			if debugFlag is true, say "going down.";
+			try going down;
+		-- 10:
+			if debugFlag is true, say "simpleTalking.";
+			try simpleTalking;
 	the rule succeeds.
 	
-instead of smelling:
-	now the text-string of Label_1 is "x me";
-	now the tint of Button_1 is g-red;
-	now the tint of Button_2 is g-peach;
-	now the tint of Button_3 is g-vanilla;
-	now the tint of Button_4 is g-lime;
-	now the tint of Button_5 is g-indigo;
-	now the tint of Button_6 is g-tiffany;
-	now the tint of Button_7 is g-blue;
-	now the tint of Button_8 is g-yellow;
-	now the tint of Button_9 is g-green;
-	now the tint of Button_10 is g-peptobismol;
-	now the tint of Button_11 is g-white;
-	now the tint of Button_12 is g-LightGray;
-	follow the refresh windows rule.
-
-
 Chapter Start of Play
 
 When play begins:
-	repeat with item running through buttons:
-		let the current-label be the associated label of item;
-		now the origin of the current-label is the center-point of item;
-		now entry 2 of the origin of the current-label is 47;
-		replace the text "0" in text-string of the current-label with the linked replacement-command of item;
 	open up the graphics-window;
-	[TODO: re-enable to kill keyboard:   now the command prompt is ""].
+	sort Palette in random order; 
+	increment the knownCommands of the player;
+	[TODO: re-enable to kill keyboard:   now the command prompt is ""]
 
 After printing the banner text:
 	say "[line break]Introductory text of some sort.[paragraph break]".
@@ -313,6 +324,20 @@ Carry out simpleEating:
 		stop the action;
 	say "Nothing to eat."
 	
+Section simplePushing
+
+simplePushing is an action applying to nothing. Understand "simplePush" as simplePushing.
+
+Carry out simplePushing:
+	say "TODO: simplePushing."
+	
+Section simpleTalking
+
+simpleTalking is an action applying to nothing. Understand "simpleTalking" as simpleTalking.
+
+Carry out simpleTalking:
+	say "TODO: simpleTalking."
+	
 Chapter Consciousness
 
 To increment the consciousness of the player:
@@ -349,6 +374,26 @@ To raiseConsciousnessToLevel5:
 To say VictoryText:
 	say "This is the victory text! Woot!".
 
+Chapter Known Commands
+
+The commandList is a list of numbers that varies. The commandList is {}.
+
+To increment the knownCommands of the player:
+	increase the knownCommands of the player by 1;
+	add the knownCommands of the player to commandList;
+	sort commandList in random order;
+	let R be the number of entries in commandList;
+	repeat with N running from 1 to R:
+		let E be entry N of commandList;
+		now the tint of the button in row N of the Table of Glimmr Buttons is entry E of Palette;
+	now the graphlink status of the button in row R of the Table of Glimmr Buttons is g-active;
+	follow the refresh windows rule.
+				
+		
+	
+
+	
+	
 
 
 
