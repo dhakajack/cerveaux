@@ -73,8 +73,8 @@ To say exitList:
 
 Chapter Disable Keyboard
 
-[TODO: re-enable to kill keyboard. 
-The focal event type of main input is hyperlink-event.]
+[TODO: re-enable to kill keyboard. ]
+The focal event type of main input is hyperlink-event.
 
 Chapter Suppress Mention of Doors
 
@@ -146,8 +146,11 @@ Instead of going through a closed door (called la porte):
 	if la porte is locked:
 		say "The door is locked.";
 	otherwise:
-		say "The door is closed."
-		
+		if the door is buttoned:
+			say "the door button has not been pushed.";
+		otherwise:
+			say "The door is closed."
+			
 Section Bloc Opératoire
 
 Bloc Opératoire is a room. The description of Bloc Opératoire is "[descBlocOperatoire]." Couloir 2 is east from Bloc Opératoire. The player is in Bloc Opératoire. The printed name of the Bloc Opératoire is "[pnBlocOpératoire]".
@@ -157,9 +160,9 @@ To say descBlocOperatoire:
 		-- 0:
 			say "Une pièce sombre. Rien d'intéressant ici";
 		-- 1:
-			say "Il peu de sang ici: une pièce grande bleu avec les murs métalliques";
+			say "Il peu de sang ici -- une grande pièce bleu avec les murs métalliques";
 		-- 2:
-			say "La salle ou les humains opèrent sur les animaux";
+			say "La salle où les humains coupent les animaux et enlevent leurs tripes";
 		-- 3:
 			say "La table d'opération trone au centre de la pièce, entouré d'équipement chirurgical";
 		-- 4:
@@ -187,7 +190,7 @@ To say descCouloir2:
 		-- 0:
 			say "Un couloir blanc et sans meubles";
 		-- 1:
-			say "Un grand couloir blanc qui court de l'endroit affreux à l'ouest à la tanière du loup féroce au nord.[paragraph break]Rien à manger ici" ;
+			say "Un grand couloir blanc qui relie l'endroit affreux à l'ouest à la tanière du loup féroce au nord" ;
 		-- 2:
 			say "Le couloir qui mène de mon coin confortable au nord à la chambre de torture à l'ouest";
 		-- 3:
@@ -216,7 +219,7 @@ Laboratoire Zoologique is a room. The description of Laboratoire Zoologique is "
 To say descLabZoo:
 	say "Animal Lab".
 	
-The cage is an openable closed transparent female container in the Laboratoire Zoologique. 
+The cage is an openable closed female container in the Laboratoire Zoologique. 
 
 The chien is an edible male thing. It is in the cage.
 	
@@ -323,7 +326,7 @@ Carry out simpleOpening:
 		if the item is closed:
 			try opening the item;
 			stop the action;
-	say "Nothing to open."
+	say "Rien à ouvrir ici." 
 
 Section simpleEating
 
@@ -333,7 +336,7 @@ Carry out simpleEating:
 	repeat with the item running through visible edible things:
 		try eating the item;
 		stop the action;
-	say "Nothing to eat.".
+	say "Il n'y a rien à manger."
 	
 Section simplePushing
 
@@ -353,31 +356,7 @@ Chapter Consciousness
 
 To increment the consciousness of the player:
 	increase the consciousness of the player by 1;
-	if the consciousness of the player is:
-		-- 1:
-			raiseConsciousnessToLevel1;
-		-- 2:
-			raiseConsciousnessToLevel2;
-		-- 3:
-			raiseConsciousnessToLevel3;
-		-- 4:
-			raiseConsciousnessToLevel4;
-		-- 5:
-			raiseConsciousnessToLevel5;
 	try looking.
-			
-
-To raiseConsciousnessToLevel1:
-	say "Level 1!".
-	
-To raiseConsciousnessToLevel2:
-	say "Level 2".
-	
-To raiseConsciousnessToLevel3:
-	say "Level 3!".
-	
-To raiseConsciousnessToLevel4:
-	say "Level 4!".
 	
 To raiseConsciousnessToLevel5:
 	say "[VictoryText]";
@@ -418,16 +397,17 @@ After going west for the first time:
 	increment the knownCommands of the player.
 	
 After eating the petite créature grise:
-	say "Mouse thoughts***. Just ate a mouse. Smarter now.";
+	say "[line break]De votre main, vous balayez aveuglément les recoins à la base du mur. Malgré votre manque de vitesse et dextérité, par miracle vous réussissez à coincer le petit rongeur contre le mur. Vous vous empressez de le saisir fermement et sentez quelque chose chaude, poilue, et maintenant, mouillée fond dans votre main. Sans penser plus, vous le bouffez précipitamment.[paragraph break]Après un petit moment, les nouvelles pensées vous frappent. Pris au dépourvu, vous frissonnez.[paragraph break][italic type]Au secours! Un énorme monstre me poursuit! Il va me manger! il faut me dissimuler.[paragraph break]Je… euh.  Suis-je mort ou quoi? Je ne comprends pas.[paragraph break]Quoi qu'il en soit, il me semble que J'ai beaucoup grandi, hein[roman type].";
 	increment the consciousness of the player.
 	
 After going east when the consciousness of the player is 1 for the first time:
 	try looking;
-	say "Ah, doors! Stuff to open!";
+	say "[italic type]Ah, le grand couloir blanc.[paragraph break]Combien de fois est-ce que j'ai vu les géants marcher à travers les murs lisses pour entrer dans les pièces secrètes? Comment le font-ils?[roman type][paragraph break]";
 	increment the knownCommands of the player.
 	
 After opening a door for the first time:
-	say "Now that the door is opened, can go that direction.";
+	say "Le mur au nord se glisse ouvert, revelant la pièce voisine.";
+	try looking;
 	increment the knownCommands of the player.
 	
 After going north for the first time:
