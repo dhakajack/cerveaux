@@ -1,6 +1,6 @@
 "Faute de Servo" by Tana Ostrova
 
-The story headline is "Un voyageur sans ésprit".
+The story headline is "Un voyageur sans esprit".
 The story genre is "horror".
 The release number is 1.
 The story creation year is 2017.
@@ -73,8 +73,8 @@ To say exitList:
 
 Chapter Disable Keyboard
 
-[TODO: re-enable to kill keyboard. ]
-The focal event type of main input is hyperlink-event.
+[TODO: re-enable to kill keyboard. 
+The focal event type of main input is hyperlink-event.]
 
 Chapter Suppress Mention of Doors
 
@@ -82,6 +82,8 @@ For printing a locale paragraph about a door (called the item)
 	(this is the don't mention doors in room descriptions rule):
 	set the locale priority of the item to 0;
 	continue the activity.
+	
+[The room description paragraphs about objects rule is not listed in any rulebook.]
 
 Chapter Button Setup
 
@@ -140,7 +142,7 @@ Doors are usually closed. Doors are usually not locked.
 
 Section Doors
 
-Doors can be buttoned. Doors are usually not buttoned.
+A thing can be buttoned. Things are usually not buttoned.
 
 Instead of going through a closed door (called la porte):
 	if la porte is locked:
@@ -214,14 +216,42 @@ To say pnCouloir2:
 
 Section Laboratoire Zoologique
 
-Laboratoire Zoologique is a room. The description of Laboratoire Zoologique is "[descLabZoo]." 
+Laboratoire Zoologique is a room. The description of Laboratoire Zoologique is "[descLabZoo]." The printed name of Laboratoire Zoologique is "[pnLabZoo]".
 
 To say descLabZoo:
-	say "Animal Lab".
+	if the consciousness of the player is:
+		-- 1:
+			say "De sa cage le loup méchant vous dévisage constamment";
+		-- 2:
+			say "votre maison.";
+		-- 3:
+			say "the dog cage.";
+		-- 4:
+			say "the canine facility."
+			
+
+To say pnLabZoo:
+	if the consciousness of the player is:
+		-- 1:
+			say "La tanière du loup";
+		-- 2:
+			say "Chez moi";
+		-- 3:
+			say "Le chenil";
+		-- 4:
+			say "Laboratoire Zoologique".
+
 	
 The cage is an openable closed female container in the Laboratoire Zoologique. 
 
-The chien is an edible male thing. It is in the cage.
+The chien is an edible male thing. It is in the cage. The printed name of the chien is "[if the consciousness of the player is 1]loup[otherwise]chien[end if]".
+
+The corps de chien is a male thing. It is in the void.
+
+The distributeur de nourriture is in the Laboratoire Zoologique. It is buttoned and male. 
+
+Every turn when the chien is in the cage and the player is in the Laboratoire Zoologique:
+	say "The dog barks."
 	
 Section Ascenseur 2
 
@@ -392,12 +422,11 @@ After going east for the first time:
 	
 After going west for the first time:
 	move the petite créature grise to the Bloc Opératoire;
-	try looking;
-	say "Le petit animal se cache dans les ombres, tremblant.";
+	say "Un petit animal gris se cache dans les ombres, tremblant.";
 	increment the knownCommands of the player.
 	
 After eating the petite créature grise:
-	say "[line break]De votre main, vous balayez aveuglément les recoins à la base du mur. Malgré votre manque de vitesse et dextérité, par miracle vous réussissez à coincer le petit rongeur contre le mur. Vous vous empressez de le saisir fermement et sentez quelque chose chaude, poilue, et maintenant, mouillée fond dans votre main. Sans penser plus, vous le bouffez précipitamment.[paragraph break]Après un petit moment, les nouvelles pensées vous frappent. Pris au dépourvu, vous frissonnez.[paragraph break][italic type]Au secours! Un énorme monstre me poursuit! Il va me manger! il faut me dissimuler.[paragraph break]Je… euh.  Suis-je mort ou quoi? Je ne comprends pas.[paragraph break]Quoi qu'il en soit, il me semble que J'ai beaucoup grandi, hein[roman type].";
+	say "[line break]De votre main, vous balayez aveuglément les recoins à la base du mur. Malgré votre manque de vitesse et dextérité, par miracle vous réussissez à coincer le petit rongeur contre le mur. Vous vous empressez de le saisir fermement et sentez quelque chose de chaude, poilue, et maintenant, mouillée fond dans votre main. Sans penser plus, vous le bouffez précipitamment.[paragraph break]Après un petit moment, les nouvelles pensées vous frappent. Pris au dépourvu, vous frissonnez.[paragraph break][italic type]Au secours! Un énorme monstre me poursuit! Il va me manger! il faut me dissimuler.[paragraph break]Je… euh.  Suis-je mort ou quoi? Je ne comprends pas.[paragraph break]Quoi qu'il en soit, il me semble que J'ai beaucoup grandi, hein[roman type].";
 	increment the consciousness of the player.
 	
 After going east when the consciousness of the player is 1 for the first time:
@@ -407,16 +436,20 @@ After going east when the consciousness of the player is 1 for the first time:
 	
 After opening a door for the first time:
 	say "Le mur au nord se glisse ouvert, revelant la pièce voisine.";
-	try looking;
 	increment the knownCommands of the player.
 	
-After going north for the first time:
+After going north from Couloir 2 for the first time:
+	say "Vous penetrez dans la tanière du loup, un endroit bien connu mais toujours effrayant. Comme d'habitude le loup est emprisonné dans sa cage et vous êtes libre d'explorer, hors de portée de ses machoires baveuses.";
 	try looking;
-	say "And now south is a command too.";
 	increment the knownCommands of the Player.
 	
+After opening the cage:
+	say "Vous ouvrez la cage mais le loup reste prudemment là-dedans."
+	
 After eating the chien:
-	say "Dog thoughts***. Just at a dog. Smarter now.";
+	now the chien is in the void;
+	now the corps de chien is in the cage;
+	say "Par instinct, vous dévorez son cerveau et jetez le corps dans la cage. Encore une fois, de nouvelles pensées envahissent votre esprit.[paragraph break][italic type]Je vous préviens: si vous approchez de ma cage, je vous mordrai. Arretez! Sans blague… [paragraph break]Mais, qu'est-ce qui se passe? De quoi s'agit le chien mort dans ma cage… qui coule du sang sur mon coussin préféré?[paragraph break]Et pourquoi est-ce que je me tiens debout sur deux jambes à la façon des êtres humains? C'est en fait plus facile que j'aurais pensé.";
 	increment the consciousness of the player;
 	increment the knownCommands of the player.
 		
