@@ -17,9 +17,12 @@ Use French Language.
 
 Use full-length room descriptions.
 
-Chapter Debugging
+
+
+Chapter Globals
 
 DebugFlag is a truth state that varies. DebugFlag is true.
+BlockMonologueFlag is a truth state that varies. BlockMonologueFlag is false.
 
 Chapter The Player
 
@@ -223,11 +226,11 @@ To say descLabZoo:
 		-- 1:
 			say "De sa cage le loup méchant vous dévisage constamment";
 		-- 2:
-			say "votre maison.";
+			say "La pièce dans laquelle ils vous ont enseigné à appuyer le bouton rouge sur le distributeur de friandises";
 		-- 3:
-			say "the dog cage.";
+			say "the dog cage";
 		-- 4:
-			say "the canine facility."
+			say "the canine facility"
 			
 
 To say pnLabZoo:
@@ -244,15 +247,32 @@ To say pnLabZoo:
 	
 The cage is an openable closed female container in the Laboratoire Zoologique. 
 
-The chien is an edible male thing. It is in the cage. The printed name of the chien is "[if the consciousness of the player is 1]loup[otherwise]chien[end if]".
+The chien is an edible male thing. It is in the cage. The printed name of the chien is "[if the consciousness of the player is 1]loup[otherwise]chien[end if]". The chien can be dead. The chien is not dead.
 
 The corps de chien is a male thing. It is in the void.
 
 The distributeur de nourriture is in the Laboratoire Zoologique. It is buttoned and male. 
 
 Every turn when the chien is in the cage and the player is in the Laboratoire Zoologique:
-	say "The dog barks."
-	
+	if a random chance of 3 in 8 succeeds:
+		say "Le loup [one of]aboie bruyamment[or]mord les barres de sa cage[or]gratte les oreilles[or]fait les cent pas dans sa boite métallique[or]hurle a pleine poumons[or]renifle l'air[or]renifle sa cage[or]renifle lui-meme[or]léche les pattes[or]montre ses dents[or]grogne de manière menaçante[or]vous ignore[or]court de coté à coté dans sa cage, vous dévisageant[in random order]."		
+		
+Every turn when the consciousness of the player is 2 and the chien is dead:
+	if the blockMonologueFlag is false:
+		if the number of entries in mouseDogDialogue is greater than zero:
+			say entry 1 of mouseDogDialogue;
+			remove entry 1 from mouseDogDialogue;
+	otherwise:
+		now the blockMonologueFlag is false.
+		
+mouseDogDialogue is a list of text that varies. 
+
+mouseDogDialogue is {
+"[quotation mark][italic type]Désolé[line break]-- Quoi, désolé?[line break]-- Moi, je suis désolé de t'as mangé[line break]-- De m'avoir mangé? Dis donc, qui es-tu?[line break]-- La souris.[quotation mark]",
+"test2!"
+}
+
+		 
 Section Ascenseur 2
 
 Ascenseur 2 is a room. The description of Ascenseur 2 is "[descAscenseur1]." The Ascenseur2door is a buttoned door. It is east of Couloir 2 and west of Ascenseur 2.
@@ -448,6 +468,7 @@ After opening the cage:
 	
 After eating the chien:
 	now the chien is in the void;
+	now the chien is dead;
 	now the corps de chien is in the cage;
 	say "Par instinct, vous dévorez son cerveau et jetez le corps dans la cage. Encore une fois, de nouvelles pensées envahissent votre esprit.[paragraph break][italic type]Je vous préviens: si vous approchez de ma cage, je vous mordrai. Arretez! Sans blague… [paragraph break]Mais, qu'est-ce qui se passe? De quoi s'agit le chien mort dans ma cage… qui coule du sang sur mon coussin préféré?[paragraph break]Et pourquoi est-ce que je me tiens debout sur deux jambes à la façon des êtres humains? C'est en fait plus facile que j'aurais pensé.";
 	increment the consciousness of the player;
@@ -458,6 +479,11 @@ Chapter The Void
 The void is a room.
 
 The petite créature grise is an edible female thing. It is in the void.
+
+Chapter Testing
+
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / sud".
+
 
 
 
