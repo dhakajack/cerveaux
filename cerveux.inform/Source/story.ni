@@ -370,10 +370,26 @@ To say descLabBio:
 
 Section Couloir 1
 
-Couloir 1 is a room. The description of Couloir 1  is "[descCouloir1]."
+Couloir 1 is a room. The description of Couloir 1  is "[descCouloir1]." The printed name of Couloir 1 is "[pnCouloir2]".
 
 To say descCouloir1:
-	say "Hall level 1".
+	if the consciousness of the player is:
+		-- 2:
+			say "Un couloir qui ressemble au «corridor dangereux» près de chez vous. Vous voyez des sorties à l'ouest et au sud";
+		-- 3:
+			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, les douches à l'ouest, un labo au nord, et l'ascenseur à l'est";
+		-- 4:
+			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, l'installation de décontamination à l'ouest, la laboratoire pathologique au nord, et l'ascenseur à l'est".
+		
+	
+To say pnCouloir1:
+	if the consciousness of the player is:
+		-- 2:
+			say "Nouveau couloir";
+		-- 3:
+			say "Couloir, niveau 1";
+		-- 4:
+			say "Niveau 1: Bioconfinement".
 
 Section Ascenseur 1
 
@@ -399,6 +415,46 @@ The frigo is a closed openable container in the Laboratoire Pathologique. The fr
 The boite en plastique is a female closed openable container in the frigo. The boite en plastique is closed.
 
 The moreau de cerveau is a male edible thing in the boite en plastique.
+
+Section Les Toilettes
+
+Les Toilettes is a room. The description of Les Toilettes is "[descToilettes]." Les Toilettes are south of Couloir 1. The printed name of Les Toilettes is "[pnToilettes]". 
+
+To say descToilettes:
+	if the consciousness of the player is less than 3:
+		say "L'odeur d'urine est forte dans cette pièce carrelée[one of]. Beacoup ont marqué leur territoire ici. Ce doit être un endroit très convoité[or][stopping]";
+	otherwise:
+		say "Des toilettes typiques: un sol carrelé en noir et blanc, des cabinets, urinoirs, et lavabos."
+	
+To say pnToilettes:
+	if the consciousness of the player is less than 3:
+		say "La pièce carrelée";
+	otherwise:
+		say "Les toilettes".
+		
+Instead of simpleOpening when the player is in Les Toilettes:
+	if the consciousness of the player is less than 3:
+		say "En soulevant la couverture d'un meuble, vous révélez un bol plein d'eau.";
+	otherwise:
+		say "Vous soulevez le couvercle des toilettes.";
+	now the potty is in Les Toilettes.
+	
+The potty is a thing in the void. The printed name of the potty is "[pnPotty]".
+
+To say pnPotty:
+	if the consciousness of the player is less than 3:
+		say "Un bol plein de l'eau.";
+	otherwise:
+		say "Une toilette (avec couvercle soulevé)".
+		
+Instead of simpleEating when the player is in Les Toilettes:
+	if the consciousness of the player is:
+		-- 2:
+			say "Vous [one of]lapez l'eau dans le bol. C'est rafraîchissante[or]n'avez pas vraiment soif, mais vous avalez un pea plus d'eau[or]n'avez pas soif ayant déjà avalé quelques litres d'eau[stopping].";
+		-- 3:
+			say "Non, ce serait dégoûtant[one of] (même pour quelqu'un qui mange les cerveaux)[or][stopping]."; 
+		-- 4:
+			say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans les eaux de toilette? Pas de la question."
 
 Section Salle de Décontamination
 
