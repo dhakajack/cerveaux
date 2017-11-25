@@ -17,8 +17,6 @@ Use French Language.
 
 Use full-length room descriptions.
 
-
-
 Chapter Globals
 
 DebugFlag is a truth state that varies. DebugFlag is true.
@@ -197,7 +195,11 @@ To say descCouloir2:
 		-- 1:
 			say "Un grand couloir blanc qui relie l'endroit affreux à l'ouest à la tanière du loup féroce au nord" ;
 		-- 2:
-			say "Le couloir qui mène de mon coin confortable au nord à la chambre de torture à l'ouest";
+			say "Le couloir qui mène de mon coin confortable au nord à la chambre de torture à l'ouest. ";
+			if Ascenseur2door is closed:
+				say "Au mileau du mur à l'est, un bouton brille avec la lumière rouge";
+			otherwise:
+				say "La porte à l'ouest est ouverte.";
 		-- 3:
 			say "Le couloir central de niveau 2. La salle d'opérations se trouve à l'ouest, le chenil au nord, la laboratoire au sud, et l'ascenseur à l'est";
 		-- 4:
@@ -253,14 +255,24 @@ The corps de chien is a male thing. It is in the void.
 
 The distributeur de nourriture is in the Laboratoire Zoologique. It is buttoned and male. 
 
+Instead of pushing the distributeur de nourriture:
+	say "Vous appuyez le bouton rouge. ";
+	if the consciousness of the player is:
+		-- 2:
+			say "En récompense, quelques croquettes tombent au sol. Vous les mange avec délectation.";
+		-- 3:
+			say "Vous n'avez la moindre envie de manger les croquettes de nourriture de chien qui tombe à vos pieds.";
+		-- 4:
+			say "Le dispositif de conditionnement opérant produit les cubes de nourriture de chien qui s'accumulent en tas sur le sol."
+
 Every turn when the chien is in the cage and the player is in the Laboratoire Zoologique:
 	if a random chance of 3 in 8 succeeds:
-		say "Le loup [one of]aboie bruyamment[or]mord les barres de sa cage[or]gratte les oreilles[or]fait les cent pas dans sa boite métallique[or]hurle a pleine poumons[or]renifle l'air[or]renifle sa cage[or]renifle lui-meme[or]léche les pattes[or]montre ses dents[or]grogne de manière menaçante[or]vous ignore[or]court de coté à coté dans sa cage, vous dévisageant[in random order]."		
+		say "Le loup [one of]aboie bruyamment[or]mord les barres de sa cage[or]gratte les oreilles[or]fait les cent pas dans sa boite métallique[or]hurle a pleine poumons[or]renifle l'air[or]renifle sa cage[or]renifle lui-meme[or]léche les pattes[or]vous montre ses dents[or]grogne de manière menaçante[or]vous ignore[or]court de coté à coté dans sa cage, vous dévisageant[in random order]."		
 		
 Every turn when the consciousness of the player is 2 and the chien is dead:
 	if the blockMonologueFlag is false:
 		if the number of entries in mouseDogDialogue is greater than zero:
-			say entry 1 of mouseDogDialogue;
+			say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
 			remove entry 1 from mouseDogDialogue;
 	otherwise:
 		now the blockMonologueFlag is false.
@@ -268,14 +280,29 @@ Every turn when the consciousness of the player is 2 and the chien is dead:
 mouseDogDialogue is a list of text that varies. 
 
 mouseDogDialogue is {
-"[quotation mark][italic type]Désolé[line break]-- Quoi, désolé?[line break]-- Moi, je suis désolé de t'as mangé[line break]-- De m'avoir mangé? Dis donc, qui es-tu?[line break]-- La souris.[quotation mark]",
-"test2!"
+"Désolé[line break]-- Quoi, désolé?[line break]-- Moi, je suis désolé de t'as mangé[line break]-- De m'avoir mangé? Dis donc, qui es-tu?[line break]-- La souris.",
+"La souris? Quelle souris?[line break]-- La souris qui habite ici.[line break]-- La maudite souris qui vole toujours les bribes autour de mon distributeur?[line break]-- Ouais, la même. Une fois de plus, je suis désolé de t'avoir dérangé.",
+"Pas du tout.[line break]-- Merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]souris[apostrophe]. Et tu? Comment tu t'appelles?[line break]-- Je m'appelle [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'ont donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
+"Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois plus grand?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
+"Bon, je ne sais pas exactment comment je l'ai fait.[line break]-- Qu'est-ce que tu te rapelles de l'événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois."
 }
-
 		 
 Section Ascenseur 2
 
 Ascenseur 2 is a room. The description of Ascenseur 2 is "[descAscenseur1]." The Ascenseur2door is a buttoned door. It is east of Couloir 2 and west of Ascenseur 2.
+
+Instead of pushing Ascenseur2door:
+	if the player is in Couloir 2:
+		say "The elevator door opens.";
+		now Ascenseur2door is open;
+	otherwise:
+		say "You hit the button, the elevator goes down, and the door reopens.";
+		move the player to Ascenseur 1;
+		now Ascenseur1door is open.
+		
+After going east from Couloir 2:
+	say "You enter the elevator and the door closes behind you. A yellow button glows on the panel.";
+	now the Ascenseur2door is closed.
 
 Section Laboratoire Biochimique
 
@@ -393,7 +420,10 @@ Section simplePushing
 simplePushing is an action applying to nothing. Understand "pousser" as simplePushing.
 
 Carry out simplePushing:
-	say "TODO: simplePushing."
+	repeat with the item running through visible buttoned things:
+		try pushing the item;
+		stop the action;
+	say "Rien à appuyer ici."
 	
 Section simpleTalking
 
