@@ -282,28 +282,59 @@ mouseDogDialogue is a list of text that varies.
 mouseDogDialogue is {
 "Désolé[line break]-- Quoi, désolé?[line break]-- Moi, je suis désolé de t'as mangé[line break]-- De m'avoir mangé? Dis donc, qui es-tu?[line break]-- La souris.",
 "La souris? Quelle souris?[line break]-- La souris qui habite ici.[line break]-- La maudite souris qui vole toujours les bribes autour de mon distributeur?[line break]-- Ouais, la même. Une fois de plus, je suis désolé de t'avoir dérangé.",
-"Pas du tout.[line break]-- Merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]souris[apostrophe]. Et tu? Comment tu t'appelles?[line break]-- Je m'appelle [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'ont donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
+"Pas du tout.[line break]-- Merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]Souris[apostrophe]. Et tu? Comment tu t'appelles?[line break]-- [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'ont donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
 "Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois plus grand?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
 "Bon, je ne sais pas exactment comment je l'ai fait.[line break]-- Qu'est-ce que tu te rapelles de l'événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois."
 }
 		 
 Section Ascenseur 2
 
-Ascenseur 2 is a room. The description of Ascenseur 2 is "[descAscenseur1]." The Ascenseur2door is a buttoned door. It is east of Couloir 2 and west of Ascenseur 2.
+An elevator is a kind of room. The description of an elevator is "[descAscenseur1]." The printed name of an elevator is "[pnAsc]".
 
-Instead of pushing Ascenseur2door:
-	if the player is in Couloir 2:
-		say "The elevator door opens.";
-		now Ascenseur2door is open;
+An elevatorDoor is a kind of door. ElevatorDoors are buttoned. 
+
+To say pnAsc:
+	if the consciousness of the player is 2:
+		say "La petite pièce";
+		if Ascenseur 2 is visited:
+			say " qui vibre";
 	otherwise:
-		say "You hit the button, the elevator goes down, and the door reopens.";
-		move the player to Ascenseur 1;
-		now Ascenseur1door is open.
+		say "L'ascenseur".
+
+Ascenseur 2 is an elevator. The Ascenseur2door is an elevatorDoor. It is east of Couloir 2 and west of Ascenseur 2. 
+
+Instead of pushing an elevatorDoor:
+	if the player is in an elevator:
+		if the consciousness of the player is:
+			-- 2:
+				say "Vous appuyez le bouton avec votre museau[one of] (qui est devenu plus court que vous vous souvenez)[or][stopping] et vous vous rendez compte que la pièce vibre subtilement. Un instant plus tard, le mur s'ouvre donnant sur un couloir à l'ouest.";
+			-- otherwise:
+				say "Vous appuyez le bouton, l'ascenseur descend, et les portes à l'ouest rouvre."; 
+		if the player is in Ascenseur 2:
+			move the player to Ascenseur 1, without printing a room description;
+			now Ascenseur1door is open;
+		otherwise:
+			move the player to Ascenseur 2, without printing a room description;
+			now Ascenseur2door is open;
+	otherwise:
+		if the consciousness of the player is:
+			-- 2:
+				say "Le mur s'ouvre vous permettant d'aller à l'est.";
+			-- otherwise:
+				say "La porte de l'ascenseur à l'est glisse ouverte.";
+		if the player is in Couloir 2:
+			now Ascenseur2door is open;
+		otherwise:
+			now Ascenseur1door is open.
 		
 After going east from Couloir 2:
-	say "You enter the elevator and the door closes behind you. A yellow button glows on the panel.";
-	now the Ascenseur2door is closed.
-
+		say "[portesReferment].";
+		try looking;
+		now the Ascenseur2door is closed.
+		
+To say portesReferment:
+	say "Vous entrez et le mur se referme silencieusement derrière vous";
+		
 Section Laboratoire Biochimique
 
 Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The labBioDoor is a locked door. It is south of Couloir 2 and north of Laboratoire Biochimique. 
@@ -320,10 +351,15 @@ To say descCouloir1:
 
 Section Ascenseur 1
 
-Ascenseur 1 is a room. The description of Ascenseur 1 is "[descAscenseur1]." The Ascenseur1door is a buttoned door. It is east of Couloir 1 and west of Ascenseur 1.
+Ascenseur 1 is a room. The Ascenseur1door is an elevatorDoor. It is east of Couloir 1 and west of Ascenseur 1.
 
 To say descAscenseur1:
-	say "Elevator 1".
+	say "Un bouton [if the player is in Ascenseur 1]vert[otherwise]jaune[end if] brille sur un panneau".
+	
+After going east from Couloir 1:
+		say "[portesReferment].";
+		try looking;
+		now the Ascenseur1door is closed.
 
 Section Laboratoire Pathologique
 
@@ -512,7 +548,7 @@ The petite créature grise is an edible female thing. It is in the void.
 
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / sud".
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest".
 
 
 
