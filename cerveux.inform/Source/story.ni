@@ -146,13 +146,23 @@ Section Doors
 A thing can be buttoned. Things are usually not buttoned.
 
 Instead of going through a closed door (called la porte):
-	if la porte is locked:
-		say "The door is locked.";
+	if the consciousness of the player is less than 3:
+		say "[bougePas].";
 	otherwise:
+		say "D'abord ";
 		if the door is buttoned:
-			say "the door button has not been pushed.";
+			if the player is in an elevator:
+				say "il faut sélectionner l'étage.";
+			otherwise:
+				say "il faut appeler l'ascenseur.";
 		otherwise:
-			say "The door is closed."
+			if the door is locked:
+				say "Cette porte est sous le contrôle d'une serrure électronique.";
+			otherwise:
+				say "La porte est fermée."
+			
+To say bougePas:
+	say "Le mur ne bouge pas"
 			
 Section Bloc Opératoire
 
@@ -333,8 +343,24 @@ After going east from Couloir 2:
 		now the Ascenseur2door is closed.
 		
 To say portesReferment:
-	say "Vous entrez et le mur se referme silencieusement derrière vous";
-		
+	say "Vous ";
+	if the player is in an elevator:
+		say "entrez";
+	otherwise:
+		say "sortez";
+	say " et ";
+	if the consciousness of the player is less than 3:
+		say "le mur se referme";
+	otherwise:
+		say "les portes se referement";
+	say " silencieusement derrière vous".
+	
+After going west from an Ascenseur 2:
+	say "[portesReferment].";
+	try looking;
+	now Ascenseur2door is closed.
+	
+
 Section Laboratoire Biochimique
 
 Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The labBioDoor is a locked door. It is south of Couloir 2 and north of Laboratoire Biochimique. 
@@ -356,10 +382,10 @@ Ascenseur 1 is a room. The Ascenseur1door is an elevatorDoor. It is east of Coul
 To say descAscenseur1:
 	say "Un bouton [if the player is in Ascenseur 1]vert[otherwise]jaune[end if] brille sur un panneau".
 	
-After going east from Couloir 1:
-		say "[portesReferment].";
-		try looking;
-		now the Ascenseur1door is closed.
+After going west from an Ascenseur 1:
+	say "[portesReferment].";
+	try looking;
+	now Ascenseur1door is closed.
 
 Section Laboratoire Pathologique
 
@@ -548,7 +574,7 @@ The petite créature grise is an edible female thing. It is in the void.
 
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest".
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud "
 
 
 
