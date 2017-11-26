@@ -205,15 +205,18 @@ To say descCouloir2:
 		-- 1:
 			say "Un grand couloir blanc qui relie l'endroit affreux à l'ouest à la tanière du loup féroce au nord" ;
 		-- 2:
-			say "Le couloir qui mène de mon coin confortable au nord à la chambre de torture à l'ouest. ";
-			if Ascenseur2door is closed:
-				say "Au mileau du mur à l'est, un bouton brille avec la lumière rouge";
-			otherwise:
-				say "La porte à l'ouest est ouverte.";
+			say "Le couloir qui mène de mon coin confortable au nord à la chambre de torture à l'ouest";
+			say "[liftDoorDogStatus]";
 		-- 3:
 			say "Le couloir central de niveau 2. La salle d'opérations se trouve à l'ouest, le chenil au nord, la laboratoire au sud, et l'ascenseur à l'est";
 		-- 4:
 			say "Le couloir central de niveau 2. Le bloc opérational se trouve à l'ouest, la laboratoire zoologique au nord, la laboratoire biochimique au sud, et l'ascenseur à l'est".
+			
+To say liftDoorDogStatus:
+	if the door east from the location is closed:
+		say ". Au mileau du mur à l'est, un bouton brille avec la lumière rouge";
+	otherwise:
+		say ". La mur à l'est est disparu".
 			
 To say pnCouloir2:
 	if the consciousness of the player is:
@@ -255,6 +258,9 @@ To say pnLabZoo:
 			say "Le chenil";
 		-- 4:
 			say "Laboratoire Zoologique".
+	
+To say openNord:
+		say "Le mur au nord se glisse ouvert, revelant la pièce voisine".
 
 	
 The cage is an openable closed female container in the Laboratoire Zoologique. 
@@ -314,12 +320,13 @@ To say pnAsc:
 Ascenseur 2 is an elevator. The Ascenseur2door is an elevatorDoor. It is east of Couloir 2 and west of Ascenseur 2. 
 
 Instead of pushing an elevatorDoor:
+	say "Vouz appuyez le bouton ";
 	if the player is in an elevator:
 		if the consciousness of the player is:
 			-- 2:
-				say "Vous appuyez le bouton avec votre museau[one of] (qui est devenu plus court que vous vous souvenez)[or][stopping] et vous vous rendez compte que la pièce vibre subtilement. Un instant plus tard, le mur s'ouvre donnant sur un couloir à l'ouest.";
+				say "avec votre museau[one of] (qui est devenu plus court que vous vous souvenez)[or][stopping] et remarquez que la pièce vibre subtilement. Un instant plus tard, le mur s'ouvre donnant sur un couloir à l'ouest.";
 			-- otherwise:
-				say "Vous appuyez le bouton, l'ascenseur descend, et les portes à l'ouest rouvre."; 
+				say ", l'ascenseur descend, et les portes à l'ouest rouvre."; 
 		if the player is in Ascenseur 2:
 			move the player to Ascenseur 1, without printing a room description;
 			now Ascenseur1door is open;
@@ -329,9 +336,9 @@ Instead of pushing an elevatorDoor:
 	otherwise:
 		if the consciousness of the player is:
 			-- 2:
-				say "Le mur s'ouvre vous permettant d'aller à l'est.";
+				say "et le mur s'ouvre vous permettant d'aller à l'est.";
 			-- otherwise:
-				say "La porte de l'ascenseur à l'est glisse ouverte.";
+				say "et la porte de l'ascenseur à l'est glisse ouverte.";
 		if the player is in Couloir 2:
 			now Ascenseur2door is open;
 		otherwise:
@@ -370,18 +377,18 @@ To say descLabBio:
 
 Section Couloir 1
 
-Couloir 1 is a room. The description of Couloir 1  is "[descCouloir1]." The printed name of Couloir 1 is "[pnCouloir2]".
+Couloir 1 is a room. The description of Couloir 1  is "[descCouloir1]." The printed name of Couloir 1 is "[pnCouloir1]".
 
 To say descCouloir1:
 	if the consciousness of the player is:
 		-- 2:
 			say "Un couloir qui ressemble au «corridor dangereux» près de chez vous. Vous voyez des sorties à l'ouest et au sud";
+			say "[liftDoorDogStatus]"; 
 		-- 3:
 			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, les douches à l'ouest, un labo au nord, et l'ascenseur à l'est";
 		-- 4:
 			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, l'installation de décontamination à l'ouest, la laboratoire pathologique au nord, et l'ascenseur à l'est".
 		
-	
 To say pnCouloir1:
 	if the consciousness of the player is:
 		-- 2:
@@ -390,10 +397,15 @@ To say pnCouloir1:
 			say "Couloir, niveau 1";
 		-- 4:
 			say "Niveau 1: Bioconfinement".
+			
+After going east from Couloir 1:
+		say "[portesReferment].";
+		try looking;
+		now the Ascenseur1door is closed.
 
 Section Ascenseur 1
 
-Ascenseur 1 is a room. The Ascenseur1door is an elevatorDoor. It is east of Couloir 1 and west of Ascenseur 1.
+Ascenseur 1 is an elevator. The Ascenseur1door is an elevatorDoor. It is east of Couloir 1 and west of Ascenseur 1. 
 
 To say descAscenseur1:
 	say "Un bouton [if the player is in Ascenseur 1]vert[otherwise]jaune[end if] brille sur un panneau".
@@ -415,6 +427,9 @@ The frigo is a closed openable container in the Laboratoire Pathologique. The fr
 The boite en plastique is a female closed openable container in the frigo. The boite en plastique is closed.
 
 The moreau de cerveau is a male edible thing in the boite en plastique.
+
+After opening the labPathDoor:
+	say "[openNord]."
 
 Section Les Toilettes
 
@@ -443,22 +458,25 @@ The potty is a thing in the void. The printed name of the potty is "[pnPotty]".
 
 To say pnPotty:
 	if the consciousness of the player is less than 3:
-		say "Un bol plein de l'eau.";
+		say "bol plein de l'eau";
 	otherwise:
-		say "Une toilette (avec couvercle soulevé)".
+		say "toilette (avec couvercle soulevé)". 
 		
 Instead of simpleEating when the player is in Les Toilettes:
-	if the consciousness of the player is:
-		-- 2:
-			say "Vous [one of]lapez l'eau dans le bol. C'est rafraîchissante[or]n'avez pas vraiment soif, mais vous avalez un pea plus d'eau[or]n'avez pas soif ayant déjà avalé quelques litres d'eau[stopping].";
-		-- 3:
-			say "Non, ce serait dégoûtant[one of] (même pour quelqu'un qui mange les cerveaux)[or][stopping]."; 
-		-- 4:
-			say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans les eaux de toilette? Pas de la question."
+	if the potty is in the void:
+		continue the action;
+	otherwise:
+		if the consciousness of the player is:
+			-- 2:
+				say "Vous [one of]lapez l'eau dans le bol. C'est rafraîchissante[or]n'avez pas vraiment soif, mais vous avalez un pea plus d'eau[or]n'avez plus soif ayant déjà avalé quelques litres d'eau[stopping].";
+			-- 3:
+				say "Non, ce serait dégoûtant[one of] (même pour quelqu'un qui mange les cerveaux)[or][stopping]."; 
+			-- 4:
+				say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans les eaux de toilette? Pas de la question."
 
 Section Salle de Décontamination
 
-Salle de Décontamination is a room. The description of Salle de Décontamination is "[descSalleDecon]." The deconDoor is a door. It is west of Couloir 1 and east of Salle de Décontamination. 
+Salle de Décontamination is a room. The description of Salle de Décontamination is "[descSalleDecon]." The deconDoor is a locked door. It is west of Couloir 1 and east of Salle de Décontamination. 
 
 To say descSalleDecon:
 	say "Decon Zone".
@@ -588,7 +606,7 @@ After going east for the first time:
 	say "Une petite créature se jette de nulle parte, se faulfile entre vos pieds, et s'enfuit vers l'ouest.";
 	increment the knownCommands of the player.
 	
-After going west for the first time:
+After going west from Couloir 2 for the first time:
 	move the petite créature grise to the Bloc Opératoire;
 	say "Un petit animal gris se cache dans les ombres, tremblant.";
 	increment the knownCommands of the player.
@@ -602,8 +620,8 @@ After going east when the consciousness of the player is 1 for the first time:
 	say "[italic type]Ah, le grand couloir blanc.[paragraph break]Combien de fois est-ce que j'ai vu les géants marcher à travers les murs lisses pour entrer dans les pièces secrètes? Comment le font-ils?[roman type][paragraph break]";
 	increment the knownCommands of the player.
 	
-After opening a door for the first time:
-	say "Le mur au nord se glisse ouvert, revelant la pièce voisine.";
+After opening the labZooDoor:
+	say "[openNord].";
 	increment the knownCommands of the player.
 	
 After going north from Couloir 2 for the first time:
@@ -630,7 +648,7 @@ The petite créature grise is an edible female thing. It is in the void.
 
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud "
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord "
 
 
 
