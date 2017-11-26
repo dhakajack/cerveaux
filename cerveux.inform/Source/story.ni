@@ -149,15 +149,15 @@ Instead of going through a closed door (called la porte):
 	if the consciousness of the player is less than 3:
 		say "[bougePas].";
 	otherwise:
-		say "D'abord ";
-		if the door is buttoned:
-			if the player is in an elevator:
-				say "il faut sélectionner l'étage.";
-			otherwise:
-				say "il faut appeler l'ascenseur.";
+		if la porte is locked:
+			say "Cette porte est sous le contrôle d'une serrure électronique.";
 		otherwise:
-			if the door is locked:
-				say "Cette porte est sous le contrôle d'une serrure électronique.";
+			if la porte is buttoned:
+				say "D'abord, ";
+				if the player is in an elevator:
+					say "il faut sélectionner l[apostrophe]étage.";
+				otherwise:
+					say "il faut appeler l'ascenseur.";
 			otherwise:
 				say "La porte est fermée."
 			
@@ -177,7 +177,7 @@ To say descBlocOperatoire:
 		-- 2:
 			say "La salle où les humains coupent les animaux et enlevent leurs tripes";
 		-- 3:
-			say "La table d'opération trone au centre de la pièce, entouré d'équipement chirurgical";
+			say "La table d'opération trone au centre de la pièce, entouré d[apostrophe]équipement chirurgical";
 		-- 4:
 			say "La table d'operation trone au centre de la salle, avec ses adaptations pour retenir les animaux pendant la chirurgie expérimentale. Juste à côté, il y a une machine d'anesthésie, des moniteurs de signes vitaux, et une unité de radiographie portable"
 			
@@ -208,9 +208,9 @@ To say descCouloir2:
 			say "Le couloir qui mène de mon coin confortable au nord à la chambre de torture à l'ouest";
 			say "[liftDoorDogStatus]";
 		-- 3:
-			say "Le couloir central de niveau 2. La salle d'opérations se trouve à l'ouest, le chenil au nord, la laboratoire au sud, et l'ascenseur à l'est";
+			say "Le couloir central du deuxième niveau. La salle d'opérations se trouve à l'ouest, le chenil au nord, la laboratoire au sud, et l'ascenseur à l'est";
 		-- 4:
-			say "Le couloir central de niveau 2. Le bloc opérational se trouve à l'ouest, la laboratoire zoologique au nord, la laboratoire biochimique au sud, et l'ascenseur à l'est".
+			say "Le couloir central du deuxième niveau. Le bloc opérational se trouve à l'ouest, la laboratoire zoologique au nord, la laboratoire biochimique au sud, et l'ascenseur à l'est".
 			
 To say liftDoorDogStatus:
 	if the door east from the location is closed:
@@ -277,9 +277,13 @@ Instead of pushing the distributeur de nourriture:
 		-- 2:
 			say "En récompense, quelques croquettes tombent au sol. Vous les mange avec délectation.";
 		-- 3:
-			say "Vous n'avez la moindre envie de manger les croquettes de nourriture de chien qui tombe à vos pieds.";
+			say "Vous n'avez la moindre envie de manger les croquettes de nourriture de chien qui tombent à vos pieds.";
+			move the tas de nourriture de chien to the Laboratoire Zoologique;
 		-- 4:
-			say "Le dispositif de conditionnement opérant produit les cubes de nourriture de chien qui s'accumulent en tas sur le sol."
+			say "Le dispositif de conditionnement opérant produit les cubes de nourriture de chien qui s'accumulent sur le sol.";
+			move the tas de nourriture de chien to the Laboratoire Zoologique.
+			
+The tas de nourriture de chien is in the void.
 
 Every turn when the chien is in the cage and the player is in the Laboratoire Zoologique:
 	if a random chance of 3 in 8 succeeds:
@@ -320,13 +324,13 @@ To say pnAsc:
 Ascenseur 2 is an elevator. The Ascenseur2door is an elevatorDoor. It is east of Couloir 2 and west of Ascenseur 2. 
 
 Instead of pushing an elevatorDoor:
-	say "Vouz appuyez le bouton ";
+	say "Vouz appuyez le bouton";
 	if the player is in an elevator:
 		if the consciousness of the player is:
 			-- 2:
-				say "avec votre museau[one of] (qui est devenu plus court que vous vous souvenez)[or][stopping] et remarquez que la pièce vibre subtilement. Un instant plus tard, le mur s'ouvre donnant sur un couloir à l'ouest.";
+				say " avec votre museau[one of] (qui est devenu plus court que vous vous souvenez)[or][stopping] et remarquez que la pièce vibre subtilement. Un instant plus tard, le mur s'ouvre donnant sur un couloir à l'ouest.";
 			-- otherwise:
-				say ", l'ascenseur descend, et les portes à l'ouest rouvre."; 
+				say ", l'ascenseur [if the location is Ascenseur 2]descend[otherwise]monte[end if], et les portes à l'ouest rouvre."; 
 		if the player is in Ascenseur 2:
 			move the player to Ascenseur 1, without printing a room description;
 			now Ascenseur1door is open;
@@ -385,9 +389,9 @@ To say descCouloir1:
 			say "Un couloir qui ressemble au «corridor dangereux» près de chez vous. Vous voyez des sorties à l'ouest et au sud";
 			say "[liftDoorDogStatus]"; 
 		-- 3:
-			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, les douches à l'ouest, un labo au nord, et l'ascenseur à l'est";
+			say "Le corridor central du premier niveau se connecte aux toilettes au sud, les douches à l'ouest, un labo au nord, et l'ascenseur à l'est";
 		-- 4:
-			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, l'installation de décontamination à l'ouest, la laboratoire de pathologie au nord, et l'ascenseur à l'est".
+			say "Le corridor central du premier niveau se connecte aux toilettes au sud, l'installation de décontamination à l'ouest, la laboratoire de pathologie au nord, et l'ascenseur à l'est".
 		
 To say pnCouloir1:
 	if the consciousness of the player is:
@@ -433,7 +437,7 @@ To say descLabPath:
 		-- 2:
 			say "[one of]Cette pièce vous évoque les temps joyeux que vous avez passé avec la famille -- avant d[apostrophe]être enlevé. D'après les comptoirs, les étagères replies de denrées, les éviers, et les grands appareils, il s'agit sans question de la pièce la plus importante de la maison: la cuisine[or]Une cuisine ordinaire, meublé en noir[stopping]";
 		-- 3:
-			say "C'est ici où les scientifique préparent les lames de microscope.[paragraph break]Vous reconnaissez une trancheuse à viande et un four à micro-ondes, mais la plupart de l'équipement n'est pas familier";
+			say "C'est ici où les scientifiques préparent les lames de microscope.[paragraph break]Vous reconnaissez une trancheuse à viande et un four à micro-ondes, mais la plupart de l[apostrophe]équipement sur le comptoir n'est pas familier";
 		-- 4:
 			say "Vous avez vous-même sélectionné les équipments dernier cri trouvés dans cette laboratoire ultramoderne qui le laboratoire s'occupe de la préparation et de l'analyse des échantillons de tissus".
 	
@@ -450,7 +454,7 @@ To say pnFrigo:
 
 The boite en plastique is a female closed openable container in the frigo. The boite en plastique is closed.
 
-The moreau de cerveau is a male edible thing in the boite en plastique.
+The morceau de cerveau is a male edible thing in the boite en plastique.
 
 After opening the labPathDoor:
 	say "[openNord]."
@@ -463,7 +467,7 @@ To say descToilettes:
 	if the consciousness of the player is less than 3:
 		say "L'odeur d'urine est forte ici[one of]. Beacoup ont marqué leur territoire ici. Ce doit être un endroit très convoité[or][stopping]";
 	otherwise:
-		say "Des toilettes typiques: un sol carrelé en noir et blanc, des cabinets, urinoirs, et lavabos."
+		say "Un sol carrelé en noir et blanc, des cabinets, urinoirs, et lavabos"
 	
 To say pnToilettes:
 	if the consciousness of the player is less than 3:
@@ -475,16 +479,16 @@ Instead of simpleOpening when the player is in Les Toilettes:
 	if the consciousness of the player is less than 3:
 		say "En soulevant la couverture d'un meuble, vous révélez un bol plein d'eau.";
 	otherwise:
-		say "Vous soulevez le couvercle des toilettes.";
+		say "Vous soulevez le couvercle d'une toilette.";
 	now the potty is in Les Toilettes.
 	
-The potty is a thing in the void. The printed name of the potty is "[pnPotty]".
+The potty is a female thing in the void. The printed name of the potty is "[pnPotty]".
 
 To say pnPotty:
 	if the consciousness of the player is less than 3:
 		say "bol plein de l'eau";
 	otherwise:
-		say "toilette (avec couvercle soulevé)". 
+		say "toilette (avec le couvercle soulevé)". 
 		
 Instead of simpleEating when the player is in Les Toilettes:
 	if the potty is in the void:
@@ -494,7 +498,7 @@ Instead of simpleEating when the player is in Les Toilettes:
 			-- 2:
 				say "Vous [one of]lapez l'eau dans le bol. C'est rafraîchissante[or]n'avez pas vraiment soif, mais vous avalez un pea plus d'eau[or]n'avez plus soif ayant déjà avalé quelques litres d'eau[stopping].";
 			-- 3:
-				say "Non, ce serait dégoûtant[one of] (même pour quelqu'un qui mange les cerveaux)[or][stopping]."; 
+				say "Non, ça serait dégoûtant[one of] (même pour quelqu'un qui mange les cerveaux)[or][stopping]."; 
 			-- 4:
 				say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans les eaux de toilette? Pas de la question."
 
@@ -573,7 +577,10 @@ Carry out simpleEating:
 	repeat with the item running through visible edible things:
 		try eating the item;
 		stop the action;
-	say "Il n'y a rien à manger."
+	say "Il n'y a rien à manger";
+	if the tas de nourriture de chien is in the location:
+		say " (du moins, rien dont vous avez envie à manger)";
+	say "."
 	
 Section simplePushing
 
@@ -657,10 +664,14 @@ After opening the cage:
 	say "Vous ouvrez la cage mais le loup reste prudemment là-dedans."
 	
 After eating the chien:
-	now the chien is in the void;
 	now the chien is dead;
 	now the corps de chien is in the cage;
 	say "Par instinct, vous dévorez son cerveau et jetez le corps dans la cage. Encore une fois, de nouvelles pensées envahissent votre esprit.[paragraph break][italic type]Je vous préviens: si vous approchez de ma cage, je vous mordrai. Arretez! Sans blague… [paragraph break]Mais, qu'est-ce qui se passe? De quoi s'agit le chien mort dans ma cage… qui coule du sang sur mon coussin préféré?[paragraph break]Et pourquoi est-ce que je me tiens debout sur deux jambes à la façon des êtres humains? C'est en fait plus facile que j'aurais pensé.";
+	increment the consciousness of the player;
+	increment the knownCommands of the player.
+	
+After eating the morceau de cerveau:
+	say "En mâchant la tranche de cerveau, vous constatez un saveur désagréable, mais ça s'estompe presque immédiatement.[paragraph break]Pendant quelques moments rien ne se passe et vous vous demandez si vous pouvez maintenant manger n'importe quoi en toute impunité.[paragraph break]Soudain, le monde passe du monochrome à la couleur vive. Un vague électrique parcourt votre esprit et vous vous effondrez, désorienté. Lorsque vous vous mettez debout, des nouvelles idées se mêlent aux vos pensées et vous voyez tout sous un nouveau jour.";
 	increment the consciousness of the player;
 	increment the knownCommands of the player.
 		
@@ -672,7 +683,7 @@ The petite créature grise is an edible female thing. It is in the void.
 
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord "
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger "
 
 
 
