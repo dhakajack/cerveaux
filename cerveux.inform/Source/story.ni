@@ -387,7 +387,7 @@ To say descCouloir1:
 		-- 3:
 			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, les douches à l'ouest, un labo au nord, et l'ascenseur à l'est";
 		-- 4:
-			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, l'installation de décontamination à l'ouest, la laboratoire pathologique au nord, et l'ascenseur à l'est".
+			say "Le corridor central de niveau 1 se connecte aux toilettes au sud, l'installation de décontamination à l'ouest, la laboratoire de pathologie au nord, et l'ascenseur à l'est".
 		
 To say pnCouloir1:
 	if the consciousness of the player is:
@@ -415,14 +415,38 @@ After going west from an Ascenseur 1:
 	try looking;
 	now Ascenseur1door is closed.
 
-Section Laboratoire Pathologique
+Section Laboratoire De Pathologie
 
-Laboratoire Pathologique is a room. The description of Laboratoire Pathologique is "[descLabPath]." The labPathDoor is a door. It is north of Couloir 1 and south of Laboratoire Pathologique.
+Laboratoire de Pathologie is a room. The description of Laboratoire de Pathologie is "[descLabPath]." The labPathDoor is a door. It is north of Couloir 1 and south of Laboratoire de Pathologie. The printed name of Laboratoire de Pathologie is "[pnLabPath]".
+
+To say pnLabPath:
+	if the consciousness of the player is:
+		-- 2:
+			say "La cuisine";
+		-- 3: 
+			say "Le labo préparatoire";
+		-- 4:
+			say "La laboratoire de pathologie".
 
 To say descLabPath:
-	say "Path Lab".
+	If the consciousness of the player is:
+		-- 2:
+			say "[one of]Cette pièce vous évoque les temps joyeux que vous avez passé avec la famille -- avant d[apostrophe]être enlevé. D'après les comptoirs, les étagères replies de denrées, les éviers, et les grands appareils, il s'agit sans question de la pièce la plus importante de la maison: la cuisine[or]Une cuisine ordinaire, meublé en noir[stopping]";
+		-- 3:
+			say "C'est ici où les scientifique préparent les lames de microscope.[paragraph break]Vous reconnaissez une trancheuse à viande et un four à micro-ondes, mais la plupart de l'équipement n'est pas familier";
+		-- 4:
+			say "Vous avez vous-même sélectionné les équipments dernier cri trouvés dans cette laboratoire ultramoderne qui le laboratoire s'occupe de la préparation et de l'analyse des échantillons de tissus".
 	
-The frigo is a closed openable container in the Laboratoire Pathologique. The frigo is closed.
+The frigo is a closed openable container in the Laboratoire de Pathologie. The frigo is closed. The printed name of the frigo is "[pnFrigo]".
+
+To say pnFrigo:
+	if the consciousness of the player is:
+		-- 2:
+			say "frigo";
+		-- 3:
+			say "congélo";
+		-- 4:
+			say "congélateur pour spécimens de pathologie".
 
 The boite en plastique is a female closed openable container in the frigo. The boite en plastique is closed.
 
@@ -437,7 +461,7 @@ Les Toilettes is a room. The description of Les Toilettes is "[descToilettes]." 
 
 To say descToilettes:
 	if the consciousness of the player is less than 3:
-		say "L'odeur d'urine est forte dans cette pièce carrelée[one of]. Beacoup ont marqué leur territoire ici. Ce doit être un endroit très convoité[or][stopping]";
+		say "L'odeur d'urine est forte ici[one of]. Beacoup ont marqué leur territoire ici. Ce doit être un endroit très convoité[or][stopping]";
 	otherwise:
 		say "Des toilettes typiques: un sol carrelé en noir et blanc, des cabinets, urinoirs, et lavabos."
 	
