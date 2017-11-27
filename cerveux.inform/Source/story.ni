@@ -214,7 +214,7 @@ To say descCouloir2:
 			
 To say liftDoorDogStatus:
 	if the door east from the location is closed:
-		say ". Au mileau du mur à l'est, un bouton brille avec la lumière rouge";
+		say ". Au mileau du mur à l'est, un bouton brille avec une lueur rouge";
 	otherwise:
 		say ". La mur à l'est est disparu".
 			
@@ -374,12 +374,19 @@ After going west from an Ascenseur 2:
 
 Section Laboratoire Biochimique
 
-Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The printed name of the Laboratoire Biochimique is "[pnLabBio]".
+Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The printed name of the Laboratoire Biochimique is "[pnLabBio]". Laboratoire Biochimique can be powered. Laboratoire Biochimique is not powered.
 
 The labBioDoor is a female locked door. It is south of Couloir 2 and north of Laboratoire Biochimique. The printed name of the labBioDoor is "[pnLabBioDoor]".
 
 To say descLabBio:
-	say "Bio Lab".
+	if the consciousness of the player is:
+		-- 3:
+			say "Normalement, la pièce déborde d[apostrophe]équipements high-techs avec les lumières clignotantes et le bruit continuel des moteurs robotiques. Pourtant, en ce moment toutes les équipements sont éteintes  et il n'y a le moindre son";
+		-- 4:
+			if the Laboratoire Biochimique is powered:
+				say "L'alimentation électrique rétablie, la pièce est bien illuminé, les ordinateurs sont allumés, et les équipements semblent en mésure de conduire les synthèses biochimiques les plus complexes";
+			otherwise:
+				say "Le système robotique de synthèse moléculaire semble en état de fonctionner sauf pour la manque d[apostrophe]électricité"
 	
 To say pnLabBio:
 	if the consciousness of the player is:
@@ -525,17 +532,42 @@ After going south from Couloir 1 when the consciousness of the player is 4 for t
 
 Section Salle de Décontamination
 
-Salle de Décontamination is a room. The description of Salle de Décontamination is "[descSalleDecon]." The deconDoor is a locked door. It is west of Couloir 1 and east of Salle de Décontamination. 
+Salle de Décontamination is a room. The description of Salle de Décontamination is "[descDecon]." The printed name of the Salle de Décontamination is "[pnDecon]".
 
-To say descSalleDecon:
-	say "Decon Zone".
+The deconDoor is a female locked door. It is west of Couloir 1 and east of Salle de Décontamination. The printed name of the deconDoor is "[pnDeconDoor]".
+
+To say descDecon:
+	if the consciousness of the player is:
+		-- 3:
+			say "Des pommeuax de douche visent le centre de la pièce qui est baigné à perpétuité dans une lumière violette";
+		-- 4: 
+			say "	Des jets à haute pression entourent la pièce afin d'arroser le personnel d'une solution antiseptique lorsqu'ils entrent et sortent des zones potentiellement contaminées. La pièce est continuellement éclairée par des lumières germicides";
+	say ". La porte à l'est mène au couloir et celle au nord à l'escalier"
+
+To say pnDecon:
+	if the consciousness of the player is:
+		-- 3:
+			say "Les Douches";
+		-- 4:
+			say "Salle de Décontamination".
+			
+To say pnDeconDoor:
+	if the consciousness of the player is:
+		-- 3:
+			say "porte de la salle de bain";
+		-- 4:
+			say "porte de la salle de décontamination".
 
 Section Escalier 1
 
-Escalier 1 is a room. The description of Escalier 1  is "[descEscalier1]." The esc1door is a locked door. It is north of Salle de Décontamination and south of Escalier 1. 
+Escalier 1 is a room. The description of Escalier 1  is "[descEscalier1]." The printed name of Escalier 1 is "Escalier (premier niveau)".
+
+The esc1door is a female locked door. It is north of Salle de Décontamination and south of Escalier 1.
+
+The printed name of esc1door is "porte entre la salle de [if the consciousness of the player is 3]bain[otherwise]décontamination[end if] et l'escalier".
 
 To say descEscalier1:
-	say "Stairs 1".
+	say "L'escalier remonte vers le nord et relie [if the consciousness of the player is 3]la salle de bain[otherwise]la salle de décontamination[end if] au sud avec les niveaux plus hauts de l'installation".
 	
 After going north from Salle de Décontamination:
 	say "[upNorth].";
@@ -553,10 +585,10 @@ To say downSouth:
 
 Section Escalier 2
 
-Escalier 2 is a room. The description of Escalier 2  is "[descEscalier2]." Escalier 2 is north from Escalier 1.
+Escalier 2 is a room. The description of Escalier 2  is "[descEscalier2]." Escalier 2 is north from Escalier 1. The printed name of Escalier 2 is "Escalier (deuxième niveau)".
 
 To say descEscalier2:
-	say "Stairs 2".
+	say "L'escalier remonte vers le nord et relie l[apostrophe]escalier au sud avec le sas au nord".
 	
 After going north from Escalier 1:
 	say "[upNorth].";
@@ -568,7 +600,9 @@ After going south from Sas:
 
 Section Sas
 
-Sas is a room. The description of Sas is "[descSas]." The sasDoor is a locked door. It is north of Escalier 2 and south of Sas.
+Sas is a room. The description of Sas is "[descSas]." 
+
+The sasDoor is a female locked door. It is north of Escalier 2 and south of Sas. The printed name of the sasDoor is "porte blindée du sas".
 
 To say descSas:
 	say "Airlock".
