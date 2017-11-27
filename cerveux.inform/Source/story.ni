@@ -340,9 +340,9 @@ Instead of pushing an elevatorDoor:
 	otherwise:
 		if the consciousness of the player is:
 			-- 2:
-				say "et le mur s'ouvre vous permettant d'aller à l'est.";
+				say " et le mur s'ouvre vous permettant d'aller à l'est.";
 			-- otherwise:
-				say "et la porte de l'ascenseur à l'est glisse ouverte.";
+				say " et la porte de l'ascenseur à l'est glisse ouverte.";
 		if the player is in Couloir 2:
 			now Ascenseur2door is open;
 		otherwise:
@@ -518,21 +518,14 @@ To say descEscalier1:
 
 Section Escalier 2
 
-Escalier 2 is a room. The description of Escalier 2  is "[descEscalier2]." Escalier 2 is up from Escalier 1 and down from Escalier 3.
+Escalier 2 is a room. The description of Escalier 2  is "[descEscalier2]." Escalier 2 is north from Escalier 1.
 
 To say descEscalier2:
 	say "Stairs 2".
 
-Section Escalier 3
-
-Escalier 3 is a room. The description of Escalier 3 is "[descEscalier3]."
-
-To say descEscalier3:
-	say "Stairs 3".
-
 Section Sas
 
-Sas is a room. The description of Sas is "[descSas]." The sasDoor is a locked door. It is north of Escalier 3 and south of Sas.
+Sas is a room. The description of Sas is "[descSas]." The sasDoor is a locked door. It is north of Escalier 2 and south of Sas.
 
 To say descSas:
 	say "Airlock".
@@ -541,16 +534,21 @@ Chapter Verbs
 
 Section simpleUnlocking
 
-simpleUnlocking is an action applying to nothing. Understand "déverouiller
+simpleUnlocking is an action applying to nothing. Understand "déverrouiller
 " as simpleUnlocking.
 
 Carry out simpleUnlocking:
 	repeat with way running through directions:
 		if the door the way of the location is locked:
 			now the door the way from the location is unlocked;
-			say "Door to the [way], unlocked.";
+			say "Vous entrez le code sur le pavé numérique et entendez déverrouiller la porte ";
+			if the way is east or the way is west:
+				say "à l[apostrophe]";
+			otherwise:
+				say "au ";
+			say "[way].";
 			stop the action;
-	say "Nothing to unlock here."
+	say "Vous ne voyez aucune porte verrouillée."
 	
 Section simpleOpening
 
@@ -614,7 +612,7 @@ To say VictoryText:
 
 Chapter Known Commands
 
-actionList is a list of text that varies. actionList is {"est", "ouest","manger","ouvrir","nord","sud","pousser","monter","descendre","parler"}
+actionList is a list of text that varies. actionList is {"est", "ouest","manger","ouvrir","nord","sud","pousser","déverrouiller","parler","réparer"}
 
 The commandList is a list of numbers that varies. The commandList is {}.
 
