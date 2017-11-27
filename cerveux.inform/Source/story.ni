@@ -515,6 +515,20 @@ Escalier 1 is a room. The description of Escalier 1  is "[descEscalier1]." The e
 
 To say descEscalier1:
 	say "Stairs 1".
+	
+After going north from Salle de Décontamination:
+	say "[upNorth].";
+	try looking.
+	
+After going south from Escalier 2:
+	say "[downSouth].";
+	try looking.
+	
+To say upNorth:
+	say "Vous montez l'escalier au nord".
+	
+To say downSouth:
+	say "Vous descendez l'escalier au sud".
 
 Section Escalier 2
 
@@ -522,6 +536,14 @@ Escalier 2 is a room. The description of Escalier 2  is "[descEscalier2]." Escal
 
 To say descEscalier2:
 	say "Stairs 2".
+	
+After going north from Escalier 1:
+	say "[upNorth].";
+	try looking.
+	
+After going south from Sas:
+	say "[downSouth].";
+	try looking.
 
 Section Sas
 
