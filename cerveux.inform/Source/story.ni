@@ -243,7 +243,7 @@ To say descLabZoo:
 		-- 2:
 			say "La pièce dans laquelle ils vous ont enseigné à appuyer le bouton rouge sur le distributeur de friandises";
 		-- 3:
-			say "the dog cage";
+			say "Une cage occupe la moitié de la pièce et le reste de l'espace est dédié au dressage des animaux";
 		-- 4:
 			say "the canine facility"
 			
@@ -374,10 +374,23 @@ After going west from an Ascenseur 2:
 
 Section Laboratoire Biochimique
 
-Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The labBioDoor is a locked door. It is south of Couloir 2 and north of Laboratoire Biochimique. 
+Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The printed name of the Laboratoire Biochimique is "[pnLabBio]".
+
+The labBioDoor is a female locked door. It is south of Couloir 2 and north of Laboratoire Biochimique. The printed name of the labBioDoor is "[pnLabBioDoor]".
 
 To say descLabBio:
 	say "Bio Lab".
+	
+To say pnLabBio:
+	if the consciousness of the player is:
+		-- 3:
+			say "Laboratoire Biochimique";
+		-- 4:
+			say "Laboratoire De Synthèse Moléculaire".
+			
+To say pnLabBioDoor:
+	say "porte de la laboratoire".
+	
 
 Section Couloir 1
 
@@ -488,7 +501,7 @@ To say pnPotty:
 	if the consciousness of the player is less than 3:
 		say "bol plein de l'eau";
 	otherwise:
-		say "toilette (avec le couvercle soulevé)". 
+		say "toilette (dont le couvercle est soulevé)". 
 		
 Instead of simpleEating when the player is in Les Toilettes:
 	if the potty is in the void:
@@ -501,6 +514,14 @@ Instead of simpleEating when the player is in Les Toilettes:
 				say "Non, ça serait dégoûtant[one of] (même pour quelqu'un qui mange les cerveaux)[or][stopping]."; 
 			-- 4:
 				say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans les eaux de toilette? Pas de la question."
+				
+After going south from Couloir 1 when the consciousness of the player is 3 for the first time:
+		say "Quand vous entrez dans les toilettes, un mouvement attire votre attention.[paragraph break][italic type]Est-ce quelqu'un d'autre ici?[roman type][paragraph break]Un costaud vêtu d'un uniforme en lambeaux vous dévisage sans sourciller. Son teint blafard, ses yeux cernes, et ses joues creuses rappellent un cadavre.[paragraph break]Cette rencontre maladroite continue pendant plusieurs minutes, jusqu'au moment où vous vous rendez compte que vous regardez votre propre reflet dans un miroir.";
+		try looking.
+	
+After going south from Couloir 1 when the consciousness of the player is 4 for the first time:
+	say "You catch sight of your reflection as scientist.";
+	try looking.
 
 Section Salle de Décontamination
 
