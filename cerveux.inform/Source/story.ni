@@ -144,6 +144,7 @@ Doors are usually closed. Doors are usually not locked.
 Section Doors
 
 A thing can be buttoned. Things are usually not buttoned.
+A thing can be broken. Things are usually not broken.
 
 Instead of going through a closed door (called la porte):
 	if the consciousness of the player is less than 3:
@@ -374,17 +375,17 @@ After going west from an Ascenseur 2:
 
 Section Laboratoire Biochimique
 
-Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The printed name of the Laboratoire Biochimique is "[pnLabBio]". Laboratoire Biochimique can be powered. Laboratoire Biochimique is not powered.
+Laboratoire Biochimique is a room. The description of Laboratoire Biochimique is "[descLabBio]." The printed name of the Laboratoire Biochimique is "[pnLabBio]". 
 
 The labBioDoor is a female locked door. It is south of Couloir 2 and north of Laboratoire Biochimique. The printed name of the labBioDoor is "[pnLabBioDoor]".
 
 To say descLabBio:
 	if the consciousness of the player is:
 		-- 3:
-			say "Normalement, la pièce déborde d[apostrophe]équipements high-techs avec les lumières clignotantes et le bruit continuel des moteurs robotiques. Pourtant, en ce moment toutes les équipements sont éteintes  et il n'y a le moindre son";
+			say "Normalement, la pièce déborde d[apostrophe]équipements high-techs avec les lumières clignotantes et le bruit continuel des moteurs robotiques. Pourtant, en ce moment toutes les équipements sont éteintes et il n'y a le moindre son";
 		-- 4:
-			if the Laboratoire Biochimique is powered:
-				say "L'alimentation électrique rétablie, la pièce est bien illuminé, les ordinateurs sont allumés, et les équipements semblent en mésure de conduire les synthèses biochimiques les plus complexes";
+			if the disjoncteurs are not broken:
+				say "L'alimentation électrique rétablie, la pièce est bien illuminé, les ordinateurs sont allumés, et les équipements semblent en mésure de réaliser les synthèses biochimiques les plus complexes";
 			otherwise:
 				say "Le système robotique de synthèse moléculaire semble en état de fonctionner sauf pour la manque d[apostrophe]électricité"
 	
@@ -541,7 +542,7 @@ To say descDecon:
 		-- 3:
 			say "Des pommeuax de douche visent le centre de la pièce qui est baigné à perpétuité dans une lumière violette";
 		-- 4: 
-			say "	Des jets à haute pression entourent la pièce afin d'arroser le personnel d'une solution antiseptique lorsqu'ils entrent et sortent des zones potentiellement contaminées. La pièce est continuellement éclairée par des lumières germicides";
+			say "Des jets à haute pression entourent la pièce afin d'arroser le personnel d'une solution antiseptique lorsqu'ils entrent et sortent des zones potentiellement contaminées. La pièce est continuellement éclairée par des lumières germicides";
 	say ". La porte à l'est mène au couloir et celle au nord à l'escalier"
 
 To say pnDecon:
@@ -603,6 +604,8 @@ Section Sas
 Sas is a room. The description of Sas is "[descSas]." 
 
 The sasDoor is a female locked door. It is north of Escalier 2 and south of Sas. The printed name of the sasDoor is "porte blindée du sas".
+
+The Docteur Rambaud is an edible thing in the sas. The indefinite article of the Docteur Rambaud is "le".
 
 To say descSas:
 	say "Airlock".
@@ -671,8 +674,38 @@ Section simpleTalking
 
 simpleTalking is an action applying to nothing. Understand "parler" as simpleTalking.
 
+Check simpleTalking:
+	if the player is not in the sas:
+		say "Personne n'est present. À qui parlez vous[one of]?[paragraph break]Voulez-vous que toute le monde pense que vous êtes débile[or][stopping]?";
+		stop the action;
+	otherwise:
+		if the dépouille saignante du Docteur Rambaud is in the sas:
+			if the interphone is not live:
+				say "Pour parler avec la salle de contrôle, il faut d'abord allumer l'interphone.";
+				stop the action.
+				
 Carry out simpleTalking:
-	say "TODO: simpleTalking."
+	if the dépouille saignante du Docteur Rambaud is in the sas:
+		say "You talk with control room.";
+	otherwise:
+		say "You talk with Dr. Rambaud."
+		
+Section simpleRepairing
+
+simpleRepairing is an action applying to nothing. Understand "réparer" as simpleRepairing.
+
+Carry out simpleRepairing:
+	repeat with the item running through visible broken things:
+		try touching the item;
+		stop the action;
+	say "Vous ne voyez rien à réparer."
+	
+Instead of touching something (called the item):
+	now the item is not broken;
+	say "You repair [the item]."
+	[todo override touch with specific repair actions.]
+
+
 	
 Chapter Consciousness
 
@@ -749,6 +782,20 @@ After eating the morceau de cerveau:
 	say "En mâchant la tranche de cerveau, vous constatez un saveur désagréable, mais ça s'estompe presque immédiatement.[paragraph break]Pendant quelques moments rien ne se passe et vous vous demandez si vous pouvez maintenant manger n'importe quoi en toute impunité.[paragraph break]Soudain, le monde passe du monochrome à la couleur vive. Un vague électrique parcourt votre esprit et vous vous effondrez, désorienté. Lorsque vous vous mettez debout, des nouvelles idées se mêlent aux vos pensées et vous voyez tout sous un nouveau jour.";
 	increment the consciousness of the player;
 	increment the knownCommands of the player.
+	
+After going north from Escalier 2 for the first time:
+	say "Scene in the airlock. Now you can talk.";
+	try looking;
+	increment the knownCommands of the player.
+	
+After eating Docteur Rambaud:
+	say "You just ate Doctor Rambaud. What nerve. You can now repair stuff.";
+	move the dépouille saignante du Docteur Rambaud to the sas;
+	move the interphone to the sas;
+	move the panneau électrique to escalier 1;
+	move the unité de synthèse microfluidique to the Laboratoire Biochimique;
+	increment the knownCommands of the player;
+	increment the consciousness of the player.
 		
 Chapter The Void
 
@@ -756,9 +803,25 @@ The void is a room.
 
 The petite créature grise is an edible female thing. It is in the void.
 
+The dépouille saignante du Docteur Rambaud is a female thing in the void. The indefinite article of dépouille saignante du Docteur Rambaud is "la".
+
+The interphone is a buttoned thing in the void. The interphone can be live. The interphone is not live. The interphone is broken.
+
+The panneau électrique is an openable closed container in the void. The disjoncteurs are in the panneau électrique. The disjoncteurs are plural-named. The disjoncteurs are broken. The indefinite article of disjoncteurs is "des". The printed name of the disjoncteurs is "disjoncteurs[if the disjoncteurs are broken] sautés[end if]".
+
+The unité de synthèse microfluidique is an openable closed container in the void. The description of the unité de synthèse microfluidique is "[descSynth]."
+
+To say descSynth:
+	say "Description of the microfluidic synthesizer".
+
+The servomoteur is in the unité de synthèse microfluidique. The servomoteur is broken. The description of the servomoteur is "[descServo]."
+
+To say descServo:
+	say "Description of the servo."
+
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger "
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir / nord".
 
 
 
