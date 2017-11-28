@@ -16,6 +16,7 @@ Include Glulx Input Loops by Erik Temple.
 Use French Language. 
 
 Use full-length room descriptions.
+Use no scoring.
 
 Chapter Globals
 
@@ -460,7 +461,7 @@ To say descLabPath:
 		-- 3:
 			say "C'est ici où les scientifiques préparent les lames de microscope.[paragraph break]Vous reconnaissez une trancheuse à viande et un four à micro-ondes, mais la plupart de l[apostrophe]équipement sur le comptoir n'est pas familier";
 		-- 4:
-			say "Vous avez vous-même sélectionné les équipments dernier cri trouvés dans cette laboratoire ultramoderne qui le laboratoire s'occupe de la préparation et de l'analyse des échantillons de tissus".
+			say "Vous avez vous-même sélectionnée les équipments dernier cri trouvés dans cette laboratoire ultramoderne qui s'occupe de la préparation et de l'analyse des échantillons de tissus".
 	
 The frigo is a closed openable container in the Laboratoire de Pathologie. The frigo is closed. The printed name of the frigo is "[pnFrigo]".
 
@@ -521,7 +522,7 @@ Instead of simpleEating when the player is in Les Toilettes:
 			-- 3:
 				say "Non, ça serait dégoûtant[one of] (même pour quelqu'un qui mange les cerveaux)[or][stopping]."; 
 			-- 4:
-				say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans les eaux de toilette? Pas de la question."
+				say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans cette eau? Pas de la question."
 				
 After going south from Couloir 1 when the consciousness of the player is 3 for the first time:
 		say "Quand vous entrez dans les toilettes, un mouvement attire votre attention.[paragraph break][italic type]Est-ce quelqu'un d'autre ici?[roman type][paragraph break]Un costaud vêtu d'un uniforme en lambeaux vous dévisage sans sourciller. Son teint blafard, ses yeux cernes, et ses joues creuses rappellent un cadavre.[paragraph break]Cette rencontre maladroite continue pendant plusieurs minutes, jusqu'au moment où vous vous rendez compte que vous regardez votre propre reflet dans un miroir.";
@@ -540,9 +541,9 @@ The deconDoor is a female locked door. It is west of Couloir 1 and east of Salle
 To say descDecon:
 	if the consciousness of the player is:
 		-- 3:
-			say "Des pommeuax de douche visent le centre de la pièce qui est baigné à perpétuité dans une lumière violette";
+			say "Des pommeaux de douche visent le centre de la pièce qui est baigné à perpétuité dans une lumière violette";
 		-- 4: 
-			say "Des jets à haute pression entourent la pièce afin d'arroser le personnel d'une solution antiseptique lorsqu'ils entrent et sortent des zones potentiellement contaminées. La pièce est continuellement éclairée par des lumières germicides";
+			say "Des jets à haute pression entourent la pièce afin d'arroser le personnel d'une solution antiseptique lorsqu'ils entrent et sortent des zones potentiellement contaminées. La pièce est continuellement éclairée par les lumières germicides";
 	say ". La porte à l'est mène au couloir et celle au nord à l'escalier"
 
 To say pnDecon:
@@ -601,14 +602,21 @@ After going south from Sas:
 
 Section Sas
 
-Sas is a room. The description of Sas is "[descSas]." 
+Sas is a room. The description of Sas is "[descSas]." The printed name of the sas is "Sas".
 
 The sasDoor is a female locked door. It is north of Escalier 2 and south of Sas. The printed name of the sasDoor is "porte blindée du sas".
 
-The Docteur Rambaud is an edible thing in the sas. The indefinite article of the Docteur Rambaud is "le".
+The Docteur Rambaud is an edible thing in the sas. The Docteur Rambaud has a truth state called introducedFlag. The introducedFlag of Docteur Rambaud is false.
+
+
+The indefinite article of the Docteur Rambaud is "[if the introducedFlag of Docteur Rambaud is true]le[otherwise]la[end if]". The printed name of Docteur Rambaud is "[if the introducedFlag of Docteur Rambaud is true]Docteur Rambaud[otherwise]scientifique[end if]".
 
 To say descSas:
-	say "Airlock".
+	if the consciousness of the player is:
+		-- 3:
+			say "Une longue pièce tubulaire baignée de lumière rouge";
+		-- 4:
+			say "Les lourdes portes blindées, le manque de fenêtres et la forme tubulaire de la pièce vous rapellent un sous marin. La lumière au-dessus de la porte à l'autre extrémité de la pièce signifie qu'elle est verrouillée[one of].[paragraph break]Comme vous le savez bien, pour protéger vos collègues et le monde entier contre les pathogènes incroyablement dangereux étudiés dans le complexe de laboratoire, la porte extérieure du sas ne peut être ouverte que par ceux qui travaillent dans la salle de contrôle de l'installation[or][stopping]".
 
 Chapter Verbs
 
@@ -702,23 +710,14 @@ Carry out simpleRepairing:
 	
 Instead of touching something (called the item):
 	now the item is not broken;
-	say "You repair [the item]."
+	say "Vouz  [the item]."
 	[todo override touch with specific repair actions.]
-
-
 	
 Chapter Consciousness
 
 To increment the consciousness of the player:
 	increase the consciousness of the player by 1;
 	try looking.
-	
-To raiseConsciousnessToLevel5:
-	say "[VictoryText]";
-	end the story finally saying "Memory lives on!"
-	
-To say VictoryText:
-	say "This is the victory text! Woot!".
 
 Chapter Known Commands
 
@@ -784,7 +783,7 @@ After eating the morceau de cerveau:
 	increment the knownCommands of the player.
 	
 After going north from Escalier 2 for the first time:
-	say "Scene in the airlock. Now you can talk.";
+	say "Une femme d'une quarantaine d'années vêtue d'une blouse blanche est assise derrière un bureau en métal. Elle est à mi-chemin entre vous et la porte à l'autre bout de la pièce. Elle semble gravement blessée et saigne d'une blessure au bras qu'elle a bandée de gaze stérile. Dans son autre main, elle brandit un pied-de-biche.";
 	try looking;
 	increment the knownCommands of the player.
 	
@@ -809,19 +808,47 @@ The interphone is a buttoned thing in the void. The interphone can be live. The 
 
 The panneau électrique is an openable closed container in the void. The disjoncteurs are in the panneau électrique. The disjoncteurs are plural-named. The disjoncteurs are broken. The indefinite article of disjoncteurs is "des". The printed name of the disjoncteurs is "disjoncteurs[if the disjoncteurs are broken] sautés[end if]".
 
-The unité de synthèse microfluidique is an openable closed container in the void. The description of the unité de synthèse microfluidique is "[descSynth]."
+Instead of touching the disjoncteurs:
+	say "Vous remettez les disjoncteurs.";
+	now the disjoncteurs are not broken;
+	if the servomoteur is broken, the breakers flip in two turns from now.
 
-To say descSynth:
-	say "Description of the microfluidic synthesizer".
+At the time when the breakers flip:
+	if the player is in Escalier 1:
+		say "Le panneau électrique fait un bruit sec et vous constatez que les disjoncteurs ont de nouveau sautés.";
+	now the disjoncteurs are broken.
 
-The servomoteur is in the unité de synthèse microfluidique. The servomoteur is broken. The description of the servomoteur is "[descServo]."
+The unité de synthèse microfluidique is an openable closed container in the void. 
 
-To say descServo:
-	say "Description of the servo."
+The servomoteur is in the unité de synthèse microfluidique. The servomoteur is broken. The printed name of the servomoteur is "[pnServo]".
+
+To say pnServo:
+	say "servomoteur";
+	if the servomoteur is not broken:
+		say " en état de marche".
+
+After opening the unité de synthèse microfluidique:
+	say "Vous ouvrez le panneau d'accès et tout de suite reconnaissez le problème: un écaille de soudure est tombée sur les terminaux d'un servomoteur, créant un court-circuit."
+	
+Instead of touching the servomoteur:
+	now the servomoteur is not broken;
+	say "Vous écartez le morceau de soudure. La machine doit fonctionner normalement maintenant."
+	
+Chapter End Game
+
+Instead of going south from Couloir 2:
+	if the servomoteur is not broken and the disjoncteurs are not broken:
+		say "[VictoryText]";
+		end the story finally saying "Saved The World";
+	otherwise:
+		continue the action.
+
+To say VictoryText:
+	say "This is the victory text! Woot!".
 
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir / nord".
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir ".
 
 
 
