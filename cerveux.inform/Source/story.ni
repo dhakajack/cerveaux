@@ -21,7 +21,7 @@ Use no scoring.
 Chapter Globals
 
 DebugFlag is a truth state that varies. DebugFlag is true.
-BlockMonologueFlag is a truth state that varies. BlockMonologueFlag is false.
+BlockChatterFlag is a truth state that varies. BlockChatterFlag is false.
 
 Chapter The Player
 
@@ -290,24 +290,7 @@ The tas de nourriture de chien is in the void.
 Every turn when the chien is in the cage and the player is in the Laboratoire Zoologique:
 	if a random chance of 3 in 8 succeeds:
 		say "Le loup [one of]aboie bruyamment[or]mord les barres de sa cage[or]gratte les oreilles[or]fait les cent pas dans sa boite métallique[or]hurle a pleine poumons[or]renifle l'air[or]renifle sa cage[or]renifle lui-meme[or]léche les pattes[or]vous montre ses dents[or]grogne de manière menaçante[or]vous ignore[or]court de coté à coté dans sa cage, vous dévisageant[in random order]."		
-		
-Every turn when the consciousness of the player is 2 and the chien is dead:
-	if the blockMonologueFlag is false:
-		if the number of entries in mouseDogDialogue is greater than zero:
-			say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
-			remove entry 1 from mouseDogDialogue;
-	otherwise:
-		now the blockMonologueFlag is false.
-		
-mouseDogDialogue is a list of text that varies. 
-
-mouseDogDialogue is {
-"Désolé[line break]-- Quoi, désolé?[line break]-- Moi, je suis désolé de t'as mangé[line break]-- De m'avoir mangé? Dis donc, qui es-tu?[line break]-- La souris.",
-"La souris? Quelle souris?[line break]-- La souris qui habite ici.[line break]-- La maudite souris qui vole toujours les bribes autour de mon distributeur?[line break]-- Ouais, la même. Une fois de plus, je suis désolé de t'avoir dérangé.",
-"Pas du tout.[line break]-- Merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]Souris[apostrophe]. Et tu? Comment tu t'appelles?[line break]-- [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'ont donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
-"Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois plus grand?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
-"Bon, je ne sais pas exactment comment je l'ai fait.[line break]-- Qu'est-ce que tu te rapelles de l'événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois."
-}
+	
 		 
 Section Ascenseur 2
 
@@ -796,6 +779,51 @@ After eating Docteur Rambaud:
 	increment the knownCommands of the player;
 	increment the consciousness of the player.
 		
+Chapter Dialogue
+
+Section Generate Dialogue
+
+Every turn:
+	if the BlockChatterFlag is false:
+		if the consciousness of the player is:
+			-- 2:
+				if the number of entries in mouseDogDialogue is greater than zero:
+					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
+					remove entry 1 from mouseDogDialogue;
+			-- 3:
+				if the number of entries in mouseDogDialogue is greater than zero:
+					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
+					remove entry 1 from mouseDogDialogue;
+			-- 4:
+				if the number of entries in mouseDogDialogue is greater than zero:
+					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
+					remove entry 1 from mouseDogDialogue;
+	now the BlockChatterFlag is false.
+
+Section MouseDog Dialogue	
+		
+mouseDogDialogue is a list of text that varies. 
+
+mouseDogDialogue is {
+"Désolé[line break]-- Quoi, désolé?[line break]-- Moi, je suis désolé de t'as mangé[line break]-- De m'avoir mangé? Dis donc, qui es-tu?[line break]-- La souris.",
+"La souris? Quelle souris?[line break]-- La souris qui habite ici.[line break]-- La maudite souris qui vole toujours les bribes autour de mon distributeur?[line break]-- Ouais, la même. Une fois de plus, je suis désolé de t'avoir dérangé.",
+"Pas du tout.[line break]-- Merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]Souris[apostrophe]. Et tu? Comment tu t'appelles?[line break]-- [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'ont donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
+"Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois plus grand?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
+"Bon, je ne sais pas exactment comment je l'ai fait.[line break]-- Qu'est-ce que tu te rapelles de l'événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois."
+}.
+
+Section MouseDogGuard Dialogue
+
+mouseDogGuardDialogue is a list of text that varies. 
+
+mouseDogGuardDialogue is { "" }.
+
+Section Everybody Dialogue
+
+EverybodyDialogue is a list of text that varies. 
+
+EverybodyDialogue is { "" }.
+
 Chapter The Void
 
 The void is a room.
@@ -838,17 +866,20 @@ Chapter End Game
 
 Instead of going south from Couloir 2:
 	if the servomoteur is not broken and the disjoncteurs are not broken:
+		repeat with N running from 1 to 10:
+			now the tint of the button in row N of the Table of Glimmr Buttons is g-black;
+			now the linked replacement-command of the button in row N of the Table of Glimmr Buttons is "";
+		follow the refresh windows rule;
 		say "[VictoryText]";
-		end the story finally saying "Saved The World";
 	otherwise:
 		continue the action.
-
+		
 To say VictoryText:
-	say "This is the victory text! Woot!".
-
+	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vouz avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe à la Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier:[paragraph break]* Graham Nelson pour avoir conçu et écrit la langue Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cet oeuvre: Eric Forgeot, Emily Short, et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint l'art de la couverture à l'aquarelle.[paragraph break]* Les beta-testeurs extraordinaires.[paragraph break][bold type]FIN."
+	
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir ".
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir / nord / manger / sud / sud / sud / est / pousser / est / pousser / ouest / déverrouiller / ouvrir / sud / ouvrir / réparer / nord / pousser / est / pousser / ouest / ouest / nord / ouvrir / réparer / sud / est / pousser / est / pousser / ouest / sud".
 
 
 
