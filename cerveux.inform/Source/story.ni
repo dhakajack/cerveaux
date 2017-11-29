@@ -1,4 +1,4 @@
-"Faute de Servo" by Tana Ostrova
+"Faute De Servo" by Tana Ostrova
 
 The story headline is "Un voyageur sans esprit".
 The story genre is "horror".
@@ -45,9 +45,9 @@ The player has a number called knownCommands. The knownCommands of the player is
 5					North
 6					South
 7					Push Button
-8					Up
-9					Down
-10					Talk]
+8					Unlock
+9					Talk
+10					Repair]
 
 Chapter Exit Lister
 	
@@ -243,11 +243,11 @@ To say descLabZoo:
 		-- 1:
 			say "De sa cage le loup méchant vous dévisage constamment";
 		-- 2:
-			say "La pièce dans laquelle ils vous ont enseigné à appuyer le bouton rouge sur le distributeur de friandises";
+			say "La pièce dans laquelle ils vous avaient appris à appuyer le bouton rouge sur le distributeur de friandises";
 		-- 3:
 			say "Une cage occupe la moitié de la pièce et le reste de l'espace est dédié au dressage des animaux";
 		-- 4:
-			say "the canine facility"
+			say "TODO: the canine facility….La cage apporte un placard, [quotation mark]Sujet 205-Alpha[quotation mark]."
 			
 
 To say pnLabZoo:
@@ -277,7 +277,7 @@ Instead of pushing the distributeur de nourriture:
 	say "Vous appuyez le bouton rouge. ";
 	if the consciousness of the player is:
 		-- 2:
-			say "En récompense, quelques croquettes tombent au sol. Vous les mange avec délectation.";
+			say "En récompense, quelques croquettes tombent au sol. Vous les mangez, mais le repas ne satisfait pas votre faim.";
 		-- 3:
 			say "Vous n'avez la moindre envie de manger les croquettes de nourriture de chien qui tombent à vos pieds.";
 			move the tas de nourriture de chien to the Laboratoire Zoologique;
@@ -508,6 +508,7 @@ Instead of simpleEating when the player is in Les Toilettes:
 				say "En rendez-vous compte combien d'espèces de bactéries pathogènes se trouvent dans cette eau? Pas de la question."
 				
 After going south from Couloir 1 when the consciousness of the player is 3 for the first time:
+		now the BlockChatterFlag is true;
 		say "Quand vous entrez dans les toilettes, un mouvement attire votre attention.[paragraph break][italic type]Est-ce quelqu'un d'autre ici?[roman type][paragraph break]Un costaud vêtu d'un uniforme en lambeaux vous dévisage sans sourciller. Son teint blafard, ses yeux cernes, et ses joues creuses rappellent un cadavre.[paragraph break]Cette rencontre maladroite continue pendant plusieurs minutes, jusqu'au moment où vous vous rendez compte que vous regardez votre propre reflet dans un miroir.";
 		try looking.
 	
@@ -589,10 +590,9 @@ Sas is a room. The description of Sas is "[descSas]." The printed name of the sa
 
 The sasDoor is a female locked door. It is north of Escalier 2 and south of Sas. The printed name of the sasDoor is "porte blindée du sas".
 
-The Docteur Rambaud is an edible thing in the sas. The Docteur Rambaud has a truth state called introducedFlag. The introducedFlag of Docteur Rambaud is false.
+The Docteur Rambaud is an edible thing in the sas. Docteur Rambaud has a truth state called introducedFlag. The introducedFlag of Docteur Rambaud is false. Docteur Rambaud has a number called conversations. The conversations of Docteur Rambaud is 0.
 
-
-The indefinite article of the Docteur Rambaud is "[if the introducedFlag of Docteur Rambaud is true]le[otherwise]la[end if]". The printed name of Docteur Rambaud is "[if the introducedFlag of Docteur Rambaud is true]Docteur Rambaud[otherwise]scientifique[end if]".
+The indefinite article of the Docteur Rambaud is "[if the introducedFlag of Docteur Rambaud is true]le[otherwise]une[end if]". The printed name of Docteur Rambaud is "[if the introducedFlag of Docteur Rambaud is true]Docteur Rambaud[otherwise]scientifique[end if]".
 
 To say descSas:
 	if the consciousness of the player is:
@@ -600,6 +600,19 @@ To say descSas:
 			say "Une longue pièce tubulaire baignée de lumière rouge";
 		-- 4:
 			say "Les lourdes portes blindées, le manque de fenêtres et la forme tubulaire de la pièce vous rapellent un sous marin. La lumière au-dessus de la porte à l'autre extrémité de la pièce signifie qu'elle est verrouillée[one of].[paragraph break]Comme vous le savez bien, pour protéger vos collègues et le monde entier contre les pathogènes incroyablement dangereux étudiés dans le complexe de laboratoire, la porte extérieure du sas ne peut être ouverte que par ceux qui travaillent dans la salle de contrôle de l'installation[or][stopping]".
+			
+Instead of going north when the player is in the sas:
+	if Docteur Rambaud is in the sas:
+		say "Vous auriez besoin de dépasser la scientifique, et elle n'a pas l'air coopérative. De plus, vous ne connaissez pas le code pour ouvrir la porte extérieur, il serait donc inutile d'essayer.";
+	otherwise:
+		say "Futile. La porte est hermétiquement fermée et ne peut être ouverte que par ceux qui se trouve dans la salle de côntrole."
+			
+Instead of eating Docteur Rambaud when the conversations of Docteur Rambaud are less than 4:
+	say "Elle vous frappe avec le pied-de-biche."
+			
+
+
+
 
 Chapter Verbs
 
@@ -733,11 +746,12 @@ After going west from Couloir 2 for the first time:
 	increment the knownCommands of the player.
 	
 After eating the petite créature grise:
-	say "[line break]De votre main, vous balayez aveuglément les recoins à la base du mur. Malgré votre manque de vitesse et dextérité, par miracle vous réussissez à coincer le petit rongeur contre le mur. Vous vous empressez de le saisir fermement et sentez quelque chose de chaude, poilue, et maintenant, mouillée fond dans votre main. Sans penser plus, vous le bouffez précipitamment.[paragraph break]Après un petit moment, les nouvelles pensées vous frappent. Pris au dépourvu, vous frissonnez.[paragraph break][italic type]Au secours! Un énorme monstre me poursuit! Il va me manger! il faut me dissimuler.[paragraph break]Je… euh.  Suis-je mort ou quoi? Je ne comprends pas.[paragraph break]Quoi qu'il en soit, il me semble que J'ai beaucoup grandi, hein[roman type].";
+	say "[line break]De votre main, vous balayez aveuglément les recoins à la base du mur. Malgré votre manque de vitesse et dextérité, par miracle vous réussissez à coincer le petit rongeur contre le mur. Vous vous empressez de le saisir fermement et sentez quelque chose de chaude, poilue, et maintenant, mouillée fond dans votre main. Sans penser plus, vous le bouffez précipitamment.[paragraph break]Après un petit moment, les nouvelles pensées vous frappent. Pris au dépourvu, vous frissonnez.[paragraph break][italic type]Au secours! Un énorme monstre me poursuit! Il va me manger! il faut me dissimuler.[paragraph break]Je… euh.  Suis-je mort ou quoi? Je ne comprends pas.[roman type].";
 	increment the consciousness of the player.
 	
 After going east when the consciousness of the player is 1 for the first time:
 	try looking;
+	now the BlockChatterFlag is true;
 	say "[italic type]Ah, le grand couloir blanc.[paragraph break]Combien de fois est-ce que j'ai vu les géants marcher à travers les murs lisses pour entrer dans les pièces secrètes? Comment le font-ils?[roman type][paragraph break]";
 	increment the knownCommands of the player.
 	
@@ -765,7 +779,7 @@ After eating the morceau de cerveau:
 	increment the consciousness of the player;
 	increment the knownCommands of the player.
 	
-After going north from Escalier 2 for the first time:
+After going north from Escalier 2 when the sasDoor is not locked for the first time:
 	say "Une femme d'une quarantaine d'années vêtue d'une blouse blanche est assise derrière un bureau en métal. Elle est à mi-chemin entre vous et la porte à l'autre bout de la pièce. Elle semble gravement blessée et saigne d'une blessure au bras qu'elle a bandée de gaze stérile. Dans son autre main, elle brandit un pied-de-biche.";
 	try looking;
 	increment the knownCommands of the player.
@@ -786,6 +800,10 @@ Section Generate Dialogue
 Every turn:
 	if the BlockChatterFlag is false:
 		if the consciousness of the player is:
+			-- 1:
+				if the number of entries in mouseDialogue is greater than zero:
+					say "[italic type][quotation mark][entry 1 of mouseDialogue][quotation mark][roman type][paragraph break]";
+					remove entry 1 from mouseDialogue;
 			-- 2:
 				if the number of entries in mouseDogDialogue is greater than zero:
 					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
@@ -799,6 +817,22 @@ Every turn:
 					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
 					remove entry 1 from mouseDogDialogue;
 	now the BlockChatterFlag is false.
+	
+Section Mouse Dialogue
+
+mouseDialogue is a list of text that varies. 
+	
+mouseDialogue is {
+"Quoi qu'il en soit, il me semble que J'ai beaucoup grandi, hein.",
+"Je désire quelque chose fortement, mais j'ai du mal à dire quoi.",
+"Voyons, quel sont mes envies habituelles?",
+"Dormir? Non. Boire? Non. Faire l'amour? Non.[paragraph break]Mon dieu! Non? Est-ce que je suis malade?",
+"Eh bien, j'ai faim.",
+"De quoi est-ce que j'ai envie de manger? Cela m[apostrophe]échappe pour le moment.",
+"Du fromage? Non, pas vraiment.",
+"Je cherche quelque chose plus moelleuse, plus juteuse",
+"Je le saurai quand je le verrai, je suppose."
+}.
 
 Section MouseDog Dialogue	
 		
@@ -807,11 +841,15 @@ mouseDogDialogue is a list of text that varies.
 mouseDogDialogue is {
 "Désolé[line break]-- Quoi, désolé?[line break]-- Moi, je suis désolé de t'as mangé[line break]-- De m'avoir mangé? Dis donc, qui es-tu?[line break]-- La souris.",
 "La souris? Quelle souris?[line break]-- La souris qui habite ici.[line break]-- La maudite souris qui vole toujours les bribes autour de mon distributeur?[line break]-- Ouais, la même. Une fois de plus, je suis désolé de t'avoir dérangé.",
-"Pas du tout.[line break]-- Merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]Souris[apostrophe]. Et tu? Comment tu t'appelles?[line break]-- [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'ont donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
-"Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois plus grand?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
-"Bon, je ne sais pas exactment comment je l'ai fait.[line break]-- Qu'est-ce que tu te rapelles de l'événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois."
+"Pas du tout. J'aurais fait pareil.[line break]-- Bon, merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]Souris[apostrophe]. Et toi? Comment tu t'appelles?[line break]-- [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'a donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
+"Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois ta taille?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
+"Je n'arrive pas à comprendre exactement comment j'ai réussi à vous manger.[line break]-- Qu'est-ce que tu te rapelles de l[apostrophe]événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois."
 }.
 
+After going east from Couloir 2 when the ascenseur2door is open for the first time:
+	now the BlockChatterFlag is true;
+	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boite magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boite magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boite et ils disparraissent. Plus tard, des autres apparraissent à leur place. C'est magique.[line break]-- Verrons.[roman type][quotation mark][paragraph break]".
+	
 Section MouseDogGuard Dialogue
 
 mouseDogGuardDialogue is a list of text that varies. 
@@ -875,12 +913,18 @@ Instead of going south from Couloir 2:
 		continue the action.
 		
 To say VictoryText:
-	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vouz avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe à la Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier:[paragraph break]* Graham Nelson pour avoir conçu et écrit la langue Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cet oeuvre: Eric Forgeot, Emily Short, et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint l'art de la couverture à l'aquarelle.[paragraph break]* Les beta-testeurs extraordinaires.[paragraph break][bold type]FIN."
+	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vouz avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe au Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier:[paragraph break]* Graham Nelson pour avoir conçu et écrit la langue Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cet oeuvre: Eric Forgeot, Emily Short, et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint l'art de la couverture à l'aquarelle.[paragraph break]* Les beta-testeurs extraordinaires.[paragraph break][bold type]FIN."
 	
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir / nord / manger / sud / sud / sud / est / pousser / est / pousser / ouest / déverrouiller / ouvrir / sud / ouvrir / réparer / nord / pousser / est / pousser / ouest / ouest / nord / ouvrir / réparer / sud / est / pousser / est / pousser / ouest / sud".
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir ".
 
+
+
+
+
+[/ nord / manger / sud / sud / sud / est / pousser / est / pousser / ouest / déverrouiller / ouvrir / sud / ouvrir / réparer / nord / pousser / est / pousser / ouest / ouest / nord / ouvrir / réparer / sud / est / pousser / est / pousser / ouest / sud".
+]
 
 
 
