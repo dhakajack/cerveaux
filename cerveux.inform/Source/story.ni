@@ -607,11 +607,10 @@ Instead of going north when the player is in the sas:
 	otherwise:
 		say "Futile. La porte est hermétiquement fermée et ne peut être ouverte que par ceux qui se trouve dans la salle de côntrole."
 			
-Instead of eating Docteur Rambaud when the conversations of Docteur Rambaud are less than 4:
-	say "Elle vous frappe avec le pied-de-biche."
-			
-
-
+Before eating Docteur Rambaud when the conversations of Docteur Rambaud are less than 5:
+	say "[one of]La scientifique vous repousse avec son pied-de-biche. Fois hors de portéé de votre bouche menaçante, elle appuie un bouton sur l'interphone et dit: [quotation mark]Attention: salle de controle. Ici le sas, le docteur Rambaud parlant. Julien est ici avec moi. Malheuresement, je dois vous signaler que l'expérience a raté.  En aucune cas, ne déverrouillez la porte extérieur[quotation mark][or]Le docteur Rambaud ne bouge pas de sa position derrière le bureau, mais lorsque vous l'approchez, elle lance une série de coups avec son pied-de-biche qui vous fait reconsidérer vos actions[or]La scientifique vous confie: [quotation mark]Je vous fais crédit de votre persévérance, neanmoins… [quotation mark] et elle vous frappe carrement au nez. Ébranlé, vous trébuchez un peu et vous hâtez de reculer[or]Le docteur Rambaud vous bat avec le pied-de-biche à plusieurs reprises[stopping].";
+	stop the action.
+	
 
 
 Chapter Verbs
@@ -692,7 +691,19 @@ Carry out simpleTalking:
 	if the dépouille saignante du Docteur Rambaud is in the sas:
 		say "You talk with control room.";
 	otherwise:
-		say "You talk with Dr. Rambaud."
+		now the BlockChatterFlag is true;
+		increase the conversations of Docteur Rambaud by 1;
+		if the conversations of Docteur Rambaud is:
+			-- 1:
+				say "Con1.";
+			-- 2:
+				say "Con2.";
+			-- 3:
+				say "Con3.";
+			-- 4:
+				say "Con4.";
+			-- otherwise:
+				say "Nothing else to say."
 		
 Section simpleRepairing
 
