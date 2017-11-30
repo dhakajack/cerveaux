@@ -25,7 +25,7 @@ BlockChatterFlag is a truth state that varies. BlockChatterFlag is false.
 
 Chapter The Player
 
-The player has a number called consciousness. The consciousness of the player is 0.
+The player has a number called consciousness. The consciousness of the player is 0. The curedFlag of the player is a truth state that varies. The curedFlag of the player is false.
 
 [Niveau					après avoir mangé….
 0					rien
@@ -599,7 +599,7 @@ To say descSas:
 		-- 3:
 			say "Une longue pièce tubulaire baignée de lumière rouge";
 		-- 4:
-			say "Les lourdes portes blindées, le manque de fenêtres et la forme tubulaire de la pièce vous rapellent un sous marin. La lumière au-dessus de la porte à l'autre extrémité de la pièce signifie qu'elle est verrouillée[one of].[paragraph break]Comme vous le savez bien, pour protéger vos collègues et le monde entier contre les pathogènes incroyablement dangereux étudiés dans le complexe de laboratoire, la porte extérieure du sas ne peut être ouverte que par ceux qui travaillent dans la salle de contrôle de l'installation[or][stopping]".
+			say "Les lourdes portes blindées, le manque de fenêtres et la forme tubulaire de la pièce vous rapellent un sous marin. La lumière au-dessus de la porte à l'autre extrémité de la pièce signifie qu'elle est verrouillée".
 			
 Instead of going north when the player is in the sas:
 	if Docteur Rambaud is in the sas:
@@ -689,7 +689,13 @@ Check simpleTalking:
 				
 Carry out simpleTalking:
 	if the dépouille saignante du Docteur Rambaud is in the sas:
-		say "You talk with control room.";
+		now the BlockChatterFlag is true;
+		if the curedFlag of the player is not true:
+			say "[one of]Vous expliquez votre plan. Le directeur de l'installation prende le micro et vous souhaite la bon chance. Par ailleurs, il vous dirige de lui appeler quand vouz avez réussi. Apart ça, il faut ne pas utiliser l'interphone[or]La salle de contrôle refuse de vous parler jusqu[apostrophe]à ce que vous ayez en main un remède efficace[stopping]. Il raccroche et l'interphone s[apostrophe]éteint.";
+			now the interphone is not live;
+		otherwise:
+			say "Les cris de joie issuent de la salle de contrôle lorsque vous signalez votre succès. La porte extérieur du sas s'ouvre et vous commencez votre nouvelle vie.";
+			terminate the game;
 	otherwise:
 		now the BlockChatterFlag is true;
 		increase the conversations of Docteur Rambaud by 1;
@@ -703,7 +709,7 @@ Carry out simpleTalking:
 			-- 4:
 				say "[quotation mark]Nous avons beacoup de mal à parler.[line break]-- Naturellement, vos neurones sont en état de… attends… nous?[paragraph break][italic type]-- Raconte-lui de moi, implore la souris tout excité.[line break]-- Et de moi! ajoute Lucky.[roman type][paragraph break]-- Ouais, je dis [apostrophe]nous[apostrophe] parce qu'il y a trois esprits dans ma tête: la souris, le chien qui s'appelle Lucky, et la tranche de cerveau. Nous travaillons ensemble pour se déplacer et parler.[line break]-- Ben, elle marque un pause, ça explique tout. Votre cerveau était réinitialisé, c'est-à-dire effacé, par le virus, mais tu as réussi à le recharger d'un façon avec des cerveaux normales. La tranche dont tu parles s'agit d'une biospsie que j'ai pris de Julien avant que le virus avait atteint cet portion de son cerveau.[quotation mark][paragraph break]";
 			-- 5:
-				say "[quotation mark]Alors, nous sommes foutu? vous dites.[paragraph break][italic type]-- Tout à fait, grommele le souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan?[line break]-- Oui, je crois. Fais exactément ce que je te dis: Je suis en train de mourir, déjà je ne peut pas même bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personalité fusionnera avec les tiens. Le virus est encore présent en toi et il va destruire votre cerveau, mais il était ralenti par la première dose du traitement. S'il reste assez de temps, on peut répararer l'unité de synthèse et cette fois produire un traitement curatif. Je viverai en toi, ensemble avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant?[line break]-- Ça me plaira bien. Allons-y![quotation mark][paragraph break]";
+				say "[quotation mark]Alors, nous sommes foutus? vous dites.[paragraph break][italic type]-- Tout à fait, grommele le souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan?[line break]-- Oui, je crois. Fais exactément ce que je te dis: Je suis en train de mourir, déjà je ne peut pas même bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personalité fusionnera avec les tiens. Le virus est encore présent en toi et il va destruire votre cerveau, mais il était ralenti par la première dose du traitement. S'il reste assez de temps, on peut répararer l'unité de synthèse et cette fois produire un traitement curatif. Je viverai en toi, ensemble avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant?[line break]-- Ça me plaira bien. Allons-y![quotation mark][paragraph break]";
 			-- otherwise:
 				say "Il ne reste rien à dire."
 				
@@ -800,7 +806,7 @@ After going north from Escalier 2 when the sasDoor is not locked for the first t
 	
 After eating Docteur Rambaud:
 	now the BlockChatterFlag is true;
-	say "Vous dévorrez le cerveau de la scientifique. Immédiatement vous voyez le monde d'un point de vue plus raffiné et érudit.[paragraph break][quotation mark][italic type]C'est fait? demande la voix d'Isabelle avec hésitation.[line break]-- Oui, tu étais déliceuse, enthousiasme le souris.[line break]-- Le meilleur jusqu'ici, accorde Lucky.[line break]-- Excuse mes co-esprits, ils manque du tact, intervient la tranche de cerveau[line break]-- Hé! gémissent la souris et le chien.[line break]-- Sois la bienvenue, Isabelle, continue la tranche de cerveau. On est à ta disposition.[quotation mark][paragraph break]";
+	say "Vous dévorrez le cerveau de la scientifique. Immédiatement vous voyez le monde d'un point de vue plus raffiné et érudit.[paragraph break][quotation mark][italic type]C'est fait? demande la voix d'Isabelle avec hésitation.[line break]-- Oui, tu étais déliceuse, enthousiasme le souris.[line break]-- Le meilleur jusqu'ici, accorde Lucky.[line break]-- Excuse mes co-esprits, ils manque cruellement du tact, intervient la tranche de cerveau.[line break]-- Hé! gémissent la souris et le chien.[line break]-- Sois la bienvenue, Isabelle, continue la tranche de cerveau. On est à ta disposition.[line break]-- Bonjour, les gars, dit Isabelle avec chaleur.[quotation mark][paragraph break]";
 	move the dépouille saignante du Docteur Rambaud to the sas;
 	move the interphone to the sas;
 	move the panneau électrique to escalier 1;
@@ -813,6 +819,10 @@ Chapter Dialogue
 Section Generate Dialogue
 
 Every turn:
+	if the curedFlag of the player is not true:
+		if the disjoncteurs are not broken and the servomoteur is not broken and the player is in the Laboratoire Biochimique:
+			say "Found the cure!";
+			now the curedFlag of the player is true;
 	if the BlockChatterFlag is false:
 		if the consciousness of the player is:
 			-- 1:
@@ -887,6 +897,13 @@ The dépouille saignante du Docteur Rambaud is a female thing in the void. The i
 
 The interphone is a buttoned thing in the void. The interphone can be live. The interphone is not live. The interphone is broken.
 
+Instead of pushing the interphone:[only present at consciousness 4]
+	if the interphone is not live:
+		say "Une petite LED rouge sur l'interphone s'allume indiquant que vous êtes en direct avec la salle de contrôle.";
+		now the interphone is live;
+	otherwise:
+		say "Vouz avez déjà activé l'interphone et sa LED reste allumée."
+
 The panneau électrique is an openable closed container in the void. The disjoncteurs are in the panneau électrique. The disjoncteurs are plural-named. The disjoncteurs are broken. The indefinite article of disjoncteurs is "des". The printed name of the disjoncteurs is "disjoncteurs[if the disjoncteurs are broken] sautés[end if]".
 
 Instead of touching the disjoncteurs:
@@ -914,21 +931,18 @@ After opening the unité de synthèse microfluidique:
 Instead of touching the servomoteur:
 	now the servomoteur is not broken;
 	say "Vous écartez le morceau de soudure. La machine doit fonctionner normalement maintenant."
-	
+
 Chapter End Game
 
-Instead of going south from Couloir 2:
-	if the servomoteur is not broken and the disjoncteurs are not broken:
-		repeat with N running from 1 to 10:
-			now the tint of the button in row N of the Table of Glimmr Buttons is g-black;
-			now the linked replacement-command of the button in row N of the Table of Glimmr Buttons is "";
-		follow the refresh windows rule;
-		say "[VictoryText]";
-	otherwise:
-		continue the action.
+To terminate the game:
+	repeat with N running from 1 to 10:
+		now the tint of the button in row N of the Table of Glimmr Buttons is g-black;
+		now the linked replacement-command of the button in row N of the Table of Glimmr Buttons is "";
+	follow the refresh windows rule;
+	say "[VictoryText]".
 		
 To say VictoryText:
-	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vouz avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe au Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier:[paragraph break]* Les organisateurs du concours[paragraph break]* Graham Nelson pour avoir conçu et écrit la langue Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cet oeuvre: Eric Forgeot, Emily Short, et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint l'art de la couverture à l'aquarelle.[paragraph break]* Les beta-testeurs extraordinaires.[paragraph break][bold type]FIN."
+	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vouz avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe au Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier:[paragraph break]* Les organisateurs du concours.[paragraph break]* Graham Nelson pour avoir conçu et écrit la langue Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cet oeuvre: Eric Forgeot, Emily Short, et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint l'art de la couverture à l'aquarelle.[paragraph break]* Les beta-testeurs extraordinaires.[paragraph break][bold type]FIN."
 	
 Chapter Testing
 
