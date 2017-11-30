@@ -608,7 +608,7 @@ Instead of going north when the player is in the sas:
 		say "Futile. La porte est hermétiquement fermée et ne peut être ouverte que par ceux qui se trouve dans la salle de côntrole."
 			
 Before eating Docteur Rambaud when the conversations of Docteur Rambaud are less than 5:
-	say "[one of]La scientifique vous repousse avec son pied-de-biche. Fois hors de portéé de votre bouche menaçante, elle appuie un bouton sur l'interphone et dit: [quotation mark]Attention: salle de controle. Ici le sas, le docteur Rambaud parlant. Julien est ici avec moi. Malheuresement, je dois vous signaler que l'expérience a raté.  En aucune cas, ne déverrouillez la porte extérieur[quotation mark][or]Le docteur Rambaud ne bouge pas de sa position derrière le bureau, mais lorsque vous l'approchez, elle lance une série de coups avec son pied-de-biche qui vous fait reconsidérer vos actions[or]La scientifique vous confie: [quotation mark]Je vous fais crédit de votre persévérance, neanmoins… [quotation mark] et elle vous frappe carrement au nez. Ébranlé, vous trébuchez un peu et vous hâtez de reculer[or]Le docteur Rambaud vous bat avec le pied-de-biche à plusieurs reprises[stopping].";
+	say "[one of]La scientifique vous repousse avec son pied-de-biche. Fois hors de portéé de votre bouche menaçante, elle appuie un bouton sur l'interphone et dit: [quotation mark]Attention: salle de contrôle. Ici le sas, le docteur Rambaud parlant. Julien est ici avec moi. Malheuresement, je dois vous signaler que l'expérience a raté.  En aucune cas, ne déverrouillez la porte extérieur[quotation mark][or]Le docteur Rambaud ne bouge pas de sa position derrière le bureau, mais lorsque vous l'approchez, elle lance une série de coups avec son pied-de-biche qui vous fait reconsidérer vos actions[or]La scientifique vous confie: [quotation mark]Je vous fais crédit de votre persévérance, neanmoins… [quotation mark] et elle vous frappe carrement au nez. Ébranlé, vous trébuchez un peu et vous hâtez de reculer[or]Le docteur Rambaud vous bat avec le pied-de-biche à plusieurs reprises[stopping].";
 	stop the action.
 	
 
@@ -695,16 +695,19 @@ Carry out simpleTalking:
 		increase the conversations of Docteur Rambaud by 1;
 		if the conversations of Docteur Rambaud is:
 			-- 1:
-				say "Con1.";
+				say "Vouz commencez à balbutier et la scientifique vous dévisage d'un regard inquisiteur.[paragraph break][quotation mark]C'est possible? demande-t-elle. Es-tu toujour capable de parler?[line break]-- Oui, vous grognez au prix d'un grand effort. Moi... parle.[line break]-- Incroyable! C'est un miracle, Julien. De quoi tu te souviens?[paragraph break][italic type]-- Julien? Qui est-ce? demande Lucky.[line break]-- C'est pas moi, reponde la voix miniscule de la souris. Peut-être que le nom appartient à notre ami, la tranche de cerveau?[line break]-- Je ne m'en souviens pas, mais bon, je pourrai aussi bien être ce Julien.[roman type][paragraph break]-- Rien. Rien de tout. Julien… C'est moi?[line break]-- Oui, Julien, c'est toi. Et moi, je suis ton Isabelle. Isabelle Rambaud, repond-elle d'un ton déçu.[quotation mark][paragraph break]";
 			-- 2:
-				say "Con2.";
+				say "[quotation mark][italic type]Elle a des jolies yeux (pour un géant), remarque la souris.[line break]-- Tais-toi, disent Lucky et la tranche de cerveua à l'unisson.[quotation mark][roman type][paragraph break]Vous vous efforcer à former les mots les uns après les autres.[paragraph break][quotation mark]Que faisons-nous ici?[line break]-- Écoute, Julien. Je n'ai pas beaucoup de temps. Je suis chercheur médical et tu es gardien. Nous travaillions dans une installation consacrée à trouver un remède contre le virus Zombie777 qui a désolé le monde entier.[line break]-- Un gardien?[line break]-- Oui. Fais attention, Julien, c'est important. Un foule d'individus infectés ont encerclé la laboratoire et tu me protégeais quand tu as été gratté. Pour éviter que tu ne deviennes un zombie, je t'ai administré le traitement expérimental.[line break]-- Alors, je suis guéri?[line break]-- Loin de ça, je dirais.[quotation mark][paragraph break]";
 			-- 3:
-				say "Con3.";
+				say "[quotation mark]Le traitement n'a pas marché? vous demandez.[line break]-- Pas entièrement, il me semble. J'ai éprouvé d'un problème avec le système microfluidique de synthèse biomoléculaire qui a produit le traitment. Je crois qu'un composant était omit de la formule. J[apostrophe]étais en train de faire des réparations sur l'unité de synthèse quand tu m'a pris au dépourvu. Tu m'a attaqué, mais j'ai réussi à m'enfuir au sas. Et voilà ou nous en sommes.[line break]--Désolé.[line break]-- Ce n[apostrophe]était pas toi. Tu étais completement transformé en zombie. Mais… comment se fait-il que tu puisse parler maintenant? Les zombies n'en sont capable.[quotation mark][paragraph break]";
 			-- 4:
-				say "Con4.";
+				say "[quotation mark]Nous avons beacoup de mal à parler.[line break]-- Naturellement, vos neurones sont en état de… attends… nous?[paragraph break][italic type]-- Raconte-lui de moi, implore la souris tout excité.[line break]-- Et de moi! ajoute Lucky.[roman type][paragraph break]-- Ouais, je dis [apostrophe]nous[apostrophe] parce qu'il y a trois esprits dans ma tête: la souris, Lucky le chien, et la tranche de cerveau. Nous travaillons ensemble pour se déplacer et parler.[line break]-- Ben, elle marque un pause, ça explique tout. Votre cerveau était réinitialisé, c'est-à-dire effacé, par le virus, mais tu as réussi à la recharger d'un façon avec des cerveaux normales. La tranche dont tu parles s'agit d'une biospsie que j'ai pris de Julien avant que le virus avait atteint cet portion de son cerveau. ";
+			-- 5:
+				say "[quotation mark]Alors, nous sommes foutu? vous dites.[paragraph break][italic type]-- Tout à fait, grommele le souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan?[line break]-- Oui, je crois. Fais exactément ce que je te dis: Je suis en train de mourir, déjà je ne peut pas même bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personalité fusionnera avec les tiens. Le virus est toujours présent en toi et il va destruire votre cerveau, mais il était ralenti par la première dose du traitement. S'il reste assez de temps, on peut répararer l'unité de synthèse et cette fois produire un traitement curatif. Je viverai en toi, ensemble avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant?[line break]-- Ça me plaira bien. Allons-y![quotation mark][paragraph break]";
 			-- otherwise:
-				say "Nothing else to say."
-		
+				say "Il ne reste rien à dire."
+				
+												
 Section simpleRepairing
 
 simpleRepairing is an action applying to nothing. Understand "réparer" as simpleRepairing.
@@ -859,7 +862,7 @@ mouseDogDialogue is {
 
 After going east from Couloir 2 when the ascenseur2door is open for the first time:
 	now the BlockChatterFlag is true;
-	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boite magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boite magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boite et ils disparraissent. Plus tard, des autres apparraissent à leur place. C'est magique.[line break]-- Verrons.[roman type][quotation mark][paragraph break]".
+	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boite magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boite magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boite et ils disparraissent. Plus tard, des autres apparraissent à leur place. C'est magique.[line break]-- On verra.[roman type][quotation mark][paragraph break]".
 	
 Section MouseDogGuard Dialogue
 
