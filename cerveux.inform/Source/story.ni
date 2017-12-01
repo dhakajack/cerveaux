@@ -50,7 +50,10 @@ The player has a number called knownCommands. The knownCommands of the player is
 10					Repair]
 
 Chapter Exit Lister
-	
+
+To decide whether unicodage is enabled:
+	(-  glk_gestalt(gestalt_Unicode, 0) -)
+
 Rule for constructing the status line:
 	center "[exitList]" at row 1;
 	rule succeeds.
@@ -60,18 +63,14 @@ To say exitList:
 	repeat with way running through L:
 		if the room the way from the location is not nothing:
 			if the way is:
-				-- up:
-					say "H ";
 				-- west:
-					say "O ";
+					say "[if unicodage is enabled][unicode 8592][otherwise]<[end if] ";
 				-- north:
-					say "N ";
+					say "[if unicodage is enabled][unicode 8593][otherwise]^[end if] ";
 				-- south:
-					say "S ";
+					say "[if unicodage is enabled][unicode 8595][otherwise]v[end if] ";
 				-- east:
-					say "E ";
-				-- down:
-					say "B ".
+					say "[if unicodage is enabled][unicode 8594][otherwise]>[end if] ";
 
 Chapter Disable Keyboard
 
@@ -513,7 +512,7 @@ After going south from Couloir 1 when the consciousness of the player is 3 for t
 		try looking.
 	
 After going south from Couloir 1 when the consciousness of the player is 4 for the first time:
-	say "You catch sight of your reflection as scientist.";
+	say "Vous voyez votre reflet dans le miroir et vous le regardez un longue moment. Vous reconnaissez immédiatement Julien, vêtu de son uniforme de gardien bleu et contre toute attente portant toujours son chapeau officiel.";
 	try looking.
 
 Section Salle de Décontamination
@@ -822,7 +821,7 @@ Every turn:
 	if the curedFlag of the player is not true:
 		if the disjoncteurs are not broken and the servomoteur is not broken and the player is in the Laboratoire Biochimique:
 			now the BlockChatterFlag is true;
-			say "L'appareil robotique émit un bip et le fluide fluo vert remplit un flacon. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez en grandes gorgées.[paragraph break][quotation mark]Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti! hurle le docteur.[quotation mark][paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observer que votre peau a repris son teint natural et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
+			say "L'appareil robotique émit un bip et du fluide fluo vert remplit un flacon. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez en grandes gorgées.[paragraph break][quotation mark]Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti! hurle le docteur.[quotation mark][paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observer que votre peau a repris son teint natural et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
 			now the curedFlag of the player is true;
 	if the BlockChatterFlag is false:
 		if the consciousness of the player is:
