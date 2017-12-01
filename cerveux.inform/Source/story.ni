@@ -288,7 +288,7 @@ The tas de nourriture de chien is in the void.
 
 Every turn when the chien is in the cage and the player is in the Laboratoire Zoologique:
 	if a random chance of 3 in 8 succeeds:
-		say "Le loup [one of]aboie bruyamment[or]mord les barres de sa cage[or]gratte les oreilles[or]fait les cent pas dans sa boite métallique[or]hurle a pleine poumons[or]renifle l'air[or]renifle sa cage[or]renifle lui-meme[or]léche les pattes[or]vous montre ses dents[or]grogne de manière menaçante[or]vous ignore[or]court de coté à coté dans sa cage, vous dévisageant[in random order]."		
+		say "Le loup [one of]aboie bruyamment[or]mord les barres de sa cage[or]gratte les oreilles[or]fait les cent pas dans sa boîte métallique[or]hurle a pleine poumons[or]renifle l'air[or]renifle sa cage[or]renifle lui-meme[or]léche les pattes[or]vous montre ses dents[or]grogne de manière menaçante[or]vous ignore[or]court de coté à coté dans sa cage, vous dévisageant[in random order]."		
 	
 		 
 Section Ascenseur 2
@@ -456,12 +456,18 @@ To say pnFrigo:
 		-- 4:
 			say "congélateur pour spécimens de pathologie".
 
-The boite en plastique is a female closed openable container in the frigo. The boite en plastique is closed.
+The boîte en plastique is a female closed openable container in the frigo. The boîte en plastique is closed.
 
-The morceau de cerveau is a male edible thing in the boite en plastique.
+The morceau de cerveau is a male edible thing in the boîte en plastique.
 
 After opening the labPathDoor:
 	say "[openNord]."
+	
+After going north from Couloir 1 when the labPathDoor is open for the first time:
+	now the BlockChatterFlag is true;
+	say "[quotation mark][italic type]Oh là là! dit Lucky avec joie.[line break]-- Pourquoi es-tu si content?[line break]-- Vois-tu cette boîte-là? Voilà la vraie boîte magique: le frigo![line break]-- Est-ce qu'on fait des voyages dans un frigo?[line break]-- Non, on mange ce qu'on trouve là-dedans![roman type][quotation mark][paragraph break]";
+	try looking.
+
 
 Section Les Toilettes
 
@@ -512,6 +518,7 @@ After going south from Couloir 1 when the consciousness of the player is 3 for t
 		try looking.
 	
 After going south from Couloir 1 when the consciousness of the player is 4 for the first time:
+	now the BlockChatterFlag is true;
 	say "Vous voyez votre reflet dans le miroir et vous le regardez un longue moment. Vous reconnaissez immédiatement Julien, vêtu de son uniforme de gardien bleu et contre toute attente portant toujours son chapeau officiel.";
 	try looking.
 
@@ -799,6 +806,7 @@ After eating the morceau de cerveau:
 	increment the knownCommands of the player.
 	
 After going north from Escalier 2 when the sasDoor is not locked for the first time:
+	now the BlockChatterFlag is true;
 	say "Une femme d'une quarantaine d'années vêtue d'une blouse blanche est assise derrière un bureau en métal. Elle est à mi-chemin entre vous et la porte à l'autre bout de la pièce. Elle semble gravement blessée et saigne d'une blessure au bras qu'elle a bandée de gaze stérile. Dans son autre main, elle brandit un pied-de-biche.";
 	try looking;
 	increment the knownCommands of the player.
@@ -875,14 +883,15 @@ mouseDogDialogue is {
 "Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois ta taille?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
 "Je n'arrive pas à comprendre exactement comment j'ai réussi à vous manger.[line break]-- Qu'est-ce que tu te rapelles de l[apostrophe]événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois.",
 "As-tu toujours vécu ici, Souris?[line break]-- De générations de ma famille ont vécu ici, c'est notre propriété héréditaire. On le défende contre les envaihaisseurs, les souris de campagne qui ne sont que des cons et voleurs.[line break]-- As-tu jamais vu le monde en dehors d'ici?[line break]-- Je n'en ai envie. J'ai entendu des contes, bien sur: le ciel, les nuages, les champs, mais rien de tout cela ne m'intéresse.",
-"Et toi, Lucky? Tu a mentionné une famille? As-tu une femme (nous les souris ne croyons pas au marriage, mais j'ai entendu que les chiens sont plus traditionnels).[line break]-- Une famille, oui, mais pas de femme (bien qu'il y avait un caniche à côté… euh, mais c'est une autre histoire). Non, lorsque je parle de famille, il s'agit d'un famille humain.",
-"Tu étais leur ésclave?[line break]-- Non, ce n[apostrophe]était comme ça. J'ai joué avec les enfants, ils m'ont donné de la nourriture, ils m'ont carressé toute la journée, et j'avais même mon propre lit.[line break]-- Tu rêves. Je n'ai jamais vu de pareil. Les humains n'aime pas les animaux. Ils essaient toujours de nous écraser dessous leurs semelles!",
-"Bah, tu ne connais que peu des humains.[line break]-- Je n'ai aucune envie de les connaître de plus près.[line break]-- Tu aurais aimé ma famille.[line break]-- Alors, pourquoi as-tu quitté de sa famille si remarquable?[line break]-- Pas par choix. Nous étions dans un forêt, j'ai vu un écureuil, et je me suis perdu.[line break]-- Ne me parles pas d[apostrophe]écureuils. Ils sont pire que les souris sauvages!"
+"Et toi, Lucky? Tu as mentionné une famille? As-tu une femme (nous les souris ne croyons pas au marriage, mais j'ai entendu que les chiens sont plus traditionnels).[line break]-- Une famille, oui, mais pas de femme (bien qu'il y avait un caniche à côté… euh, mais c'est une autre histoire). Non, lorsque je parle de famille, il s'agit d'un famille humain.",
+"Tu étais leur ésclave? demande la souris.[line break]-- Non, ce n[apostrophe]était comme ça. J'ai joué avec les enfants, ils m'ont donné de la nourriture, ils m'ont carressé toute la journée, et j'avais même mon propre lit.[line break]-- Tu rêves. Je n'ai jamais vu de pareil. Les humains n'aime pas les animaux. Ils essaient toujours de nous écraser dessous leurs semelles!",
+"Bah, tu ne connais que peu des humains, réfute Lucky.[line break]-- Je n'ai aucune envie de les connaître de plus près.[line break]-- Tu aurais aimé ma famille.[line break]-- Alors, pourquoi as-tu quitté de sa famille si remarquable?[line break]-- Pas par choix. Nous étions dans un forêt, j'ai vu un écureuil, et je me suis perdu.[line break]-- Ne me parles pas d[apostrophe]écureuils. Ils sont pire que les souris sauvages!",
+"Lucky, penses-tu que tu retrouvera un jour ta famille?[line break]-- Je l'espère.[line break]-- Moi aussi. Je veux chasser les écureuils avec toi.[line break]-- Ça serait génial."
 }
 
 After going east from Couloir 2 when the ascenseur2door is open for the first time:
 	now the BlockChatterFlag is true;
-	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boite magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boite magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boite et ils disparraissent. Plus tard, des autres apparraissent à leur place. C'est magique.[line break]-- On verra.[roman type][quotation mark][paragraph break]".
+	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boîte magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boîte magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boîte et ils disparraissent. Plus tard, des autres apparraissent à leur place. C'est magique.[line break]-- On verra.[roman type][quotation mark][paragraph break]".
 	
 Section MouseDogGuard Dialogue
 
