@@ -104,7 +104,7 @@ g-tiffany	10223608
 g-sky	10075900
 g-peptobismol	16554446
 
-Palette is a list of glulx color values that varies. Palette is {g-red, g-white, g-LightGray, g-lime, g-indigo,  g-tiffany, g-blue, g-yellow, g-green, g-peptobismol}.
+Palette is a list of glulx color values that varies. Palette is {g-red, g-white, g-MidGray, g-lime, g-indigo,  g-tiffany, g-blue, g-yellow, g-green, g-peptobismol}.
 
 A button is a kind of stroked rectangle primitive. The associated canvas of a button is the graphics-canvas. The tint of a button is g-black. The background tint of a button is g-MidGray. 
 
@@ -846,7 +846,7 @@ Every turn:
 					if the number of entries in EverybodyDialogue is greater than zero:
 						say "[italic type][quotation mark][entry 1 of EverybodyDialogue][quotation mark][roman type][paragraph break]";
 						remove entry 1 from EverybodyDialogue;
-		now the BlockChatterFlag is false.
+	now the BlockChatterFlag is false.
 	
 Section Mouse Dialogue
 
@@ -873,8 +873,12 @@ mouseDogDialogue is {
 "La souris? Quelle souris?[line break]-- La souris qui habite ici.[line break]-- La maudite souris qui vole toujours les bribes autour de mon distributeur?[line break]-- Ouais, la même. Une fois de plus, je suis désolé de t'avoir dérangé.",
 "Pas du tout. J'aurais fait pareil.[line break]-- Bon, merci.[line break]-- Dis, souris, as-tu un nom?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [apostrophe]Souris[apostrophe]. Et toi? Comment tu t'appelles?[line break]-- [apostrophe]Lucky[apostrophe]. C'est le nom que ma famille m'a donné avant que je suis arrivée ici. Les bourreaux me désigne [apostrophe]Sujet 205-Alpha[apostrophe], mais je préfère [apostrophe]Lucky[apostrophe].[line break]-- D'accord, Lucky.",
 "Souris, peux-tu m'expliquer quelque chose? Je suis toujours perplexe. Comment se fait-il que tu, un souris, une animal tout petit, puisses manger un chien comme moi, quelque fois ta taille?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien? Je pensais que tu étais un loup![line break]-- Non, un chien, j'en suis certain.",
-"Je n'arrive pas à comprendre exactement comment j'ai réussi à vous manger.[line break]-- Qu'est-ce que tu te rapelles de l[apostrophe]événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois."
-}.
+"Je n'arrive pas à comprendre exactement comment j'ai réussi à vous manger.[line break]-- Qu'est-ce que tu te rapelles de l[apostrophe]événement?[line break]-- J[apostrophe]étais pris d'une folle envie de cerveaux.[line break]-- Quel cerveau?[line break]-- Dans ce cas, le tien.[line break]-- Ah, je vois.",
+"As-tu toujours vécu ici, Souris?[line break]-- De générations de ma famille ont vécu ici, c'est notre propriété héréditaire. On le défende contre les envaihaisseurs, les souris de campagne qui ne sont que des cons et voleurs.[line break]-- As-tu jamais vu le monde en dehors d'ici?[line break]-- Je n'en ai envie. J'ai entendu des contes, bien sur: le ciel, les nuages, les champs, mais rien de tout cela ne m'intéresse.",
+"Et toi, Lucky? Tu a mentionné une famille? As-tu une femme (nous les souris ne croyons pas au marriage, mais j'ai entendu que les chiens sont plus traditionnels).[line break]-- Une famille, oui, mais pas de femme (bien qu'il y avait un caniche à côté… euh, mais c'est une autre histoire). Non, lorsque je parle de famille, il s'agit d'un famille humain.",
+"Tu étais leur ésclave?[line break]-- Non, ce n[apostrophe]était comme ça. J'ai joué avec les enfants, ils m'ont donné de la nourriture, ils m'ont carressé toute la journée, et j'avais même mon propre lit.[line break]-- Tu rêves. Je n'ai jamais vu de pareil. Les humains n'aime pas les animaux. Ils essaient toujours de nous écraser dessous leurs semelles!",
+"Bah, tu ne connais que peu des humains.[line break]-- Je n'ai aucune envie de les connaître de plus près.[line break]-- Tu aurais aimé ma famille.[line break]-- Alors, pourquoi as-tu quitté de sa famille si remarquable?[line break]-- Pas par choix. Nous étions dans un forêt, j'ai vu un écureuil, et je me suis perdu.[line break]-- Ne me parles pas d[apostrophe]écureuils. Ils sont pire que les souris sauvages!"
+}
 
 After going east from Couloir 2 when the ascenseur2door is open for the first time:
 	now the BlockChatterFlag is true;
