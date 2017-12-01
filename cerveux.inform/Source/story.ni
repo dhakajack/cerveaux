@@ -247,7 +247,7 @@ To say descLabZoo:
 		-- 3:
 			say "Une cage occupe la moitié de la pièce et le reste de l'espace est dédié au dressage des animaux";
 		-- 4:
-			say "TODO: the canine facility….La cage apporte un placard, [quotation mark]Sujet 205-Alpha[quotation mark]."
+			say "Les animaux sont maintenus dans une cage d'une superficie de 15 mètres carrés, ce qui leur permet de rester actifs pendant des expériences qui peuvent durer des semaines. Un des dispositifs utilisés pour leur entraînement se trouve du côté de la cage[one of]. Vous constatez que la cage apporte un placard: [quotation mark]Sujet 205-Alpha[quotation mark][or][stopping]."
 			
 
 To say pnLabZoo:
@@ -727,7 +727,7 @@ Carry out simpleRepairing:
 Instead of touching something (called the item):
 	now the item is not broken;
 	say "Vouz  [the item]."
-	[todo override touch with specific repair actions.]
+	[override touch with specific repair actions.]
 	
 Chapter Consciousness
 
@@ -780,7 +780,7 @@ After opening the labZooDoor:
 	increment the knownCommands of the player.
 	
 After going north from Couloir 2 for the first time:
-	say "Vous penetrez dans la tanière du loup, un endroit bien connu mais toujours effrayant. Comme d'habitude le loup est emprisonné dans sa cage et vous êtes libre d'explorer, hors de portée de ses machoires baveuses.";
+	say "Vous penetrez dans la tanière du loup, un endroit bien connu mais toujours effrayant. Comme d'habitude le loup est emprisonné dans sa cage et vous êtes libre d'explorer, hors de portée de ses mâchoires baveuses.";
 	try looking;
 	increment the knownCommands of the Player.
 	
@@ -821,7 +821,8 @@ Section Generate Dialogue
 Every turn:
 	if the curedFlag of the player is not true:
 		if the disjoncteurs are not broken and the servomoteur is not broken and the player is in the Laboratoire Biochimique:
-			say "Found the cure!";
+			now the BlockChatterFlag is true;
+			say "L'appareil robotique émit un bip et le fluide fluo vert remplit un flacon. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez en grandes gorgées.[paragraph break][quotation mark]Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti! hurle le docteur.[quotation mark][paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observer que votre peau a repris son teint natural et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
 			now the curedFlag of the player is true;
 	if the BlockChatterFlag is false:
 		if the consciousness of the player is:
@@ -834,14 +835,19 @@ Every turn:
 					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
 					remove entry 1 from mouseDogDialogue;
 			-- 3:
-				if the number of entries in mouseDogDialogue is greater than zero:
-					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
-					remove entry 1 from mouseDogDialogue;
+				if the number of entries in mouseDogGuardDialogue is greater than zero:
+					say "[italic type][quotation mark][entry 1 of mouseDogGuardDialogue][quotation mark][roman type][paragraph break]";
+					remove entry 1 from mouseDogGuardDialogue;
 			-- 4:
-				if the number of entries in mouseDogDialogue is greater than zero:
-					say "[italic type][quotation mark][entry 1 of mouseDogDialogue][quotation mark][roman type][paragraph break]";
-					remove entry 1 from mouseDogDialogue;
-	now the BlockChatterFlag is false.
+				if the curedFlag of the player is true:
+					if the number of entries in CuredDialogue is greater than zero:
+						say "[italic type][quotation mark][entry 1 of CuredDialogue][quotation mark][roman type][paragraph break]";
+						remove entry 1 from CuredDialogue;
+				otherwise:
+					if the number of entries in EverybodyDialogue is greater than zero:
+						say "[italic type][quotation mark][entry 1 of EverybodyDialogue][quotation mark][roman type][paragraph break]";
+						remove entry 1 from EverybodyDialogue;
+		now the BlockChatterFlag is false.
 	
 Section Mouse Dialogue
 
@@ -886,6 +892,12 @@ Section Everybody Dialogue
 EverybodyDialogue is a list of text that varies. 
 
 EverybodyDialogue is { "" }.
+
+Section Cured Dialogue
+
+CuredDialogue is a list of text that varies. 
+	
+CuredDialogue is { "" }.
 
 Chapter The Void
 
@@ -946,14 +958,7 @@ To say VictoryText:
 	
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir ".
-
-
-
-
-
-[/ nord / manger / sud / sud / sud / est / pousser / est / pousser / ouest / déverrouiller / ouvrir / sud / ouvrir / réparer / nord / pousser / est / pousser / ouest / ouest / nord / ouvrir / réparer / sud / est / pousser / est / pousser / ouest / sud".
-]
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir / nord / parler / parler / parler / parler / parler / manger / sud / sud / sud / est / pousser / est / pousser / ouest / déverrouiller / ouvrir / sud / ouvrir / réparer / nord / pousser / est / pousser / ouest / ouest / nord / ouvrir / réparer / sud / est / pousser / est / pousser / ouest / sud / nord / pousser / est / pousser / ouest / ouest / nord / nord / nord / pousser / parler ".
 
 
 
