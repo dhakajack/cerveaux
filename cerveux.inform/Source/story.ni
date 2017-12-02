@@ -231,6 +231,11 @@ To say pnCouloir2:
 			say "Couloir, niveau 2";
 		-- 4:
 			say "Niveau 2: Expériences Physiologiques".
+	
+		
+After going east from Couloir 2 when the ascenseur2door is open for the first time:
+	now the BlockChatterFlag is true;
+	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boîte magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boîte magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boîte et ils disparraissent. Plus tard, des autres apparraissent à leur place. C'est magique.[line break]-- On verra.[roman type][quotation mark][paragraph break]".
 			
 
 Section Laboratoire Zoologique
@@ -618,7 +623,6 @@ Before eating Docteur Rambaud when the conversations of Docteur Rambaud are less
 	stop the action.
 	
 
-
 Chapter Verbs
 
 Section simpleUnlocking
@@ -715,7 +719,7 @@ Carry out simpleTalking:
 			-- 4:
 				say "[quotation mark]Nous avons beacoup de mal à parler.[line break]-- Naturellement, vos neurones sont en état de… attends… nous?[paragraph break][italic type]-- Raconte-lui de moi, implore la souris tout excité.[line break]-- Et de moi! ajoute Lucky.[roman type][paragraph break]-- Ouais, je dis [apostrophe]nous[apostrophe] parce qu'il y a trois esprits dans ma tête: la souris, le chien qui s'appelle Lucky, et la tranche de cerveau. Nous travaillons ensemble pour se déplacer et parler.[line break]-- Ben, elle marque un pause, ça explique tout. Votre cerveau était réinitialisé, c'est-à-dire effacé, par le virus, mais tu as réussi à le recharger d'un façon avec des cerveaux normales. La tranche dont tu parles s'agit d'une biospsie que j'ai pris de Julien avant que le virus avait atteint cet portion de son cerveau.[quotation mark][paragraph break]";
 			-- 5:
-				say "[quotation mark]Alors, nous sommes foutus? vous dites.[paragraph break][italic type]-- Tout à fait, grommele le souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan?[line break]-- Oui, je crois. Fais exactément ce que je te dis: Je suis en train de mourir, déjà je ne peut pas même bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personalité fusionnera avec les tiens. Le virus est encore présent en toi et il va destruire votre cerveau, mais il était ralenti par la première dose du traitement. S'il reste assez de temps, on peut répararer l'unité de synthèse et cette fois produire un traitement curatif. Je viverai en toi, ensemble avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant?[line break]-- Ça me plaira bien. Allons-y![quotation mark][paragraph break]";
+				say "[quotation mark]Alors, nous sommes bel et bien foutus? vous dites.[paragraph break][italic type]-- Tout à fait, grommele le souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan?[line break]-- Oui, je crois. Fais exactément ce que je te dis: Je suis en train de mourir, déjà je ne peut pas même bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personalité fusionnera avec les tiens. Le virus est encore présent en toi et il va destruire votre cerveau, mais il était ralenti par la première dose du traitement. S'il reste assez de temps, on peut répararer l'unité de synthèse et cette fois produire un traitement curatif. Je viverai en toi, ensemble avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant?[line break]-- Ça me plaira bien. Allons-y![quotation mark][paragraph break]";
 			-- otherwise:
 				say "Il ne reste rien à dire."
 				
@@ -801,7 +805,7 @@ After eating the chien:
 	increment the knownCommands of the player.
 	
 After eating the morceau de cerveau:
-	say "En mâchant la tranche de cerveau, vous constatez un saveur désagréable, mais ça s'estompe presque immédiatement.[paragraph break]Pendant quelques moments rien ne se passe et vous vous demandez si vous pouvez maintenant manger n'importe quoi en toute impunité.[paragraph break]Soudain, le monde passe du monochrome à la couleur vive. Un vague électrique parcourt votre esprit et vous vous effondrez, désorienté. Lorsque vous vous mettez debout, des nouvelles idées se mêlent aux vos pensées et vous voyez tout sous un nouveau jour.";
+	say "En mâchant la tranche de cerveau, vous constatez un saveur désagréable, mais ça s'estompe presque immédiatement.[paragraph break]Pendant quelques moments rien ne se passe et vous vous demandez si vous pouvez maintenant manger n'importe quoi en toute impunité.[paragraph break]Soudain, le monde passe du monochrome à la couleur vive. Une vague électrique parcourt votre esprit et vous vous effondrez, désorienté. Lorsque vous vous mettez debout, des nouvelles idées se mêlent aux vos pensées et vous voyez tout sous un nouveau jour.";
 	increment the consciousness of the player;
 	increment the knownCommands of the player.
 	
@@ -889,15 +893,17 @@ mouseDogDialogue is {
 "Lucky, penses-tu que tu retrouvera un jour ta famille?[line break]-- Je l'espère.[line break]-- Moi aussi. Je veux chasser les écureuils avec toi.[line break]-- Ça serait génial."
 }
 
-After going east from Couloir 2 when the ascenseur2door is open for the first time:
-	now the BlockChatterFlag is true;
-	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boîte magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boîte magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boîte et ils disparraissent. Plus tard, des autres apparraissent à leur place. C'est magique.[line break]-- On verra.[roman type][quotation mark][paragraph break]".
-	
+
 Section MouseDogGuard Dialogue
 
 mouseDogGuardDialogue is a list of text that varies. 
 
-mouseDogGuardDialogue is { "" }.
+mouseDogGuardDialogue is { 
+"Il faut patrouiller! ordonne une nouvelle voix[line break]-- Patrouiller? Qu'est que ça veut dire? demande la souris.[line break]-- Cela signifie marcher partout, pour sécuriser l'installation répond la voix.[line break]-- J'aime bien faire des promenades! Lucky dit tout excité.",
+"Si je puis poser une question, demande la souris, qui es-tu?[line break]-- Mon nom est… euh… voyons… un instant… bonne question. En effet, je ne me souviens pas. Le nom m[apostrophe]échappe pour l'instant. Que proposerais-tu?[line break]-- Appelons-le [apostrophe]La petite tranche de cerveau que nous avons trouvée dans le frigo et dont la saveur était un peu avariée[apostrophe], conseille le chien.[line break]-- Non, c'est vraiment trop long. Disons plutôt [apostrophe]la tranche de cerveau[apostrophe] tout just. Est-ce que ça te convient?[line break]-- Oui, dit la tranche de cerveau, de toute manière, j'au un préférence pour les noms courts.", 
+"Avez-vous aussi des noms? questionne la tranche de cerveau.[line break]Oui, répond le chien. Pardonne notre manque de politesse. Je m'appele Lucky et mon ami la souris est tout simplement appelé [apostrophe]la souris[apostrophe].[line break]-- C'est exact, confirme la souris.[line break]-- C'est un plaisir de faire votre connaissance mes nouveaux amis.", 
+"Alors, tranche de cerveau, je me demande quel sorte d'animal tu étais avant d'arriver ici. J'étais chien et la souris a été toujours une souris[line break]-- J'étais quelque chose autre qu'une tranche de cerveau auparavant?[line break]-- Il me semble que tu étais un frigo, suggère la souris. J'ai mangé le cerveau d'un chien est Lucky est apparu. Puis nous avons ouvert et mangé un frigo et tu es apparu.[line break]-- Je ne crois pas qu'il marche comme ça, murmure Lucky."
+ }.
 
 Section Everybody Dialogue
 
