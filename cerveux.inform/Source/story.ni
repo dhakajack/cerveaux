@@ -628,8 +628,7 @@ Chapter Verbs
 
 Section simpleUnlocking
 
-simpleUnlocking is an action applying to nothing. Understand "déverrouiller
-" as simpleUnlocking.
+simpleUnlocking is an action applying to nothing. Understand "déverrouiller" as simpleUnlocking.
 
 Carry out simpleUnlocking:
 	repeat with way running through directions:
@@ -640,9 +639,13 @@ Carry out simpleUnlocking:
 				say "à l[apostrophe]";
 			otherwise:
 				say "au ";
-			say "[way].";
+			say "[way].[no line break][one of][firstUnlocked][or][stopping][paragraph break]";
 			stop the action;
 	say "Vous ne voyez aucune porte verrouillée."
+	
+To say firstUnlocked:
+	now the BlockChatterFlag is true;[hate to side effect this way, but here it seems expedient]
+	say "[paragraph break][quotation mark][italic type]Attends, dit le chien. Quel est ce nouveau truc?[line break]-- Il faut introduire un code pour ouvrir les portes avec des serrures électroniques.[line break]-- Et tu te souviens de ce code? demande la souris.[line break]-- Apparement[roman type].[quotation mark]".
 	
 Section simpleOpening
 
@@ -904,14 +907,17 @@ mouseDogGuardDialogue is {
 "Si je puis poser une question, demande la souris, qui es-tu?[line break]-- Mon nom est… euh… voyons… un instant… bonne question. En effet, je ne me souviens pas. Le nom m[apostrophe]échappe pour l'instant. Que proposerais-tu?[line break]-- Appelons-le [apostrophe]La petite tranche de cerveau que nous avons trouvée dans le frigo et dont la saveur était un peu avariée[apostrophe], conseille le chien.[line break]-- Non, c'est vraiment trop long. Disons plutôt [apostrophe]la tranche de cerveau[apostrophe] tout just. Est-ce que ça te convient?[line break]-- Oui, dit la tranche de cerveau, de toute manière, j'au un préférence pour les noms courts.", 
 "Avez-vous aussi des noms? questionne la tranche de cerveau.[line break]-- Oui, répond le chien. Pardonne notre manque de politesse. Je m'appele Lucky et mon ami la souris est tout simplement appelé [apostrophe]la souris[apostrophe].[line break]-- C'est exact, confirme la souris.[line break]-- C'est un plaisir de faire votre connaissance, mes nouveaux amis.", 
 "Alors, tranche de cerveau, je me demande quel sorte d'animal tu étais avant d'arriver ici. J[apostrophe]étais chien et la souris a été toujours une souris[line break]-- J[apostrophe]étais quelque chose autre qu'une tranche de cerveau auparavant?[line break]-- Il me semble que tu étais un frigo, suggère la souris. J'ai mangé le cerveau d'un chien est Lucky est apparu. Puis nous avons ouvert et mangé un frigo et tu es apparu.[line break]-- Je ne crois pas qu'il marche comme ça, murmure Lucky.", 
-"Quand tu es arrivé, tu as dit qu'il fallait [apostrophe]sécuriser l'installation[apostrophe]. Qu'est-ce que ça veut dire? demande Lucky. [line break]-- Cela signifie que nous devons regarder autour de l'installation pour la protéger contre tout ménace. [line break] - OK, dit la souris en essayant de suivre la conversation, mais c'est quoi une installation? [line break] - C'est le complexe des ... euh ... c'est un endroit où ... tout le monde travaille pour ... euh. Voilà où nous sommes, conclut la tranche de cerveau.", 
+"Quand tu es arrivé, tu as dit qu'il fallait [apostrophe]sécuriser l'installation[apostrophe]. Qu'est-ce que ça veut dire? demande Lucky. [line break]-- Cela signifie que nous devons regarder autour de l'installation pour la protéger contre tout ménace. [line break] -- OK, dit la souris en essayant de suivre la conversation, mais c'est quoi une installation? [line break] - C'est le complexe des ... euh ... c'est un endroit où ... tout le monde travaille pour ... euh. Voilà où nous sommes, conclut la tranche de cerveau.", 
 "De quelle ménace parles-tu? demande la souris[line break]-- Franchement, je ne sais pas, réponde la tranche de cerveau. Encore, je ne me souviens. Mais il y en a beacoup, j'en suis certain.[line break]-- Tu as l'air parano, dit le chien.[line break]-- Peut-être que si j'avais mes mémoires, je pourrais… non. Elles sont perdues.", 
 "Peut-être qu'il y a un moyen de récupérer vos mémoires, suggère Lucky.[line break]-- Comment? J'ai essayé dur et rien ne me vient à l'esprit.[line break]-- Probablement parce tu n'es qu'une petite tranche de cerveau, suppose la souris.  Si nous pouvons trouver le reste du cerveau, qui doit être ici quelque part, nous pourrions le manger pour obtenir les mémoires manquantes, non?[line break]-- Hein? Tu le penses? questionne la tranche de cerveau.[line break]-- Oui, certainment, rassure le chien.", 
 "Et si le reste du cerveau nous trouve avant que nous le trouve? demande la souris.[line break]-- Et alors? dit Lucky.[line break]-- Le reste de cerveau peut nous manger plutôt que nous le mange, réponde la souris.[line break]-- Ça changera quoi, exactament? demande la tranche de cerveau. Nous serons tous ensemble en tout cas.[line break]-- Oui. Mais. D'habitude je préfère manger des autres avant qu'ils me mangent.", 
 "Savez-vous ce dont nous avons besoin? interroge Lucky. Un plan.[line break]-- Oui, je suis d'accord avec toi, dit la souris. Que proposes-tu?[line break] --Numéro un, explique le chien, il faut explorer un peu de plus, comme la tranche de cerveau a dit, pour sécuriser l'installation. Numéro deux: Chercher le cerveau manquant. Et numéro…euh, le numéro qui suit numéro deux: nous devons nous eschapper d'ici.[line break]-- Génial! Tu es génie, Lucky, dit la tranche de cerveau.",
 "Dehors? demande la souris. Je suis tout à fait confortable ici. Que offre le monde extérieur? Rien que des ennuis. J'ai hérités des terres ici et même un titre -- vous rendez-vous compte que je suis un marquis? Oui, je ne plaisante pas. Je suis le dix-huitième marquis de ma ligne. Tu veux que je sacrificier tout ça?[line break]-- Il y a un monde entier! plaide le chien[line break]-- J'ai vécu là, ajoute la tranche de cerveau. Je crois que je vivais non loin d'ici avec ma copine… comment s'appelait-elle?", 
 "Une petite amie, hein? demande Lucky, interessé.[line break]-- Raconte nous les détails! encourage la souris.[line break]-- À vraiment dire, je ne me souviens de beaucoup, pas même son nom. Cependent je me rapelle qu'elle était bigrement intelligente… elle avait un bon sens de l'humour et une rire plein d'entrain… et des yeux en amande d'un violet profonde… et elle avait des grandes… euh… Zut. J'ai oubli le mot.",
-"Penses-tu que tu peux trouver votre maison si nous parvenons à sortir de l'installation? demande Lucky.[line break]-- Ah oui, assurément. Il n'y a que une dizaine de pièces de négocier et nous serons dehors. La maison est toute proche. On a juste de suivre la rue… je ne me souviens pas du nom de la rue, cependent je le reconnaîtrai.[line break]-- Ton amnésie ne m'inspire pas confiance, plaisante la souris.[line break]-- Si nous trouvons le reste du cerveau au cours de notre évasion tout sera réglé."
+"Penses-tu que tu peux trouver votre maison si nous parvenons à sortir de l'installation? demande Lucky.[line break]-- Ah oui, assurément. Il n'y a que une dizaine de pièces de négocier et nous serons dehors. La maison est toute proche. On a juste de suivre la rue… je ne me souviens pas du nom de la rue, cependent je le reconnaîtrai.[line break]-- Ton amnésie ne m'inspire pas confiance, plaisante la souris.[line break]-- Si nous trouvons le reste du cerveau au cours de notre évasion tout sera réglé.", 
+"Si nous quittons de l'installation, pourrais-tu aider Lucky à retrouver sa famille? demande la souris.[line break]As-tu aussi une maison près d'ici? suit la tranche de cerveau.[line break]-- Probablement, réponde le chien, ma famille vit dans une jolie maison blanche entourée de grandes arbres.[line break]-- Y-a-t-il des chats? interrompt la souris.[line break]-- Aucune, dit fièrement le chien.",
+"J'avais une pensée troublante, dit la souris.[line break]-- Quoi? interroge la tranche de cerveau.[line break]-- Qu'allons-nous faire si nous rencontrons un chat?[line break]Nous mangerons le cerveau, non? réponde la tranche de cerveau. Où en est le problème?[line break]Oh, je vois, dis le chien. On aura les pensées d'un chat avec nous. Ça serait plutôt insupportable.[line break]-- Carrément, dit la souris. Je suis d'accord de le manger, mais je réfuse d'entendre les pensées d'un chat. C'est trop.", 
+"Quand nous sommes au dehors, que ferons-nous pour retrouver la maison de Lucky, demande la souris.[line break]-- D'abord mettons le cap vers chez moi, réponde la tranche de cerveau. J'ai une voiture et cela aidera beacoup à chercher rapidement.[line break]-- Tu ne te souviens pas de ton nom, mais tu sais conduire? démande la souris.[line break]-- Sinon, je le peux, dit Lucky. J'ai vu les humains le faire de nombreuses fois. Conduire ne me semble trop compliqué."
  }.
 
 Section Everybody Dialogue
