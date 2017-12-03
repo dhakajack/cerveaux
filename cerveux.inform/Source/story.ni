@@ -31,7 +31,7 @@ The player has a number called consciousness. The consciousness of the player is
 0					rien
 1					une souris
 2					un chien
-3					un morceau de cerveau d'un garde
+3					un morceau de cerveau d'un gardien
 4					le cerveau d'un scientifique
 ]
 
@@ -40,8 +40,8 @@ The player has a number called knownCommands. The knownCommands of the player is
 [Niveau					Action
 1					East
 2					West
-3					simple Eating
-4					simple Opening
+3					Eating
+4					Opening
 5					North
 6					South
 7					Push Button
@@ -98,10 +98,8 @@ The back-colour of the main-window is g-White.
 
 Table of Common Color Values (continued)
 glulx color value	assigned number
-g-LightGray	15066597
 g-MidGray	12829635
 g-tiffany	10223608
-g-sky	10075900
 g-peptobismol	16554446
 
 Palette is a list of glulx color values that varies. Palette is {g-red, g-white, g-MidGray, g-lime, g-indigo,  g-tiffany, g-blue, g-yellow, g-green, g-peptobismol}.
