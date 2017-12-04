@@ -835,7 +835,7 @@ Every turn:
 	if the curedFlag of the player is not true:
 		if the disjoncteurs are not broken and the servomoteur is not broken and the player is in the Laboratoire Biochimique:
 			now the BlockChatterFlag is true;
-			say "L'appareil robotique émit un bip et du fluide fluo vert remplit un flacon. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez en grandes gorgées.[paragraph break][quotation mark]Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti! hurle le docteur.[quotation mark][paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observer que votre peau a repris son teint natural et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
+			say "L'appareil robotique émit un bip et remplit un flacon du fluide fluo vert. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez le remède en grandes gorgées.[paragraph break][quotation mark]Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti! hurle le docteur.[quotation mark][paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observer que votre peau a repris son teint natural et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
 			now the curedFlag of the player is true;
 	if the BlockChatterFlag is false:
 		if the consciousness of the player is:
@@ -915,14 +915,21 @@ mouseDogGuardDialogue is {
 "Penses-tu que tu peux trouver votre maison si nous parvenons à sortir de l'installation? demande Lucky.[line break]-- Ah oui, assurément. Il n'y a que une dizaine de pièces de négocier et nous serons dehors. La maison est toute proche. On a juste de suivre la rue… je ne me souviens pas du nom de la rue, cependent je le reconnaîtrai.[line break]-- Ton amnésie ne m'inspire pas confiance, plaisante la souris.[line break]-- Si nous trouvons le reste du cerveau au cours de notre évasion tout sera réglé.", 
 "Si nous quittons de l'installation, pourrais-tu aider Lucky à retrouver sa famille? demande la souris.[line break]As-tu aussi une maison près d'ici? suit la tranche de cerveau.[line break]-- Probablement, réponde le chien, ma famille vit dans une jolie maison blanche entourée de grandes arbres.[line break]-- Y-a-t-il des chats? interrompt la souris.[line break]-- Aucune, dit fièrement le chien.",
 "J'avais une pensée troublante, dit la souris.[line break]-- Quoi? interroge la tranche de cerveau.[line break]-- Qu'allons-nous faire si nous rencontrons un chat?[line break]Nous mangerons le cerveau, non? réponde la tranche de cerveau. Où en est le problème?[line break]Oh, je vois, dis le chien. On aura les pensées d'un chat avec nous. Ça serait plutôt insupportable.[line break]-- Carrément, dit la souris. Je suis d'accord de le manger, mais je réfuse d'entendre les pensées d'un chat. C'est trop.", 
-"Quand nous sommes au dehors, que ferons-nous pour retrouver la maison de Lucky, demande la souris.[line break]-- D'abord mettons le cap vers chez moi, réponde la tranche de cerveau. J'ai une voiture et cela aidera beacoup à chercher rapidement.[line break]-- Tu ne te souviens pas de ton nom, mais tu sais conduire? démande la souris.[line break]-- Sinon, je le peux, dit Lucky. J'ai vu les humains le faire de nombreuses fois. Conduire ne me semble trop compliqué."
- }.
+"Quand nous sommes au dehors, que ferons-nous pour retrouver la maison de Lucky, demande la souris.[line break]-- D'abord mettons le cap vers chez moi, réponde la tranche de cerveau. J'ai une voiture et cela aidera beacoup à chercher rapidement.[line break]-- Tu ne te souviens pas de ton nom, mais tu sais conduire? démande la souris.[line break]-- Sinon, je le peux, dit Lucky. J'ai vu les humains le faire de nombreuses fois. Conduire ne me semble trop compliqué.",
+"Mes amis, dit le tranche de cerveau, j'ai de plus en plus de 	peine à mettre de l'ordre dans mes pensées ; puis-je vous proposer une petite pause dans notre conversation pour récuperer mes forces?[line break]-- Oui, moi aussi, dit la souris. J'aime beaucoup causer avec vous, mais j'ai un sacré mal de tête. Une repose me ferait du bien.[line break]-- Je suis d'accord, dit Lucky. J'aime bien courir avec le meute, mais un peu de temps mort (ou mort-vivant) me conviendrait.[line break]-- Bonne nuit, tous, dit la soursis."
+}
 
 Section Everybody Dialogue
 
 EverybodyDialogue is a list of text that varies. 
 
-EverybodyDialogue is { "" }.
+EverybodyDialogue is { "Quelle sensation incroyable! délire le scientifique.[line break]-- On s'y habitue après un temps, dit la souris laconiquement.[line break]-- Dis-lui le plan, Lucky, demande la tranche de cerveau. Je ne me rapelle pas de toutes les étapes.[line break]-- D'accord, dit le chien, numéro un: pour commencer nous avons besoin de quitter l'installation, numéro deux: trouverons la voiture de la tranche de cerveau, enfin, numéro plus que deux: nous chercherons ma famille.",
+"Euh.  D'accord, dit Isabelle. Mais en premier lieu il faut sortir de la pièce ou vous m'a trouvé, et pour ce fair, il faut synthétiser le remède, propose le scientifique.[line break]-- Impossible, dit la souris d'un ton définitif.[line break]-- Pourquoi? demande Isabelle boulversé.[line break]-- C'est une question de mathématiques, réponde la souris d'un air pointillieux. Le plan de Lucky commence déjà avec numéro un. Il n'y a rien avant le numéro un.[line break]-- Numéro zéro? suggère Isabelle.[paragraph break][roman type]Silence radio.[paragraph break][italic type]-- OK, dit Isabelle, laissons renuméroter… un: faire le remède, deux: sortir de l'installation, trois: retrouver la voiture, quatre: chercher la famille de Lucky. Ça vous convient?[line break]-- Oui, accorde Lucky, ça l'air raisonnable.[line break]-- Et mathématiquement correct, ajoute la souris.",
+"Isabelle, penses-tu que nous allons trouver ma famille? demande Lucky.[line break]-- Oui, j'en suis certain.[line break]-- Comment peux-tu être si sûr? demande la tranche de cerveau.[line break]-- Parce que je connait la famille: Jean-Paul et Alexandra Drummond et leurs filles, Léa et Camille. Ils ne vivent qu'à 200 mètres de moi et Julien.[line break]-- Oui, j'ai entendu ces noms souvent, tu as assurement raison, mais comment peux-tu savoir de qui je parlais? demande Lucky.[line break]-- Je les ai vus dans vos pensées, dit le scientifique.",
+"Tu as vu dans les pensées de Lucky? demand la soursis. Comment?[line break]-- Nous faisons parti d'un seul cerveau maintenant. Nos esprits sont d'une manière ou d'une autre mélangés. Je peux acceder aux ses pensées et il peut également acceder aux miennes.[line break]-- Fantastique! dit le souris. Nous avons des superpouvoirs!"
+}
+
+
 
 Section Cured Dialogue
 
@@ -989,10 +996,9 @@ To say VictoryText:
 	
 Chapter Testing
 
-Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir ".
+Test me with "est / ouest / manger / est / ouvrir / nord / ouvrir / manger / pousser / sud / pousser / est / pousser / ouest / sud / ouvrir / manger / manger / manger / nord / ouvrir / nord / ouvrir / ouvrir / manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir / nord / parler / parler / parler / parler / parler / manger /"
 
-
-[ manger / sud / ouest / déverrouiller / ouvrir / ouest / déverrouiller / ouvrir / nord / nord / déverrouiller / ouvrir / nord / parler / parler / parler / parler / parler / manger / sud / sud / sud / est / pousser / est / pousser / ouest / déverrouiller / ouvrir / sud / ouvrir / réparer / nord / pousser / est / pousser / ouest / ouest / nord / ouvrir / réparer / sud / est / pousser / est / pousser / ouest / sud / nord / pousser / est / pousser / ouest / ouest / nord / nord / nord / pousser / parler ".
+[ sud / sud / sud / est / pousser / est / pousser / ouest / déverrouiller / ouvrir / sud / ouvrir / réparer / nord / pousser / est / pousser / ouest / ouest / nord / ouvrir / réparer / sud / est / pousser / est / pousser / ouest / sud / nord / pousser / est / pousser / ouest / ouest / nord / nord / nord / pousser / parler ".
 
 ]
 
