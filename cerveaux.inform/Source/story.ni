@@ -945,7 +945,15 @@ Section Cured Dialogue
 
 CuredDialogue is a list of text that varies. 
 	
-CuredDialogue is { "" }.
+CuredDialogue is { 
+"C'est fait, dit le scientifique. Je ferai l'appel: Lucky?[line break]-- Présent.[line break]-- Le Marquis de Souris?[line break]-- Oui. Ici.[line break]-- Et, la tranche de cerveau de Julien?[line break]-- Présente.[line break]-- Bon, dit Isabelle, il me semble que nous sommes tous arrivee sauf et sain.",
+"Et maintenant on quitte la installation? suggère le chien.[line break]-- Oui, dit Isabelle[line break]-- Mais la porte extérieur est verrouillée. Personne ne peut l'ouvrir à part le colonel Greillier dans la salle de contrôle.[line break]Oui, nous devrons lui convaincre de l'ouvrir, acquiesce le scientifique.",
+"Dis, ça me surprend un peu que tu te souviens du colonel Greillier. J'ai pensé que tu avait oublié les noms.[line break]-- Du colonel? demande la tranche de cerveau. Comment puis-je oublier le nom de votre boss? C[apostrophe]était juste la dernière semaine qu'il est tombé dans la piscine pendant sa fête d'anniversaire. Je suppose que nous étions tous un peu bourré![line break]-- C'est quoi bourré? demande la souris. Oh, je vois dans vos pensées. Ç'a l'air amusant.[line break]Patientez  un instant, souris, dit Isabelle. Julien, c[apostrophe]était une mémoire complexe. Penses-tu que votre mémoire est de retour?[line break]-- Hien. Comment pourrais-je savoir?",
+"Julien, dit le scientifique, qu'est-ce que tu m'a donné en cadeux notre prémier Noël?[line break]-- Des gants?[line break]-- Et ils était…[line break]-- Bien trop grands! Oui, je les avais achetés pour mon frère, mais quand tu m'as donné un cadeau et je n'avais rien pour toi… oui…euh, es-tu toujours vexé?[line break]-- Non, pas vraiment. Je juste essaiais votre mémoire.",
+"Donne-moi un autre essaie![line break]-- D'accord. Qu'est-ce que m'appele-tu quand nous sommes seuls?[line break]--Isabelle?[line break]Non, réfléchis! Quand c'est juste nous…[line break]-- Je préfère de ne pas le dire devant Lucky et la souris.[line break]-- Va! dit le chien. Nous partageons un esprit maintenant, il n'y a pas de vraies secrets entre nous.[line break]-- Très bien, dit Julien, je t'appelle mon lapin.[line break]-- Lapin? dit la souris. Elle est un lapin? Quoi? Je suis totalement confus",
+"Bon, Julien, il me semble que tu es en train de récuperer ta mémoire, dit le scientifique.[line break]-- Tu penses? Pourtant tu m'a as dit que je ne suis qu'une toute petite biopsie de cerveau. Est-il possible que les souvenirs sont les tiens et je les lis dans tes pensées?[line break]-- Je dirais qu'une toute petite biopsie ne serait à guère capable de hasarder une telle hypothèse, plutôt il s'agit d'un cerveau entier en pleine forme.",
+"Si j'ai bien compris, dit Lucky, tu as dit que les cerveaux des zombies sont entièrement effacer par le virus. Vu que rien ne reste, comment se fait-il qu'il peut fonctionner maintenant?[line break]-- Nous n'avons déja eu une cas de pareil pour étudier, répond le scientifique. Ses voies neuronales était toujour intactes, en fait, c'est grâce à eux que nous continuons à exister du tout. Nous nous servons de ces voies pour former nos propres pensées."
+}.
 
 Chapter The Void
 
