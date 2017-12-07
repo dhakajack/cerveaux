@@ -869,7 +869,7 @@ Section Mouse Dialogue
 mouseDialogue is a list of text that varies. 
 	
 mouseDialogue is {
-"Quoi qu'il en soit, il me semble que J'ai beaucoup grandi, hein.",
+"Quoi qu'il en soit, il me semble que j'ai beaucoup grandi, hein.",
 "Je désire quelque chose fortement, mais j'ai du mal à dire quoi.",
 "Voyons, quel sont mes envies habituelles?",
 "Dormir? Non. Boire? Non. Faire l'amour? Non.[paragraph break]Mon dieu! Non? Est-ce que je suis malade?",
