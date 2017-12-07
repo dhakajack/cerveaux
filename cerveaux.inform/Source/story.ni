@@ -234,6 +234,7 @@ To say pnCouloir2:
 		
 After going east from Couloir 2 when the ascenseur2door is open for the first time:
 	now the BlockChatterFlag is true;
+	try looking;
 	say "[quotation mark][italic type]Lucky, comment as-tu su comment ouvrir la boîte magique?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [apostrophe]boîte magique[apostrophe].[line break]-- Les géants… [line break]-- Ça veut dire les humains?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boîte et ils disparaissent. Plus tard, des autres apparaissent à leur place. C'est magique.[line break]-- On verra.[roman type][quotation mark][paragraph break]".
 			
 
@@ -250,7 +251,7 @@ To say descLabZoo:
 		-- 3:
 			say "Une cage occupe la moitié de la pièce et le reste de l'espace est dédié au dressage des animaux";
 		-- 4:
-			say "Les animaux sont maintenus dans une cage d'une superficie de 15 mètres carrés, ce qui leur permet de rester actifs pendant des expériences qui peuvent durer des semaines. Un des dispositifs utilisés pour leur entraînement se trouve du côté de la cage[one of]. Vous constatez que la cage apporte un placard: [quotation mark]Sujet 205-Alpha[quotation mark][or][stopping]."
+			say "Les animaux sont maintenus dans une cage d'une superficie de 15 mètres carrés, ce qui leur permet de rester actifs pendant des expériences qui peuvent durer des semaines. Un des dispositifs utilisés pour leur entraînement se trouve du côté de la cage[one of]. Vous constatez que la cage apporte un placard: [quotation mark]Sujet 205-Alpha[quotation mark][or][stopping]"
 			
 
 To say pnLabZoo:
