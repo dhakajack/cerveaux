@@ -74,8 +74,8 @@ To say exitList:
 
 Chapter Disable Keyboard
 
-[TODO: re-enable to kill keyboard. 
-The focal event type of main input is hyperlink-event.]
+[TODO: re-enable to kill keyboard. ]
+The focal event type of main input is hyperlink-event.
 
 Chapter Suppress Mention of Doors
 
