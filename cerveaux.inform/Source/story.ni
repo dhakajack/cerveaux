@@ -490,6 +490,12 @@ To say pnToilettes:
 	otherwise:
 		say "Les toilettes".
 		
+Instead of simplePushing when the player is in les Toilettes:
+	if the consciousness of the player is less than 3:
+		say "Vous entendez un fort bruit.";
+	otherwise:
+		say "Vous tirez la chasse d'eau."
+		
 Instead of simpleOpening when the player is in Les Toilettes:
 	if the consciousness of the player is less than 3:
 		say "En soulevant la couverture d'un meuble, vous révélez un bol plein d'eau.";
