@@ -395,7 +395,7 @@ Couloir 1 is a room. The description of Couloir 1  is "[descCouloir1]." The prin
 To say descCouloir1:
 	if the consciousness of the player is:
 		-- 2:
-			say "Un couloir qui ressemble au «couloir dangereux» près de chez vous. Vous voyez des sorties à l'ouest et au sud";
+			say "Un couloir qui ressemble au «couloir dangereux» près de chez vous. Vous voyez [if labPathDoor is closed]une sortie au sud et un mur glissant au nord[otherwise]des sorties au nord et au sud[end if]";
 			say "[liftDoorDogStatus]"; 
 		-- 3:
 			say "Le couloir central du premier niveau se connecte aux toilettes au sud, les douches à l'ouest, un labo au nord, et l'ascenseur à l'est";
