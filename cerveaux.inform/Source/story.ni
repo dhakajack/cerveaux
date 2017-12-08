@@ -480,7 +480,7 @@ Les Toilettes is a room. The description of Les Toilettes is "[descToilettes]." 
 
 To say descToilettes:
 	if the consciousness of the player is less than 3:
-		say "L'odeur d'urine est forte ici[one of]. Beaucoup ont marqué leur territoire ici. Ce doit être un endroit très convoité[or][stopping]";
+		say "L'odeur d'urine est forte ici[one of]. Beaucoup ont marqué leur territoire. Ce doit être un endroit très convoité[or][stopping]";
 	otherwise:
 		say "Un sol carrelé en noir et blanc, des cabinets, urinoirs, et lavabos"
 	
