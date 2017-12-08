@@ -614,13 +614,13 @@ To say descSas:
 			
 Instead of going north when the player is in the sas:
 	if Docteur Rambaud is in the sas:
-		say "Vous auriez besoin de dépasser la scientifique, et elle n'a pas l'air coopératif. De plus, vous ne connaissez pas le code pour ouvrir la porte extérieur, il serait donc inutile d'essayer.";
+		say "Vous auriez besoin de dépasser la scientifique, et elle n'a pas l'air coopératif. De plus, vous ne connaissez pas le code pour ouvrir la porte extérieure, il serait donc inutile d'essayer.";
 	otherwise:
 		say "Futile. La porte est hermétiquement fermée et ne peut être ouverte que par ceux qui se trouve dans la salle de côntrole."
 			
 Before eating Docteur Rambaud when the conversations of Docteur Rambaud are less than 5:
 	now the BlockChatterFlag is true;
-	say "[one of]La scientifique vous repousse avec son pied-de-biche. Fois hors de portéé de votre bouche menaçante, elle appuie un bouton sur l'interphone et dit: «Attention: salle de contrôle. Ici le sas, le docteur Rambaud parlant. Julien est ici avec moi. Malheuresement, je dois vous signaler que l'expérience a raté.  En aucune cas, ne déverrouillez la porte extérieur»[or]Le docteur Rambaud ne bouge pas de sa position derrière le bureau, mais lorsque vous l'approchez, elle lance une série de coups avec son pied-de-biche qui vous fait reconsidérer vos actions[or]La scientifique vous confie: «Je vous fais crédit de votre persévérance, neanmoins… » et elle vous frappe carrement au nez. Ébranlé, vous trébuchez un peu et vous hâtez de reculer[or]Le docteur Rambaud vous bat avec le pied-de-biche à plusieurs reprises[stopping].";
+	say "[one of]La scientifique vous repousse avec son pied-de-biche. Fois hors de portéé de votre bouche menaçante, elle appuie un bouton sur l'interphone et dit: «Attention: salle de contrôle. Ici le sas, le docteur Rambaud parlant. Julien est ici avec moi. Malheuresement, je dois vous signaler que l'expérience a raté.  En aucune cas, ne déverrouillez la porte extérieure»[or]Le docteur Rambaud ne bouge pas de sa position derrière le bureau, mais lorsque vous l'approchez, elle lance une série de coups avec son pied-de-biche qui vous fait reconsidérer vos actions[or]La scientifique vous confie: «Je vous fais crédit de votre persévérance, neanmoins… » et elle vous frappe carrement au nez. Ébranlé, vous trébuchez un peu et vous hâtez de reculer[or]Le docteur Rambaud vous bat avec le pied-de-biche à plusieurs reprises[stopping].";
 	stop the action.
 	
 
@@ -708,7 +708,7 @@ Carry out simpleTalking:
 			say "[one of]Vous expliquez votre plan. Le directeur de l'installation prende le micro et vous souhaite la bon chance. Par ailleurs, il vous dirige de lui appeler quand vous avez réussi. Apart ça, il faut ne pas utiliser l'interphone[or]La salle de contrôle refuse de vous parler jusqu[apostrophe]à ce que vous ayez en main un remède efficace[stopping]. Il raccroche et l'interphone s[apostrophe]éteint.";
 			now the interphone is not live;
 		otherwise:
-			say "Les cris de joie issuent de la salle de contrôle lorsque vous signalez votre succès. La porte extérieur du sas s'ouvre et vous commencez votre nouvelle vie.";
+			say "Les cris de joie issuent de la salle de contrôle lorsque vous signalez votre succès. La porte extérieure du sas s'ouvre et vous commencez votre nouvelle vie.";
 			terminate the game;
 	otherwise:
 		now the BlockChatterFlag is true;
@@ -949,7 +949,7 @@ CuredDialogue is a list of text that varies.
 	
 CuredDialogue is { 
 "C'est fait, dit le scientifique. Je ferai l'appel: Lucky?[line break]-- Présent.[line break]-- Le Marquis de Souris?[line break]-- Oui. Ici.[line break]-- Et, la tranche de cerveau de Julien?[line break]-- Présent.[line break]-- Bon, dit Isabelle, il me semble que nous sommes tous arrivés sauf et sain.",
-"Et maintenant on quitte la installation? suggère le chien.[line break]-- Oui, dit Isabelle[line break]-- Mais la porte extérieur est verrouillée. Personne ne peut l'ouvrir à part le colonel Greillier dans la salle de contrôle, dit la tranche de cerveau.[line break]-- Oui, nous devons le convaincre de l'ouvrir, acquiesce le scientifique.",
+"Et maintenant on quitte la installation? suggère le chien.[line break]-- Oui, dit Isabelle[line break]-- Mais la porte extérieure est verrouillée. Personne ne peut l'ouvrir à part le colonel Greillier dans la salle de contrôle, dit la tranche de cerveau.[line break]-- Oui, nous devons le convaincre de l'ouvrir, acquiesce le scientifique.",
 "Dis, ça me surprend un peu que tu te souviens du colonel Greillier. J'ai pensé que tu avait oublié les noms.[line break]-- Du colonel? demande la tranche de cerveau. Comment puis-je oublier le nom de ton boss? C[apostrophe]était juste la dernière semaine qu'il est tombé dans la piscine pendant sa fête d'anniversaire. Je suppose que nous étions tous un peu bourré![line break]-- C'est quoi bourré? demande la souris. Oh, je vois dans vos pensées. Ç[apostrophe]a l'air amusant.[line break]-- Patientez un instant, Souris, dit Isabelle. Julien, c[apostrophe]était un souvenir compliqué. Penses-tu que ta mémoire est de retour?[line break]-- Hien. Comment pourrais-je savoir?",
 "Julien, dit le scientifique, qu'est-ce que tu m'a donné en cadeu notre premier Noël?[line break]-- Des gants?[line break]-- Et ils était…[line break]-- Bien trop grands! Oui, je les avais achetés pour mon frère, mais quand tu m'as donné un cadeau et je n'avais rien pour toi… oui…euh, es-tu toujours vexée?[line break]-- Non, pas vraiment. Je juste essayais ta mémoire.",
 "Donne-moi un autre essaie![line break]-- D'accord. Qu'est-ce que m'appele-tu quand nous sommes seuls?[line break]-- Isabelle?[line break]-- Non, réfléchis! Quand c'est juste nous…[line break]-- Je préfère de ne pas le dire devant Lucky et la souris.[line break]-- Va! dit le chien. Nous partageons un esprit maintenant, il n'y a pas de vrais secrets entre nous.[line break]-- Très bien, dit Julien, je t'appelle mon lapin.[line break]-- Lapin? dit la souris. Elle est un lapin? Quoi? Je suis totalement confus.",
