@@ -166,20 +166,20 @@ To say bougePas:
 			
 Section Bloc Opératoire
 
-Bloc Opératoire is a room. The description of Bloc Opératoire is "[descBlocOperatoire]." Couloir 2 is east from Bloc Opératoire. The player is in Bloc Opératoire. The printed name of the Bloc Opératoire is "[pnBlocOpératoire]".
+Bloc Opératoire is a room. The description of Bloc Opératoire is "[descBlocOperatoire]." Couloir 2 is east from Bloc Opératoire. The player is in Bloc Opératoire. The printed name of the Bloc Opératoire is "[pnBlocOpératoire]"
 
 To say descBlocOperatoire:
 	if the consciousness of the player is:
 		-- 0:
-			say "Une pièce sombre. Rien d'intéressant ici";
+			say "Une pièce sombre[one of]. Rien d'intéressant ici[or][stopping]";
 		-- 1:
-			say "Il peu de sang ici -- une grande pièce bleu avec les murs métalliques";
+			say "Il peu de sang ici -- une grande pièce bleue avec les murs métalliques";
 		-- 2:
-			say "La salle où les humains coupent les animaux et enlevent leurs tripes";
+			say "La salle bleue où les humains coupent les animaux et enlevent leurs tripes";
 		-- 3:
-			say "La table d'opération trone au centre de la pièce, entouré d[apostrophe]équipement chirurgical";
+			say "La table d'opération trone au centre de la pièce, bleue entouré d[apostrophe]équipement chirurgical. La sortie à l'est mène au couloir";
 		-- 4:
-			say "La table d'operation trone au centre de la salle, avec ses adaptations pour retenir les animaux pendant la chirurgie expérimentale. Juste à côté, il y a une machine d'anesthésie, des moniteurs de signes vitaux, et une unité de radiographie portable"
+			say "La table d'operation couverte des draps chirurgicaux en bleue, trone au centre de la salle, avec ses adaptations pour retenir les animaux pendant la chirurgie expérimentale. Juste à côté, il y a une machine d'anesthésie, des moniteurs de signes vitaux, et une unité de radiographie portable. Le couloir central de niveau deux se trouve à l'est"
 			
 To say pnBlocOpératoire:
 	if the consciousness of the player is:
@@ -776,6 +776,7 @@ After going east for the first time:
 	
 After going west from Couloir 2 for the first time:
 	move the petite créature grise to the Bloc Opératoire;
+	try looking;
 	say "Un petit animal gris se cache dans les ombres, tremblant.";
 	increment the knownCommands of the player.
 	
