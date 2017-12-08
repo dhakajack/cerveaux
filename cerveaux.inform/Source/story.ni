@@ -20,18 +20,17 @@ Use no scoring.
 
 Chapter Globals
 
-DebugFlag is a truth state that varies. DebugFlag is true.
 BlockChatterFlag is a truth state that varies. BlockChatterFlag is false.
 
 Chapter The Player
 
-The player has a number called consciousness. The consciousness of the player is 0. The curedFlag of the player is a truth state that varies. The curedFlag of the player is false.
+The player has a number called consciousness. The consciousness of the player is 0. The curedFlag of the player is a truth state that varies. The curedFlag of the player is false. The player has a number called conversations. The conversations of the player is 0.
 
 [Niveau					après avoir mangé….
 0					rien
 1					une souris
 2					un chien
-3					un morceau de cerveau d'un gardien
+3					un morceau de cerveau d'un garde
 4					le cerveau d'un scientifique
 ]
 
@@ -530,7 +529,7 @@ After going south from Couloir 1 when the consciousness of the player is 3 for t
 	
 After going south from Couloir 1 when the consciousness of the player is 4 for the first time:
 	now the BlockChatterFlag is true;
-	say "Vous voyez votre reflet dans le miroir et vous le regardez un longue moment. Vous reconnaissez immédiatement Julien, vêtu de son uniforme de gardien bleu et contre toute attente portant toujours son chapeau officiel.";
+	say "Vous voyez votre reflet dans le miroir et vous le regardez un longue moment. Vous reconnaissez immédiatement Julien, vêtu de son uniforme de garde bleu et contre toute attente portant toujours son chapeau officiel.";
 	try looking.
 
 Section Salle de Décontamination
@@ -714,8 +713,17 @@ Carry out simpleTalking:
 			say "[one of]Vous expliquez votre plan. Le directeur de l'installation prende le micro et vous souhaite la bon chance. Par ailleurs, il vous dirige de lui appeler quand vous avez réussi. Apart ça, il faut ne pas utiliser l'interphone[or]La salle de contrôle refuse de vous parler jusqu[apostrophe]à ce que vous ayez en main un remède efficace[stopping]. Il raccroche et l'interphone s[apostrophe]éteint.";
 			now the interphone is not live;
 		otherwise:
-			say "Les cris de joie issuent de la salle de contrôle lorsque vous signalez votre succès. La porte extérieure du sas s'ouvre et vous commencez votre nouvelle vie.";
-			terminate the game;
+			increase the conversations of the player by 1;
+			if the conversations of the player is:
+				-- 1:
+					say "«Salle de contrôle, Professeur Drummond à l'appareil.[paragraph break]-- C'est ton chien, Lucky! Je suis ici dans le sas! Je suis tellement heureux de t'entendre![line break]-- Euh… est-ce que vous vous moquez de moi? L'interphone n'est que pour les communications officielles. Qui est-ce?[paragraph break][italic type]-- C'est lui! C'est le père de ma famille, dit Lucky.[line break]-- Calme toi, Lucky, insiste la scientifique. Laisse Julien prend le micro.[roman type][paragraph break]Excusez-moi, dit Julien. Je peux tout expliquer. Je suis Julien Truffaut.[line break]-- Le garde?[line break]-- Oui.[line break]-- Impossible. Le docteur Rambaud a dit qui'il était devenu un zombie. Les zombies ne parlent pas. Je n'ai pas de temps pour ces conneries».";
+				-- 2:
+					say "«Je ne plaisante pas, dit Julien. Le docteur Rambaud m'a guéri.[line break]-- Assez, répond le professeur. Si elle est là, donnez-lui la parole.[line break]-- Elle est… occupée… en ce moment». Lorsque vous parlez, vous traînez le corps inerte de la scientifique à l'escalier.[paragraph break]«	Dites donc, vous continuez, si vouz méfiez de moi, activez	caméra de surveillance dans le sas. Vous me verrez.[line break]-- Attendez.».";
+				-- 3:
+					say "	Me voyez-vous? vous demandez.[line break]-- Oui. Mais comment se fait-il que vous êtes toujours en vie? J'ai pensé que vous étiez infecté par le virus.[line break]-- Oui, vous avez raison, comme je vous ai dit…[paragraph break][italic type]-- Laisse-moi expliquer, dit le scientifique.[roman type][paragraph break]-- Le docteur Rambaud a prépare un remède efficace utilisant le system microfluidique de biosynthèse suivant le protocol [quotation mark]M13[quotation mark] qu'elle a discuté avec vous auparant. Mes voies neuronales était restaurées et je suis guéri de l'infection.[line break]-- Ouah. Ce peut-être la fin de la pandémie.[line break]-- Oui. Définitivement!";
+				-- 4: 
+					say "Vous demandez parler avec le responsable de l'installation, le colonel Greillier et vous expliquez en détail votre histoire.[paragraph break]Après quelques heures de discours, il est convaincu et la porte extérieure du sas se déverrouille permettant vous de sortir.";
+					terminate the game;
 	otherwise:
 		now the BlockChatterFlag is true;
 		increase the conversations of scientifique by 1;
@@ -723,7 +731,7 @@ Carry out simpleTalking:
 			-- 1:
 				say "Vous commencez à balbutier et la scientifique vous dévisage d'un regard inquisiteur.[paragraph break]«C'est possible? demande-t-elle. Es-tu toujour capable de parler?[line break]-- Oui, vous grognez au prix d'un grand effort. Moi... parle.[line break]-- Incroyable! C'est un miracle, Julien. De quoi tu te souviens?[paragraph break][italic type]-- Julien? Qui est-ce? demande Lucky.[line break]-- C'est pas moi, répond la voix minuscule de la souris. Peut-être que le nom appartient à notre ami, la tranche de cerveau?[line break]-- Je ne m'en souviens pas, mais bon, je pourrai aussi bien être ce Julien.[roman type][paragraph break]-- Rien. Rien de tout. Julien… C'est moi?[line break]-- Oui, Julien, c'est toi. Et moi, je suis ton Isabelle. Isabelle Rambaud, répond-elle d'un ton déçu.»[paragraph break]";
 			-- 2:
-				say "«[italic type]Elle a des jolies yeux (pour un géant), remarque la souris.[line break]-- Tais-toi, disent Lucky et la tranche de cerveau à l'unisson.»[roman type][paragraph break]Vous vous efforcer à former les mots les uns après les autres.[paragraph break]«Que faisons-nous ici?[line break]-- Écoute, Julien. Je n'ai pas beaucoup de temps. Je suis chercheur médical et tu es gardien. Nous travaillions dans une installation consacrée à trouver un remède contre le virus Zombie777 qui a désolé le monde entier.[line break]-- Un gardien?[line break]-- Oui. Fais attention, Julien, c'est important. Un foule d'individus infectés ont encerclé la laboratoire et tu me protégeais quand tu as été gratté. Pour éviter que tu ne deviennes un zombie, je t'ai administré le traitement expérimental.[line break]-- Alors, je suis guéri?[line break]-- Loin de ça, je dirais.»[paragraph break]";
+				say "«[italic type]Elle a des jolies yeux (pour un géant), remarque la souris.[line break]-- Tais-toi, disent Lucky et la tranche de cerveau à l'unisson.»[roman type][paragraph break]Vous vous efforcer à former les mots les uns après les autres.[paragraph break]«Que faisons-nous ici?[line break]-- Écoute, Julien. Je n'ai pas beaucoup de temps. Je suis chercheur médical et tu es garde. Nous travaillions dans une installation consacrée à trouver un remède contre le virus Zombie777 qui a désolé le monde entier.[line break]-- Un garde?[line break]-- Oui. Fais attention, Julien, c'est important. Un foule d'individus infectés ont encerclé la laboratoire et tu me protégeais quand tu as été gratté. Pour éviter que tu ne deviennes un zombie, je t'ai administré le traitement expérimental.[line break]-- Alors, je suis guéri?[line break]-- Loin de ça, je dirais.»[paragraph break]";
 			-- 3:
 				say "«Le traitement n'a pas marché? vous demandez.[line break]-- Pas entièrement, il me semble. J'ai éprouvé d'un problème avec le système microfluidique de synthèse biomoléculaire qui a produit le traitement. Je crois qu'un composant était omit de la formule. J[apostrophe]étais en train de faire des réparations sur l'unité de synthèse quand tu m'a pris au dépourvu. Tu m'a attaqué, mais j'ai réussi à m'enfuir au sas. Et voilà où nous en sommes.[line break]-- Désolé.[line break]-- Ce n[apostrophe]était pas toi. Tu étais complètement transformé en zombie. Mais… comment se fait-il que tu puisse parler maintenant? Les zombies n'en sont capable.»[paragraph break]";
 			-- 4:
@@ -844,7 +852,7 @@ Every turn:
 	if the curedFlag of the player is not true:
 		if the disjoncteurs are not broken and the servomoteur is not broken and the player is in the Laboratoire Biochimique:
 			now the BlockChatterFlag is true;
-			say "L'appareil robotique émit un bip et remplit un flacon du fluide fluo vert. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez le remède en grandes gorgées.[paragraph break]«Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti! hurle le docteur.»[paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observez que votre peau a repris son teint naturel et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
+			say "L'appareil robotique émit un bip et remplit un flacon du fluide fluo vert. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez le remède en grandes gorgées.[paragraph break]«Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti! hurle le docteur.«[paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observez que votre peau a repris son teint naturel et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
 			now the curedFlag of the player is true;
 	if the BlockChatterFlag is false:
 		if the consciousness of the player is:
