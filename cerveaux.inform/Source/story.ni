@@ -982,12 +982,9 @@ The panneau électrique is an openable closed container in the void. The disjonc
 Instead of touching the disjoncteurs:
 	say "Vous remettez les disjoncteurs.";
 	now the disjoncteurs are not broken;
-	if the servomoteur is broken, the breakers flip in two turns from now.
-
-At the time when the breakers flip:
-	if the player is in Escalier 1:
+	if the servomoteur is broken:
 		say "Le panneau électrique fait un bruit sec et vous constatez que les disjoncteurs ont de nouveau sautés.";
-	now the disjoncteurs are broken.
+		now the disjoncteurs are broken.		
 
 The unité de synthèse microfluidique is an openable closed container in the void. 
 
