@@ -375,8 +375,8 @@ To say descLabBio:
 			if the disjoncteurs are not broken:
 				say "L'alimentation électrique rétablie, la pièce est bien illuminé, les ordinateurs sont allumés, et les équipements semblent en mesure de réaliser les synthèses biochimiques les plus complexes";
 			otherwise:
-				say "Le système robotique de synthèse moléculaire semble en état de fonctionner sauf pour la manque d[apostrophe]électricité"
-	
+				say "Rien ne fonctionne dans ce pièce sombre, ni les ordinateurs, ni le système robotique de synthèse moléculaire. Il est évident que c'est à cause d'un coupure d'alimentation électrique quelque part"
+					
 To say pnLabBio:
 	if the consciousness of the player is:
 		-- 3:
