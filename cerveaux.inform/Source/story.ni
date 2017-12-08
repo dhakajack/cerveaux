@@ -740,7 +740,7 @@ Carry out simpleRepairing:
 	
 Instead of touching something (called the item):
 	now the item is not broken;
-	say "Vous  [the item]."
+	say "Vous réparez[the item]."
 	[override touch with specific repair actions.]
 	
 Chapter Consciousness
@@ -968,7 +968,7 @@ The petite créature grise is an edible female thing. It is in the void.
 
 The dépouille saignante du Docteur Rambaud is a female thing in the void. The indefinite article of dépouille saignante du Docteur Rambaud is "la".
 
-The interphone is a buttoned thing in the void. The interphone can be live. The interphone is not live. The interphone is broken.
+The interphone is a buttoned thing in the void. The interphone can be live. The interphone is not live.
 
 Instead of pushing the interphone:[only present at consciousness 4]
 	if the interphone is not live:
