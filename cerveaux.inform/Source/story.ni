@@ -191,7 +191,7 @@ To say descBlocOperatoire:
 		-- 3:
 			say "La table d'opération trône au centre de la pièce bleue, entourée d[apostrophe]équipements chirurgicaux. La sortie à l'est mène au couloir";
 		-- 4:
-			say "La table d'opération couverte de draps chirurgicaux trône au centre de la salle en bleue, avec ses accessoires pour retenir les animaux pendant la chirurgie expérimentale. Juste à côté, il y a une machine d'anesthésie, des moniteurs de signes vitaux, et une unité de radiographie portable. Le couloir central de niveau deux se trouve à l'est"
+			say "La table d'opération couverte de draps chirurgicaux trône au centre de la salle en bleue, avec ses accessoires pour retenir les animaux pendant la chirurgie expérimentale. Juste à côté, il y a une machine d'anesthésie, des moniteurs de signes vitaux et une unité de radiographie portable. Le couloir central de niveau deux se trouve à l'est"
 			
 To say pnBlocOpératoire:
 	if the consciousness of the player is:
@@ -220,9 +220,9 @@ To say descCouloir2:
 			say "Le couloir qui mène de mon coin confortable au nord à la chambre de torture à l'ouest";
 			say "[liftDoorDogStatus]";
 		-- 3:
-			say "Le couloir central du deuxième niveau. La salle d'opérations se trouve à l'ouest, le chenil au nord, la laboratoire au sud, et l'ascenseur à l'est";
+			say "Le couloir central du deuxième niveau. La salle d'opérations se trouve à l'ouest, le chenil au nord, la laboratoire au sud et l'ascenseur à l'est";
 		-- 4:
-			say "Le couloir central du deuxième niveau. La salle d'opération se trouve à l'ouest, la laboratoire zoologique au nord, la laboratoire biochimique au sud, et l'ascenseur à l'est".
+			say "Le couloir central du deuxième niveau. La salle d'opération se trouve à l'ouest, la laboratoire zoologique au nord, la laboratoire biochimique au sud et l'ascenseur à l'est".
 			
 To say liftDoorDogStatus:
 	if the door east from the location is closed:
@@ -331,7 +331,7 @@ Instead of pushing an elevatorDoor:
 			-- 2:
 				say " avec votre museau[one of] (qui est devenu plus court que dans vos souvenirs)[or][stopping] et remarquez que la pièce vibre subtilement. Un instant plus tard, le mur s[apostrophe]ouvre donnant sur un couloir à l[apostrophe]ouest.";
 			-- otherwise:
-				say ", l'ascenseur [if the location is Ascenseur 2]descend au premier niveau[otherwise]monte au deuxième niveau[end if], et les portes à l'ouest s[']ouvrent."; 
+				say ", l'ascenseur [if the location is Ascenseur 2]descend au premier niveau[otherwise]monte au deuxième niveau[end if] et les portes à l'ouest s[']ouvrent."; 
 		if the player is in Ascenseur 2:
 			move the player to Ascenseur 1, without printing a room description;
 			now Ascenseur1door is open;
@@ -385,7 +385,7 @@ To say descLabBio:
 			say "Normalement, la pièce déborde d[apostrophe]équipements high-techs avec des lumières clignotantes et le bruit continuel des moteurs robotiques. Pourtant, en ce moment tous les équipements sont éteints et il n'y a le moindre son";
 		-- 4:
 			if the disjoncteurs are not broken:
-				say "L'alimentation électrique rétablie, la pièce est bien illuminée, les ordinateurs sont allumés, et les équipements semblent en mesure de réaliser les synthèses biochimiques les plus complexes";
+				say "L'alimentation électrique rétablie, la pièce est bien illuminée, les ordinateurs sont allumés et les équipements semblent en mesure de réaliser les synthèses biochimiques les plus complexes";
 			otherwise:
 				say "Rien ne fonctionne dans ce pièce sombre, ni les ordinateurs, ni le système robotique de synthèse moléculaire. Il est évident que c'est à cause d'un coupure d'alimentation électrique quelque part"
 					
@@ -410,9 +410,9 @@ To say descCouloir1:
 			say "Un couloir qui ressemble au « couloir dangereux » près de chez vous. Vous voyez [if labPathDoor is closed]une sortie au sud et un mur coulissant au nord[otherwise]des sorties au nord et au sud[end if]";
 			say "[liftDoorDogStatus]"; 
 		-- 3:
-			say "Le couloir central du premier niveau donne vers les toilettes au sud, les douches à l'ouest, un labo au nord, et l'ascenseur à l'est";
+			say "Le couloir central du premier niveau donne vers les toilettes au sud, les douches à l'ouest, un labo au nord et l'ascenseur à l'est";
 		-- 4:
-			say "Le couloir central du premier niveau donne vers les toilettes au sud, l'installation de décontamination à l'ouest, le laboratoire de pathologie au nord, et l'ascenseur à l'est".
+			say "Le couloir central du premier niveau donne vers les toilettes au sud, l'installation de décontamination à l'ouest, le laboratoire de pathologie au nord et l'ascenseur à l'est".
 		
 To say pnCouloir1:
 	if the consciousness of the player is:
@@ -456,7 +456,7 @@ To say pnLabPath:
 To say descLabPath:
 	If the consciousness of the player is:
 		-- 2:
-			say "[one of]Cette pièce vous évoque les temps joyeux que vous avez passé en famille -- avant d[apostrophe]être enlevé. D'après les comptoirs, les étagères remplies de denrées, les éviers, et les grands appareils, il s'agit sans aucun doute de la pièce la plus importante de la maison: la cuisine[or]Une cuisine ordinaire, meublé en noir[stopping]";
+			say "[one of]Cette pièce vous évoque les temps joyeux que vous avez passé en famille -- avant d[apostrophe]être enlevé. D'après les comptoirs, les étagères remplies de denrées, les éviers et les grands appareils, il s'agit sans aucun doute de la pièce la plus importante de la maison: la cuisine[or]Une cuisine ordinaire, meublé en noir[stopping]";
 		-- 3:
 			say "C'est ici où les scientifiques préparent les lames de microscope.[paragraph break]Vous reconnaissez une trancheuse à viande et un four à micro-ondes, mais la plupart de l[apostrophe]équipement sur le comptoir n'est pas familier";
 		-- 4:
@@ -494,7 +494,7 @@ To say descToilettes:
 	if the consciousness of the player is less than 3:
 		say "L'odeur d'urine est forte ici[one of]. Beaucoup ont marqué leur territoire. Ce doit être un endroit très convoité[or][stopping]";
 	otherwise:
-		say "Un sol carrelé en noir et blanc, des cabinets, urinoirs, et lavabos"
+		say "Un sol carrelé en noir et blanc, des cabinets, urinoirs et lavabos"
 	
 To say pnToilettes:
 	if the consciousness of the player is less than 3:
@@ -537,7 +537,7 @@ Instead of simpleEating when the player is in Les Toilettes:
 				
 After going south from Couloir 1 when the consciousness of the player is 3 for the first time:
 		now the BlockChatterFlag is true;
-		say "Quand vous entrez dans les toilettes, un mouvement attire votre attention.[paragraph break][italic type]Y a-t-il quelqu'un d'autre ici ?[roman type][paragraph break]Un costaud vêtu d'un uniforme en lambeaux vous dévisage sans sourciller. Son teint blafard, ses yeux cernés, et ses joues creuses rappellent un cadavre.[paragraph break]Cette rencontre maladroite continue pendant plusieurs minutes, jusqu'au moment où vous vous rendez compte que vous regardez votre propre reflet dans un miroir.";
+		say "Quand vous entrez dans les toilettes, un mouvement attire votre attention.[paragraph break][italic type]Y a-t-il quelqu'un d'autre ici ?[roman type][paragraph break]Un costaud vêtu d'un uniforme en lambeaux vous dévisage sans sourciller. Son teint blafard, ses yeux cernés et ses joues creuses rappellent un cadavre.[paragraph break]Cette rencontre maladroite continue pendant plusieurs minutes, jusqu'au moment où vous vous rendez compte que vous regardez votre propre reflet dans un miroir.";
 		try looking.
 	
 After going south from Couloir 1 when the consciousness of the player is 4 for the first time:
@@ -748,7 +748,7 @@ Carry out simpleTalking:
 			-- 3:
 				say "« Le traitement n'a pas marché ? demandez-vous.[line break]-- Pas entièrement, il me semble. J'ai eu un problème avec le système microfluidique de synthèse biomoléculaire qui a produit le traitement. Je crois qu'un composant a été omis dans la formule. J[apostrophe]étais en train de faire des réparations sur l'unité de synthèse quand tu m'a pris au dépourvu. Tu m'as attaqué, mais j'ai réussi à m'enfuir vers le sas. Et voilà où nous en sommes.[line break]-- Désolé.[line break]-- Ce n[apostrophe]était pas toi. Tu étais complètement transformé en zombie. Mais… comment se fait-il que tu puisse parler maintenant ? Les zombies n'en sont pas capables. »[paragraph break]";
 			-- 4:
-				say "« Nous avons beaucoup de mal à parler.[line break]-- Naturellement, vos neurones sont en état de… attends… nous ?[paragraph break][italic type]-- Raconte-lui de moi, implore la souris toute excitée.[line break]-- Et de moi ! ajoute Lucky.[roman type][paragraph break]-- Ouais, je dis [quotation mark]nous[quotation mark] parce qu'il y a trois esprits dans ma tête : la souris, le chien qui s'appelle Lucky, et la tranche de cerveau. Nous travaillons ensemble pour nous déplacer et parler.[line break]-- Ben, elle marque un pause, ça explique tout. Votre cerveau était réinitialisé, c'est-à-dire effacé, par le virus, mais tu as réussi à le recharger d'une certaine façon avec des cerveaux normaux. La tranche dont tu parles est une biopsie que j'ai pris de Julien avant que le virus avait atteint cet portion de son cerveau. »[paragraph break]";
+				say "« Nous avons beaucoup de mal à parler.[line break]-- Naturellement, vos neurones sont en état de… attends… nous ?[paragraph break][italic type]-- Raconte-lui de moi, implore la souris toute excitée.[line break]-- Et de moi ! ajoute Lucky.[roman type][paragraph break]-- Ouais, je dis [quotation mark]nous[quotation mark] parce qu'il y a trois esprits dans ma tête : la souris, le chien qui s'appelle Lucky et la tranche de cerveau. Nous travaillons ensemble pour nous déplacer et parler.[line break]-- Ben, elle marque un pause, ça explique tout. Votre cerveau était réinitialisé, c'est-à-dire effacé, par le virus, mais tu as réussi à le recharger d'une certaine façon avec des cerveaux normaux. La tranche dont tu parles est une biopsie que j'ai pris de Julien avant que le virus avait atteint cet portion de son cerveau. »[paragraph break]";
 			-- 5:
 				say "« Alors, nous sommes bel et bien foutus ? dites-vous.[paragraph break][italic type]-- Tout à fait, grommelle la souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan ?[line break]-- Oui, je crois. Fais exactement ce que je te dis : Je suis en train de mourir, déjà je ne peux même pas bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personnalité fusionnera avec les tiennes. Le virus est encore présent en toi et il va détruire ton cerveau, mais il a été ralenti par la première dose du traitement. S'il reste assez de temps, on peut réparer l'unité de synthèse et cette fois produire un traitement curatif. Je vivrai en toi, avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant ?[line break]-- Vas-y ! »[paragraph break]";
 			-- otherwise:
@@ -962,7 +962,7 @@ EverybodyDialogue is { "Quelle sensation incroyable ! délire la scientifique.[l
 "D'accord, dit la scientifique patiemment, prenons un autre exemple. Souris, je pense en ce moment à mon petit déjeuner. Je m'efforce de le visualiser avec le plus de détails possibles… tente de le voir.[line break]-- Ou ? demande la souris. Je ne sens rien.[line break]-- Ah, dit Isabelle. Voilà le problème. Je pensais en termes visuels. Laisse-moi imaginer son odeur, sa saveur… [line break]-- Oh ! Oui, oui. Je commence à l'apercevoir, dit la souris. Mon dieu, c[apostrophe]était un énorme repas ! C'est merveilleux ! Puis-je vivre de nouveau chaque repas de votre vie ? Pince-moi, je rêve.",
 "Même si je trouve le souvenir de votre repas délicieux, en ce moment je ne veux rien d'autre que des cerveaux. C'est drôle, non ? remarque la souris.[line break]-- Moi aussi, dit la tranche de cerveau.[line break]-- En fait, c'est tout à fait normal pour ceux comme nous qui fonctionnent en mode zombie, répond la scientifique.[line break]-- Nous sommes des zombies ? interroge Lucky.[line break]-- Non, précise la scientifique, ensemble nous constituons un seul zombie, partageant le corps de Julien.[line break]-- Au moins je suis dans mon propre corps, dit la tranche de cerveau.", 
 "D'autres zombies sont-ils aussi agréable que nous ? demande Lucky.[line break]-- Non, répond Isabelle, ce sont des monstres. Nous sommes quelque chose à part.  Je dirais que nous sommes un demi-zombie, ayant reçu une dose d'un remède partiellement efficace. Quant aux autres zombies, ils ne sont pas capable de parler, de penser, en somme, de faire autrement que manger des cerveaux.[line break]-- Et ça pose un problème ? demande la souris.[line break]-- C'est rien de le dire, répond la scientifique. Les zombies ont presque détruit la civilisation !", 
-"Comment est-ce possible ? dit la tranche de cerveau.[line break]-- Le virus a une virulence sans précédent, répond la scientifique. Le moindre griffure et c'est la contamination assurée. Les premiers cas ont été rapportés au Cambodge et vingt-quatre heures après des milliers des cas sont apparus tout autour du monde grâce aux transports aériens. La semaine suivante, c[apostrophe]était un capharnaüm à l[apostrophe]échelle mondiale. Sans électricité, eau, et nourriture les grandes cités se sont effondrées presque immédiatement. Des feux ont balayé la campagnes. Il ne reste que quelques poches d'humanité.",
+"Comment est-ce possible ? dit la tranche de cerveau.[line break]-- Le virus a une virulence sans précédent, répond la scientifique. Le moindre griffure et c'est la contamination assurée. Les premiers cas ont été rapportés au Cambodge et vingt-quatre heures après des milliers des cas sont apparus tout autour du monde grâce aux transports aériens. La semaine suivante, c[apostrophe]était un capharnaüm à l[apostrophe]échelle mondiale. Sans électricité, eau et nourriture les grandes cités se sont effondrées presque immédiatement. Des feux ont balayé la campagnes. Il ne reste que quelques poches d'humanité.",
 "Et quant aux animaux ? demande la souris. Étaient-ils touchés ?[line break]-- En fait, répond Isabelle, nous pensons que la maladie est d'origin canine. Avant la perte de communications avec l'Institut Pasteur à Hô-Chi-Minh-Ville, ils ont isolé une souche mutante de la rage qui a déclenché la pandémie.[line break]-- La rage ! dit Lucky, frappé de terreur. Il n'y a rien de plus terrifiant ![line break]-- Jusqu[apostrophe]à présent, précise la tranche de cerveau.",
 "Si le zombisme s'est propagé si vite, s'inquiète Lucky, penses-tu que ma famille est survécu ?[line break]-- Oui, je le sais, rassure la scientifique. Les Drummonds travaillent ici, dans l'installation et tous les travailleurs sont hébergés dans l'enceinte. Tu n'es pas loin d'eux. [line break]-- Génial ! dit le chien.", 
 "Isabelle, dit la souris, si le remède fonctionne comme prévu, que deviendrons-nous ?[line break]-- Dans quel sens ?[line break]-- Est-ce que nous restons les individus avec nos propres pensées, ou crois-tu que nous allons fusionner dans une seul esprit ?[line break]-- Impossible à prédire. Jusqu[apostrophe]à maintenant, nous avons mené des vies individuelles. Tu as tes souvenirs et j'ai les miens, mais à l'avenir nous allons vivre les mêmes événements du même point de vue. Nous partagerons un seul corps et c'est possible que nous devenions un seul esprit après un certain temps.", 
@@ -1041,7 +1041,7 @@ To terminate the game:
 	say "[VictoryText]".
 		
 To say VictoryText:
-	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vous avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe au Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier :[paragraph break]* Les organisateurs du concours.[paragraph break]* Graham Nelson pour avoir conçu et écrit Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cette oeuvre : Eric Forgeot, Emily Short, et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint la couverture à l'aquarelle.[paragraph break]* Les relecteurs et beta-testeurs extraordinaires.[paragraph break][bold type]FIN."
+	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vous avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe au Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier :[paragraph break]* Les organisateurs du concours.[paragraph break]* Graham Nelson pour avoir conçu et écrit Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cette oeuvre : Eric Forgeot, Emily Short et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint la couverture à l'aquarelle.[paragraph break]* Les relecteurs et beta-testeurs extraordinaires.[paragraph break][bold type]FIN."
 	
 Chapter Testing
 
