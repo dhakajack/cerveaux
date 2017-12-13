@@ -1021,7 +1021,7 @@ The servomoteur is in the unité de synthèse microfluidique. The servomoteur is
 To say pnServo:
 	say "servomoteur";
 	if the servomoteur is not broken:
-		say " en état de marche".
+		say " que vous avez réparé".
 
 After opening the unité de synthèse microfluidique:
 	say "Vous ouvrez le panneau d'accès et tout de suite reconnaissez le problème : un écaillee de soudure est tombée sur les terminaux d'un servomoteur, créant un court-circuit."
