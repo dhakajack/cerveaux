@@ -247,7 +247,7 @@ To say pnCouloir2:
 After going east from Couloir 2 when the ascenseur2door is open for the first time:
 	now the BlockChatterFlag is true;
 	try looking;
-	say "«[italic type]Lucky, comment as-tu su ouvrir la boîte magique ?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [quotation mark]boîte magique[quotation mark].[line break]-- Les géants… [line break]-- Ça veut dire les humains ?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boîte et ils disparaissent. Plus tard, d'autres apparaissent à leur place. C'est magique.[line break]-- On verra.[roman type]»[paragraph break]".
+	say "« [italic type]Lucky, comment as-tu su ouvrir la boîte magique ?[line break]-- J'ai vu un bouton ; je l'ai appuyé. C'est ce que je fais. Alors, raconte-moi cette histoire de [quotation mark]boîte magique[quotation mark].[line break]-- Les géants… [line break]-- Ça veut dire les humains ?[line break]-- Oui, probablement. Ben, les humains, ils entrent dans la boîte et ils disparaissent. Plus tard, d'autres apparaissent à leur place. C'est magique.[line break]-- On verra.[roman type] »[paragraph break]".
 			
 
 Section Laboratoire Zoologique
@@ -482,7 +482,7 @@ After opening the labPathDoor:
 	
 After going north from Couloir 1 when the labPathDoor is open for the first time:
 	now the BlockChatterFlag is true;
-	say "«[italic type]Oh là là ! dit Lucky avec joie.[line break]-- Pourquoi es-tu si content ?[line break]-- Vois-tu cette boîte-là ? Voilà la vraie boîte magique : le frigo ![line break]-- Est-ce qu'on fait des voyages dans un frigo ?[line break]-- Non, on mange ce qu'on trouve là-dedans ![roman type]»[paragraph break]";
+	say "« [italic type]Oh là là ! dit Lucky avec joie.[line break]-- Pourquoi es-tu si content ?[line break]-- Vois-tu cette boîte-là ? Voilà la vraie boîte magique : le frigo ![line break]-- Est-ce qu'on fait des voyages dans un frigo ?[line break]-- Non, on mange ce qu'on trouve là-dedans ![roman type] »[paragraph break]";
 	try looking.
 
 
@@ -729,9 +729,9 @@ Carry out simpleTalking:
 			increase the conversations of the player by 1;
 			if the conversations of the player is:
 				-- 1:
-					say "« Salle de contrôle, Professeur Drummond à l'appareil.[line break]-- C'est ton chien, Lucky ! Je suis ici dans le sas ! Je suis tellement heureux de t'entendre ![line break]-- Euh… est-ce que vous vous moquez de moi ? L'interphone n'est que pour les communications officielles. Qui est-ce ?[paragraph break][italic type]-- C'est lui ! C'est le père de ma famille, dit Lucky.[line break]-- Calme toi, Lucky, insiste la scientifique. Laisse Julien prendre le micro.[roman type][paragraph break]-- Excusez-moi, dit Julien. Je peux tout expliquer. Je suis Julien Truffaut.[line break]-- Le garde ?[line break]-- Oui.[line break]-- Impossible. Le docteur Rambaud a dit qu'il était devenu un zombie. Les zombies ne peuvent pas parler. Je n'ai pas de temps pour ces conneries».";
+					say "« Salle de contrôle, Professeur Drummond à l'appareil.[line break]-- C'est ton chien, Lucky ! Je suis ici dans le sas ! Je suis tellement heureux de t'entendre ![line break]-- Euh… est-ce que vous vous moquez de moi ? L'interphone n'est que pour les communications officielles. Qui est-ce ?[paragraph break][italic type]-- C'est lui ! C'est le père de ma famille, dit Lucky.[line break]-- Calme toi, Lucky, insiste la scientifique. Laisse Julien prendre le micro.[roman type][paragraph break]-- Excusez-moi, dit Julien. Je peux tout expliquer. Je suis Julien Truffaut.[line break]-- Le garde ?[line break]-- Oui.[line break]-- Impossible. Le docteur Rambaud a dit qu'il était devenu un zombie. Les zombies ne peuvent pas parler. Je n'ai pas de temps pour ces conneries ».";
 				-- 2:
-					say "«Je ne plaisante pas, dit Julien. Le docteur Rambaud m'a guéri.[line break]-- Assez, répond le professeur. Si elle est là, donnez-lui la parole.[line break]-- Elle est… occupée… en ce moment». Pendant que vous parlez, vous traînez le corps inerte de la scientifique vers l'escalier.[paragraph break]« Dites donc, continuez-vous, si vous méfiez de moi, activez la caméra de surveillance dans le sas. Vous me verrez.[line break]-- Attendez.».";
+					say "« Je ne plaisante pas, dit Julien. Le docteur Rambaud m'a guéri.[line break]-- Assez, répond le professeur. Si elle est là, donnez-lui la parole.[line break]-- Elle est… occupée… en ce moment ». Pendant que vous parlez, vous traînez le corps inerte de la scientifique vers l'escalier.[paragraph break]« Dites donc, continuez-vous, si vous méfiez de moi, activez la caméra de surveillance dans le sas. Vous me verrez.[line break]-- Attendez. ».";
 				-- 3:
 					say "Me voyez-vous ? vous demandez.[line break]-- Oui. Mais comment se fait-il que vous êtes toujours en vie ? J'ai pensé que vous étiez infecté par le virus.[line break]-- Oui, vous avez raison, comme je vous l[apostrophe]ai dit…[paragraph break][italic type]-- Laisse-moi expliquer, dit le scientifique.[roman type][paragraph break]-- Le docteur Rambaud a préparé un remède efficace utilisant le système microfluidique de biosynthèse suivant le protocol [quotation mark]M13[quotation mark] dont elle a discuté avec vous auparavant. Mes voies neuronales étaient restaurées et je suis guéri de l'infection.[line break]-- Ouah. C[apostrophe]est peut-être la fin de la pandémie.[line break]-- Oui. Certainement !";
 				-- 4: 
@@ -750,7 +750,7 @@ Carry out simpleTalking:
 			-- 4:
 				say "« Nous avons beaucoup de mal à parler.[line break]-- Naturellement, vos neurones sont en état de… attends… nous ?[paragraph break][italic type]-- Raconte-lui de moi, implore la souris toute excitée.[line break]-- Et de moi ! ajoute Lucky.[roman type][paragraph break]-- Ouais, je dis [quotation mark]nous[quotation mark] parce qu'il y a trois esprits dans ma tête : la souris, le chien qui s'appelle Lucky, et la tranche de cerveau. Nous travaillons ensemble pour nous déplacer et parler.[line break]-- Ben, elle marque un pause, ça explique tout. Votre cerveau était réinitialisé, c'est-à-dire effacé, par le virus, mais tu as réussi à le recharger d'une certaine façon avec des cerveaux normaux. La tranche dont tu parles est une biopsie que j'ai pris de Julien avant que le virus avait atteint cet portion de son cerveau. »[paragraph break]";
 			-- 5:
-				say "« Alors, nous sommes bel et bien foutus ? dites-vous.[paragraph break][italic type]-- Tout à fait, grommelle la souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan ?[line break]-- Oui, je crois. Fais exactement ce que je te dis : Je suis en train de mourir, déjà je ne peux même pas bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personnalité fusionnera avec les tiennes. Le virus est encore présent en toi et il va détruire ton cerveau, mais il a été ralenti par la première dose du traitement. S'il reste assez de temps, on peut réparer l'unité de synthèse et cette fois produire un traitement curatif. Je vivrai en toi, avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant ?[line break]-- Vas-y !»[paragraph break]";
+				say "« Alors, nous sommes bel et bien foutus ? dites-vous.[paragraph break][italic type]-- Tout à fait, grommelle la souris[line break]-- Oui, il me semble, accorde Lucky.[roman type][paragraph break]-- Peut-être que non… [line break]-- As-tu un plan ?[line break]-- Oui, je crois. Fais exactement ce que je te dis : Je suis en train de mourir, déjà je ne peux même pas bouger les jambes. Pourtant... Si tu manges mon cerveau -- attends, pas encore, laisse-moi arriver à la fin de mon discours -- si tu manges mon cerveau ma personnalité fusionnera avec les tiennes. Le virus est encore présent en toi et il va détruire ton cerveau, mais il a été ralenti par la première dose du traitement. S'il reste assez de temps, on peut réparer l'unité de synthèse et cette fois produire un traitement curatif. Je vivrai en toi, avec tes pensées.[line break]-- Alors, je dois manger ton cerveau maintenant ?[line break]-- Vas-y ! »[paragraph break]";
 			-- otherwise:
 				say "Il ne reste rien à dire."
 				
@@ -849,7 +849,7 @@ After going north from Escalier 2 when the sasDoor is not locked for the first t
 	
 After eating scientifique:
 	now the BlockChatterFlag is true;
-	say "Vous dévorez le cerveau de la scientifique. Immédiatement vous voyez le monde d'un point de vue plus raffiné et érudit.[paragraph break]« [italic type]C'est fait ? demande la voix d'Isabelle avec hésitation.[line break]-- Oui, tu étais délicieuse, enthousiasme le souris.[line break]-- Le meilleur jusqu'ici, ajoute Lucky.[line break]-- Excuse mes co-esprits, ils manquent cruellement de tact, intervient la tranche de cerveau.[line break]-- Hé ! gémissent la souris et le chien.[line break]-- Sois la bienvenue, Isabelle, continue la tranche de cerveau. Laisse-moi te présenter notre petite troupe : voilà Lucky, le chien, et ici figure Le Marquis Des Souris (ou juste simplement [quotation mark]Souris[quotation mark] parce qu'il est plutôt modeste), et moi, je suis le nommé [quotation mark]tranche de cerveau[quotation mark]. On est à ta disposition.[line break]-- Bonjour, les gars, dit Isabelle avec chaleur. »[paragraph break]";
+	say "Vous dévorez le cerveau de la scientifique. Immédiatement vous voyez le monde d'un point de vue plus raffiné et érudit.[paragraph break]« [italic type]C'est fait ? demande la voix d'Isabelle avec hésitation.[line break]-- Oui, tu étais délicieuse, enthousiasme le souris.[line break]-- Le meilleur jusqu'ici, ajoute Lucky.[line break]-- Excuse mes co-esprits, ils manquent cruellement de tact, intervient la tranche de cerveau.[line break]-- Hé ! gémissent la souris et le chien.[line break]-- Sois la bienvenue, Isabelle, continue la tranche de cerveau. Laisse-moi te présenter notre petite troupe : voilà Lucky, le chien, et ici figure Le Marquis Des Souris (ou juste simplement [quotation mark]Souris[quotation mark] parce qu'il est plutôt modeste), et moi, je suis le nommé [quotation mark]tranche de cerveau[quotation mark]. On est à ta disposition.[line break]-- Bonjour, les gars, dit Isabelle avec chaleur.  »[paragraph break]";
 	move the dépouille saignante du Docteur Rambaud to the sas;
 	move the interphone to the sas;
 	move the panneau électrique to escalier 1;
@@ -865,7 +865,7 @@ Every turn:
 	if the curedFlag of the player is not true:
 		if the disjoncteurs are not broken and the servomoteur is not broken and the player is in the Laboratoire Biochimique:
 			now the BlockChatterFlag is true;
-			say "L'appareil robotique émit un bip et remplit un flacon du fluide fluo vert. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez le remède à grandes gorgées.[paragraph break]« Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà ! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti ! hurle le docteur. »[paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observez que votre peau a repris son teint naturel et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
+			say "L'appareil robotique émit un bip et remplit un flacon du fluide fluo vert. Vous le prenez anxieusement, portez un toast à votre propre santé, et buvez le remède à grandes gorgées.[paragraph break]« Je ne ressens rien, s'inquiète la tranche de cerveau.[line break]-- Attendez, rassure Isabelle.[line break]-- Moi non plus, opine la souris.[line break]-- Attendez, insiste la scientifique.[line break]-- Houlà ! s'exclame Lucky. Quelque chose commence à…[line break]-- C'est parti ! hurle le docteur.  »[paragraph break]Vous tremblez violentement et vous vous évanouissez. Lorsque vous vous levez, vous observez que votre peau a repris son teint naturel et que vous pouvez vous déplacer sans trébucher. Bref, vous êtes guéri.[paragraph break]";
 			now the curedFlag of the player is true;
 	if the BlockChatterFlag is false:
 		if the consciousness of the player is:
@@ -875,20 +875,20 @@ Every turn:
 					remove entry 1 from mouseDialogue;
 			-- 2:
 				if the number of entries in mouseDogDialogue is greater than zero:
-					say "[italic type]«[entry 1 of mouseDogDialogue]»[roman type][paragraph break]";
+					say "[italic type]« [entry 1 of mouseDogDialogue] »[roman type][paragraph break]";
 					remove entry 1 from mouseDogDialogue;
 			-- 3:
 				if the number of entries in mouseDogGuardDialogue is greater than zero:
-					say "[italic type]«[entry 1 of mouseDogGuardDialogue]»[roman type][paragraph break]";
+					say "[italic type]« [entry 1 of mouseDogGuardDialogue] »[roman type][paragraph break]";
 					remove entry 1 from mouseDogGuardDialogue;
 			-- 4:
 				if the curedFlag of the player is true:
 					if the number of entries in CuredDialogue is greater than zero:
-						say "[italic type]«[entry 1 of CuredDialogue]»[roman type][paragraph break]";
+						say "[italic type]« [entry 1 of CuredDialogue] »[roman type][paragraph break]";
 						remove entry 1 from CuredDialogue;
 				otherwise:
 					if the number of entries in EverybodyDialogue is greater than zero:
-						say "[italic type]«[entry 1 of EverybodyDialogue]»[roman type][paragraph break]";
+						say "[italic type]« [entry 1 of EverybodyDialogue] »[roman type][paragraph break]";
 						remove entry 1 from EverybodyDialogue;
 	now the BlockChatterFlag is false.
 	
