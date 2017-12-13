@@ -50,7 +50,7 @@ To build the game:
 	come along for the ride. Be sure to install them into your local copy of inform 
 	when you compile.
 
-	3. Launch the Inform IDE and load the cerveux.inform project.  The source code 
+	3. Launch the Inform IDE and load the cerveaux.inform project.  The source code 
 	should be visible, and it should compile fine.  [Make	sure that Inform's 
 	settings are are set to "Glulx" as the target VM.]
 
