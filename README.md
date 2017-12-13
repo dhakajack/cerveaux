@@ -46,7 +46,7 @@ To build the game:
 	2. Install extensions. The extensions used in this project are all "stock" -- 
 	none have been modified, but there's always the concern about versions and 
 	compatability. For that reason, I've put copies of all used extensions in the 
-	cerveux/extensions directory. If the whole project is cloned, these files will 
+	cerveaux/extensions directory. If the whole project is cloned, these files will 
 	come along for the ride. Be sure to install them into your local copy of inform 
 	when you compile.
 
