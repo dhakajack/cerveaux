@@ -331,7 +331,7 @@ Instead of pushing an elevatorDoor:
 			-- 2:
 				say " avec votre museau[one of] (qui est devenu plus court que dans vos souvenirs)[or][stopping] et remarquez que la pièce vibre subtilement. Un instant plus tard, le mur s[apostrophe]ouvre donnant sur un couloir à l[apostrophe]ouest.";
 			-- otherwise:
-				say ", l'ascenseur [if the location is Ascenseur 2]descend[otherwise]monte[end if], et les portes à l'ouest s[']ouvrent."; 
+				say ", l'ascenseur [if the location is Ascenseur 2]descend au premier niveau[otherwise]monte au deuxième niveau[end if], et les portes à l'ouest s[']ouvrent."; 
 		if the player is in Ascenseur 2:
 			move the player to Ascenseur 1, without printing a room description;
 			now Ascenseur1door is open;
@@ -433,7 +433,7 @@ Section Ascenseur 1
 Ascenseur 1 is an elevator. The Ascenseur1door is an elevatorDoor. It is east of Couloir 1 and west of Ascenseur 1. 
 
 To say descAscenseur1:
-	say "Un bouton [if the player is in Ascenseur 1]vert[otherwise]jaune[end if] brille sur un panneau".
+	say "Un bouton vert brille sur un panneau".
 	
 After going west from an Ascenseur 1:
 	say "[portesReferment].";
