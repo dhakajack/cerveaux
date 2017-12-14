@@ -75,8 +75,8 @@ To say exitList:
 
 Chapter Disable Keyboard
 
-[TODO: re-enable to kill keyboard. ]
-The focal event type of main input is hyperlink-event.
+[TODO: re-enable to kill keyboard. 
+The focal event type of main input is hyperlink-event.]
 
 When play begins:
 	Now the command prompt is "".
@@ -456,7 +456,7 @@ To say pnLabPath:
 To say descLabPath:
 	If the consciousness of the player is:
 		-- 2:
-			say "[one of]Cette pièce vous évoque les temps joyeux que vous avez passé en famille -- avant d[apostrophe]être enlevé. D'après les comptoirs, les étagères remplies de denrées, les éviers et les grands appareils, il s'agit sans aucun doute de la pièce la plus importante de la maison: la cuisine[or]Une cuisine ordinaire, meublé en noir[stopping]";
+			say "[one of]Cette pièce vous évoque les temps joyeux que vous avez passé en famille -- avant d[apostrophe]être enlevé. D'après les comptoirs, les étagères remplies de denrées, les éviers et les grands appareils, il s'agit sans aucun doute de la pièce la plus importante de la maison : la cuisine[or]Une cuisine ordinaire, meublé en noir[stopping]";
 		-- 3:
 			say "C'est ici où les scientifiques préparent les lames de microscope.[paragraph break]Vous reconnaissez une trancheuse à viande et un four à micro-ondes, mais la plupart de l[apostrophe]équipement sur le comptoir n'est pas familier";
 		-- 4:
@@ -904,7 +904,7 @@ mouseDialogue is {
 "Eh bien, j'ai faim.",
 "De quoi est-ce que j'ai envie de manger ? Cela m[apostrophe]échappe pour le moment.",
 "Du fromage ? Non, pas vraiment.",
-"Je cherche quelque chose fr plus moelleux, plus juteux.",
+"Je cherche quelque chose plus moelleux, plus juteux.",
 "Je le saurai quand je le verrai, je suppose."
 }.
 
@@ -913,7 +913,7 @@ Section MouseDog Dialogue
 mouseDogDialogue is a list of text that varies. 
 
 mouseDogDialogue is {
-"Désolé[line break]-- Quoi, désolé ?[line break]-- Moi, je suis désolé de t'avoir mangé[line break]-- De m'avoir mangé ? Dis donc, qui es-tu ?[line break]-- La souris.",
+"Désolé[line break]-- Quoi, désolé ?[line break]-- Moi, je suis désolé de t'avoir mangé.[line break]-- De m'avoir mangé ? Dis donc, qui es-tu ?[line break]-- La souris.",
 "La souris ? Quelle souris ?[line break]-- La souris qui habite ici.[line break]-- La maudite souris qui vole toujours les bribes autour de mon distributeur ?[line break]-- Ouais, la même. Une fois de plus, je suis désolé de t'avoir dérangé.",
 "Pas du tout. J'aurais fait pareil.[line break]-- Bon, merci.[line break]-- Dis, souris, as-tu un nom ?[line break]-- Non. Nous les souris n'ont pas les noms. Tu peux m'appeler simplement [quotation mark]Souris[quotation mark]. Et toi ? Comment tu t'appelles ?[line break]-- [quotation mark]Lucky[quotation mark]. C'est le nom que ma famille m'a donné avant que je sois arrivé ici. Les bourreaux me désignent [quotation mark]Sujet 205-Alpha[quotation mark], mais je préfère [quotation mark]Lucky[quotation mark].[line break]-- D'accord, Lucky.",
 "Souris, peux-tu m'expliquer quelque chose ? Je suis toujours perplexe. Comment se fait-il que toi, un souris, un animal tout petit, puisse manger un chien comme moi, plusieurs fois ta taille ?[line break]-- Je me suis demandé la même chose. Tiens -- t'es un chien ? Je pensais que tu étais un loup ![line break]-- Non, un chien.[line break]-- Ah bon ?[line break]-- Oui. J'en suis certain.",
@@ -931,9 +931,9 @@ Section MouseDogGuard Dialogue
 mouseDogGuardDialogue is a list of text that varies. 
 
 mouseDogGuardDialogue is { 
-"Il faut patrouiller ! ordonne une nouvelle voix[line break]-- Patrouiller ? Qu'est que ça veut dire ? demande la souris.[line break]-- Cela signifie marcher partout, pour sécuriser l'installation répond la voix.[line break]-- J'aime bien faire des promenades ! dit Lucky tout excité.",
+"Il faut patrouiller ! ordonne une nouvelle voix.[line break]-- Patrouiller ? Qu'est que ça veut dire ? demande la souris.[line break]-- Cela signifie marcher partout, pour sécuriser l'installation répond la voix.[line break]-- J'aime bien faire des promenades ! dit Lucky tout excité.",
 "Si je puis poser une question, demande la souris, qui es-tu ?[line break]-- Mon nom est… euh… voyons… un instant… bonne question. En effet, je ne me souviens pas. Le nom m[apostrophe]échappe pour l'instant. Que proposerais-tu ?[line break]-- Appelons-le [quotation mark]La petite tranche de cerveau que nous avons trouvée dans le frigo et dont la saveur était un peu avariée[quotation mark], conseille le chien.[line break]-- Non, c'est vraiment trop long. Disons plutôt simplement [quotation mark]la tranche de cerveau[quotation mark]. Est-ce que ça te convient ?[line break]-- Oui, dit la tranche de cerveau, de toute manière, j'ai un préférence pour les noms courts.", 
-"Avez-vous aussi des noms ? questionne la tranche de cerveau.[line break]-- Oui, répond le chien. Pardonne notre manque de politesse. Je m'appelle Lucky et mon amie la souris est tout simplement appelée [quotation mark]Souris[quotation mark].[line break]-- C'est exact, confirme la souris.[line break]-- C'est un plaisir de faire votre connaissance, mes nouveaux amis.", 
+"Avez-vous des noms ? questionne la tranche de cerveau.[line break]-- Oui, répond le chien. Pardonne notre manque de politesse. Je m'appelle Lucky et mon amie la souris est tout simplement appelée [quotation mark]Souris[quotation mark].[line break]-- C'est exact, confirme la souris.[line break]-- C'est un plaisir de faire votre connaissance, mes nouveaux amis.", 
 "Alors, tranche de cerveau, je me demande quelle sorte d'animal tu étais avant d'arriver ici. J[apostrophe]étais un chien et la souris a toujours été une souris.[line break]-- J[apostrophe]étais quelque chose d'autre qu'une tranche de cerveau auparavant ?[line break]-- Il me semble que tu étais un frigo, suggère la souris. J'ai mangé le cerveau d'un chien est Lucky est apparu. Puis nous avons ouvert et mangé un frigo et tu es apparu.[line break]-- Je ne crois pas que ça fonctionne comme ça, murmure Lucky.", 
 "Quand tu es arrivé, tu as dit qu'il fallait [quotation mark]sécuriser l'installation[quotation mark]. Qu'est-ce que ça veut dire ? demande Lucky. [line break]-- Cela signifie que nous devons regarder autour de l'installation pour la protéger contre tout menace. [line break] -- OK, dit la souris en essayant de suivre la conversation, mais c'est quoi une installation ? [line break] -- C'est le complexe des ... euh ... c'est un endroit où ... tout le monde travaille pour ... euh. Voilà où nous en sommes, conclut la tranche de cerveau.", 
 "De quelle menace parles-tu ? demande la souris[line break]-- Franchement, je ne sais pas, répond la tranche de cerveau. Encore, je ne me souviens pas. Mais il y en a beaucoup, j'en suis certain.[line break]-- Tu as l'air parano, dit le chien.[line break]-- Peut-être que si j'avais mes souvenirs, je pourrais… non. Ils sont perdus.", 
