@@ -18,7 +18,7 @@ Use French Language.
 Use full-length room descriptions.
 Use no scoring.
 
-Release along with cover art.
+Release along with cover art, a file of "Blurb" called "description.txt" and a file of "walkthrough" called "fds_solution.txt".
 
 Chapter Globals
 
