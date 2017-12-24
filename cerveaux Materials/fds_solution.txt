@@ -1,3 +1,7 @@
+* Notez: Ce jeu ne fonctionne pas avec l'interpréteur Lectrote, mais je sais qu'il n'y a de problème avec Gargoyle, Zoom et Spatterlight. Une version en ligne est aussi disponible.
+
+=== SOLUTION ===
+
 Voici la solution minimale pour Faute de Servo.
 
 Quelques astuces:
