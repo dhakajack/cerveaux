@@ -806,7 +806,7 @@ After going east for the first time:
 After going west from Couloir 2 for the first time:
 	move the petite créature grise to the Bloc Opératoire;
 	try looking;
-	say "Elle se cache dans les ombres, tremblante.";
+	say "Elle se cache dans les ombres, tremblant.";
 	increment the knownCommands of the player.
 	
 After eating the petite créature grise:
