@@ -73,7 +73,7 @@ To say exitList:
 					-- south:
 						say "[if unicodage is enabled][unicode 8595][otherwise]v[end if] ";
 					-- east:
-						say "[if unicodage is enabled][unicode 8594][otherwise]>[end if] ";
+						say "[if unicodage is enabled][unicode 8594][otherwise]>[end if] ".
 
 Chapter Disable Keyboard
 
@@ -98,8 +98,6 @@ For printing a locale paragraph about a door (called the item)
 	set the locale priority of the item to 0;
 	continue the activity.
 	
-[The room description paragraphs about objects rule is not listed in any rulebook.]
-
 Chapter Button Setup
 
 The graphics-window is a graphlink g-window spawned by the main-window. The position is g-placebelow. The scale method is g-fixed-size. The measurement is 70. The back-colour is g-Black.
@@ -148,8 +146,6 @@ After printing the banner text:
 Chapter Geography
 
 Section Location Generalities
-
-The printed name of a room is usually "Ici".
 
 Doors are usually closed. Doors are usually not locked.
 
