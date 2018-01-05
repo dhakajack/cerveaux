@@ -519,8 +519,6 @@ To say pnPotty:
 	if the consciousness of the player is less than 3:
 		say "bol plein d[apostrophe]eau";
 	otherwise:
-		now the potty is plural-named;
-		now indefinite article of the potty is "des";
 		say "toilettes (dont le couvercle est soulevé)". 
 		
 Instead of simpleEating when the player is in Les Toilettes:
@@ -847,6 +845,8 @@ After eating the chien:
 	
 After eating the morceau de cerveau:
 	say "En mâchant la tranche de cerveau, vous sentez un saveur désagréable, mais ça s'estompe presque immédiatement.[paragraph break]Pendant quelques moments rien ne se passe et vous vous demandez si vous pouvez maintenant manger n'importe quoi en toute impunité.[paragraph break]Soudain, le monde passe du monochrome à la couleur vive. Une vague électrique parcourt votre esprit et vous vous effondrez, désorienté. Lorsque vous vous mettez debout, des nouvelles idées se mêlent à vos pensées et vous voyez tout sous un nouveau jour.";
+	now the potty is plural-named;
+	now indefinite article of the potty is "des";
 	increment the consciousness of the player;
 	increment the knownCommands of the player.
 	
