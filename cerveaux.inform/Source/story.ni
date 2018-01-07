@@ -850,7 +850,7 @@ After eating the morceau de cerveau:
 	increment the consciousness of the player;
 	increment the knownCommands of the player.
 	
-After going north from Escalier 2 when the sasDoor is not locked for the first time:
+After going north from Escalier 2 when the sasDoor is not closed for the first time:
 	now the BlockChatterFlag is true;
 	say "Une femme d'une quarantaine d'années vêtue d'une blouse blanche est assise derrière un bureau en métal. Elle est à mi-chemin entre vous et la porte à l'autre bout de la pièce. Elle semble gravement blessée et saigne d'une blessure au bras qu'elle a bandé de gaze stérile. Dans son autre main, elle brandit un pied-de-biche.";
 	try looking;
