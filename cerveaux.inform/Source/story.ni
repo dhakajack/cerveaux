@@ -793,7 +793,20 @@ The commandList is a list of numbers that varies. The commandList is {}.
 To increment the knownCommands of the player:
 	increase the knownCommands of the player by 1;
 	add the knownCommands of the player to commandList;
-	sort commandList in random order;
+	let N be the knownCommands of the player;
+	now the tint of the button in row N of the Table of Glimmr Buttons is entry N of Palette;
+	now the linked replacement-command of the button in row N of the Table of Glimmr Buttons is entry N of actionList;
+	now the graphlink status of the button in row N of the Table of Glimmr Buttons is g-active;
+	follow the refresh windows rule.
+	
+[
+Original button update, which shuffled order of buttons each time a new command
+became available. Most players indicated that having to remember the colors was
+enough and that shuffling them around only added to confusion.
+
+To increment the knownCommands of the player:
+	increase the knownCommands of the player by 1;
+	add the knownCommands of the player to commandList;
 	let R be the number of entries in commandList;
 	repeat with N running from 1 to R:
 		let E be entry N of commandList;
@@ -801,6 +814,8 @@ To increment the knownCommands of the player:
 		now the linked replacement-command of the button in row N of the Table of Glimmr Buttons is entry E of actionList;
 	now the graphlink status of the button in row R of the Table of Glimmr Buttons is g-active;
 	follow the refresh windows rule.
+]
+
 				
 Chapter Milestones
 
@@ -1051,7 +1066,7 @@ To terminate the game:
 	say "[VictoryText]".
 		
 To say VictoryText:
-	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vous avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe au Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier :[paragraph break]* Les organisateurs du concours.[paragraph break]* Graham Nelson pour avoir conçu et écrit Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cette oeuvre : Éric Forgeot, Emily Short et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint la couverture à l'aquarelle.[paragraph break]* Relecteurs: Éric Forgeot et Stéphane Flauder.[paragraph break]* Beta-testeurs: Brian Rushton, Denise Jobin et Hugo Labrande.[paragraph break][bold type]FIN."
+	say "[paragraph break][bold type]        *** VOUS AVEZ GAGNÉ ***[roman type][paragraph break]Vous avez sauvé le monde du fléau du virus zombie777.[paragraph break][bold type]>infos[roman type][line break]Ce jeu participe au Concours Francophone de Fictions Interactives (2017). Il a été écrit en Inform 7.[paragraph break][bold type]>remerciements[roman type][paragraph break]Je voudrais remercier :[paragraph break]* Les organisateurs du concours.[paragraph break]* Graham Nelson pour avoir conçu et écrit Inform 7.[paragraph break]* Les auteurs des modules utilisés dans cette oeuvre : Éric Forgeot, Emily Short et Erik Temple.[paragraph break]* Ben Collins-Sussman, qui a peint la couverture à l'aquarelle.[paragraph break]* Relecteurs: Éric Forgeot et Stéphane Flauder.[paragraph break]* Bêta-testeurs: Brian Rushton, Denise Jobin et Hugo Labrande.[paragraph break][bold type]FIN."
 	
 Chapter Testing
 
